@@ -11,5 +11,5 @@ class Tile:
 		self.name= name
 		self.image=image
 
-	def update(self):
-		self.window.blit(self.image, (self.rect.x, self.rect.y))
+	def update(self, cameraX, cameraY):
+		self.window.blit(self.image, (self.rect.x-cameraX, self.rect.y-cameraY))

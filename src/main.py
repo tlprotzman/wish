@@ -22,17 +22,17 @@ pygame.mixer.music.load("../audio/sondtrack.wav")
 def main():
 	game.setTileset("Grass")
 	game.levelList.append(Level(game, player, window,
-							["                      ",
-							"                      ",
-							"                      ",
-							"                      ",
-							"                      ",
-							"                      ",
-							"                      ",
-							"PPPPPPPPPPPPPPPPPPPPPP",
-							"PPPPPPPPPPPPPPPPPPPPPP",
-							"PPPPPPPPPPPPPPPPPPPPPP",
-							"PPPPPPPPPPPPPPPPPPPPPP", ]))
+							["                                            ",
+							"                                            ",
+							"                                            ",
+							"               PP                           ",
+							"        PPP                                 ",
+							"                                            ",
+							"             P                              ",
+							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP", ]))
 
 
 	game.setCurrentLevel(game.levelList[0])
@@ -53,8 +53,10 @@ def main():
 			window.fill(backgroundColor)
 			# for enemy in game.enemyList[game.levelCounter]:
 			# 	enemy.update()
-			player.update()
-			game.getCurrentLevel().update()
+			player.update(game.camera_x, game.camera_y)
+			game.getCurrentLevel().update(game.camera_x, game.camera_y)
+			game.camera_x = player.rect.x+player.rect.width/2 - game.screenWidth/2
+			game.camera_y = 0
 			# game.levelTitle.update()
 			# game.drawLives()
 		elif game.gameState == 'STARTSCREEN':

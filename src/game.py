@@ -15,6 +15,9 @@ class Game:
 		self.window = window
 		self.screenHeight = screenHeight
 		self.screenWidth = screenWidth
+		self.camera_x = 0
+		self.camera_y = 0
+
 
 
 		self.lifeImage = pygame.image.load("../images/life.png")

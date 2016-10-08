@@ -44,7 +44,7 @@ class Level:
 	def getBackgrounds(self):
 		return self.backgrounds
 
-	def update(self):
+	def update(self, cameraX, cameraY):
 
 		if self.player.rect.right<0:
 			print("THIS SHOULDNT'T HAPPEN! THIS IS LEVEL UPDATING!")
@@ -59,8 +59,8 @@ class Level:
 				self.game.gameState = "ENDSCREEN"
 
 		for tile in self.walls:
-			tile.update()
+			tile.update(cameraX, cameraY)
 		for tile in self.backgrounds:
 			if tile.name=="Wave":
 				tile.image = self.game.waveImage[self.game.animation]
-			tile.update()
+			tile.update(cameraX, cameraY)
