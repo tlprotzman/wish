@@ -99,10 +99,12 @@ class Actor:
 		# 	self.deathTimer = self.deathTimer
 		# if self.onGround and self.velocity_x == 0:
 		# 	self.window.blit(self.game.playerBreath)
+		print("DRAQING")
 		if (self.deathTimer>0 and self.deathTimer%2 == 0):
 			self.deathTimer = self.deathTimer
 			# don't do anything, wait a frame before drawing
 		elif (self.onGround and self.velocity_x == 0):
+			print("RUNNING")
 			self.window.blit(self.game.playerBreath[math.floor(self.game.animation/2)], (self.rect.x, self.rect.y+1))
 		elif (not self.onGround):
 			self.window.blit(self.game.playerJump, (self.rect.x, self.rect.y+1))

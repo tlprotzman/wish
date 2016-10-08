@@ -1,3 +1,5 @@
+
+
 import pygame, sys
 from game import Game 
 from actor import Actor 
@@ -37,6 +39,11 @@ def main():
 
 	running = True
 	while running:
+		pressed = pygame.key.get_pressed()
+		if pressed[pygame.K_ESCAPE]:
+			running = False
+
+
 		game.clock.tick(60)
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -49,7 +56,7 @@ def main():
 			player.update()
 			game.getCurrentLevel().update()
 			# game.levelTitle.update()
-			game.drawLives()
+			# game.drawLives()
 		elif game.gameState == 'STARTSCREEN':
 			startScreen.update()
 		elif game.gameState == 'CREDITSSCREEN':
