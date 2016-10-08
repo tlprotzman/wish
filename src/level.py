@@ -47,6 +47,9 @@ class Level:
 		self.staticTiles.set_colorkey((255,255,255,0))
 		self.makeBackgroundImage()
 
+	def getLevelWidth(self):
+		return 64*self.levelWidth
+
 	def makeBackgroundImage(self):
 		for tile in self.walls:
 			tile.drawTo(0, 0, self.staticTiles)
