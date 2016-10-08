@@ -150,7 +150,10 @@ class Actor:
 		if (self.deathTimer > 0):
 			self.deatTimer -= 1
 		if self.rect.y:
-			las
+			self.deathTimer = 50
+			self.rect.x = 32
+			self.rect.y = 0
+			game.life += 1
 		else:
 			for enemy in self.game.enemyList[game.levelCounter]:
 				if self.rect.colliderect(enemy) and self.deathTimer == 0:
