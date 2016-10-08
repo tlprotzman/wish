@@ -1,5 +1,5 @@
 
-import pygame
+import pygame, math
 
 def sign(num):
 	return num/abs(num)

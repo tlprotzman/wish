@@ -13,8 +13,8 @@ class Game:
 		self.animation = 0
 		self.animationCounter = 0
 		self.window = window
-		self.screenHeight
-		self.screenWidth
+		self.screenHeight = screenHeight
+		self.screenWidth = screenWidth
 
 
 		self.lifeImage = pygame.image.load("../images/life.png")
