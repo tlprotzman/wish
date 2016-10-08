@@ -1,6 +1,8 @@
 import pygame, sys
 from game import Game 
 from actor import Actor 
+from level import Level
+
 
 screenWidth = 22 * 64
 screenHeight = 11 * 64
@@ -9,13 +11,27 @@ backgroundColor = (25, 134, 242)
 #Remember to pass window into all the functions that need it!
 window = pygame.display.set_mode((screenWidth, screenHeight))
 game = Game(window)
-
+player = Actor(window, game, 95, 500, "Player")
 '''		Uncomment once music is added
 pygame.mixer.init()
 pygame.mixer.music.load()
 '''
 
 def main():
+	game.levelList.append(Level(game, player,
+							["                      ",
+							"                      ",
+							"                      ",
+							"                      ",
+							"                      ",
+							"                      ",
+							"                      ",
+							"PPPPPPPPPPPPPPPPPPPPPP",
+							"PPPPPPPPPPPPPPPPPPPPPP",
+							"PPPPPPPPPPPPPPPPPPPPPP",
+							"PPPPPPPPPPPPPPPPPPPPPP", ]))
+
+
 	game.setCurrentLevel(game.levelList[0])
 
 	running = True
