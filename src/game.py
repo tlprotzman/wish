@@ -13,6 +13,15 @@ class Game:
 		self.animation = 0
 		self.animationCounter = 0
 
+		self.lifeImage = pygame.image.load()
+		self.waterImage = pygame.image.load()
+		self.waveImage = pygame.image.load()
+		self.playerBreath = pygame.image.load()
+		self.playerWalk = pygame.image.load()
+		self.playerJump = pygame.image.load()
+		self.enemyBreath = pygame.image.load()
+		self.enemyJump = pygame.image.load()
+
 
 	def setCurrentLevel(self, newLevel):
 		self.currentLevel = newLevel
