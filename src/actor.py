@@ -153,7 +153,7 @@ class Actor:
 			las
 		else:
 			for enemy in self.game.enemyList[game.levelCounter]:
-				if self.rect.colliderect(enemy) and self.deathTimer = 0:
+				if self.rect.colliderect(enemy) and self.deathTimer == 0:
 					self.deathTimer = 50
 					print("We need to have the user move back to the respawn point!")
 					# self.rect.x = 32
