@@ -3,7 +3,8 @@ import pygame
 from tile import Tile
 
 class Level:
-	def __init__(self, game, player, array):
+	def __init__(self, game, player, window, array):
+		self.window = window
 		self.game = game
 		self.player = player
 		self.levelArray = array
@@ -16,22 +17,22 @@ class Level:
 				if item == "P":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]==" ":
 						if (round(x/64) < 21 and self.levelArray[round(y/64)][round(x/64)+1]!="P"):
-							tile = Tile(x, y, "Ground", self.game.groundRImage)
+							tile = Tile(self.window, x, y, "Ground", self.game.groundRImage)
 						elif (round(x/64) > 0 and self.levelArray[round(y/64)][round(x/64)-1]!="P"):
-							tile = Tile(x, y, "Ground", self.game.groundLImage)
+							tile = Tile(self.window, x, y, "Ground", self.game.groundLImage)
 						else:
-							tile = Tile(x, y, "Ground", self.game.groundImage)
+							tile = Tile(self.window, x, y, "Ground", self.game.groundImage)
 					else:
-						tile = Tile(x, y, "Ground", self.game.dirtImage)
+						tile = Tile(self.window, x, y, "Ground", self.game.dirtImage)
 					self.walls.append(tile)
 				elif item == "H":
-					tile = Tile(x, y, "Hidden", self.game.waterImage)
+					tile = Tile(self.window, x, y, "Hidden", self.game.waterImage)
 					self.walls.append(tile)
 				elif item == ".":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]==" ":
-						tile = Tile(x, y, "Wave", self.game.waveImage[self.game.animation])
+						tile = Tile(self.window, x, y, "Wave", self.game.waveImage[self.game.animation])
 					else:
-						tile = Tile(x, y, "Water", self.game.waterImage)
+						tile = Tile(self.window, x, y, "Water", self.game.waterImage)
 					self.backgrounds.append(tile)
 				x += 64
 			y += 64

@@ -19,7 +19,7 @@ pygame.mixer.music.load()
 
 def main():
 	game.setTileset("Grass")
-	game.levelList.append(Level(game, player,
+	game.levelList.append(Level(game, player, window,
 							["                      ",
 							"                      ",
 							"                      ",
