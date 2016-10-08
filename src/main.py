@@ -13,7 +13,7 @@ backgroundColor = (25, 134, 242)
 #Remember to pass window into all the functions that need it!
 window = pygame.display.set_mode((screenWidth, screenHeight))
 game = Game(window)
-player = Actor(window, game, 95, 500, "Player")
+player = Actor(window, game, 95, 200, "Player")
 '''
 pygame.mixer.init()
 pygame.mixer.music.load("../audio/sondtrack.wav")
@@ -44,7 +44,7 @@ def main():
 			running = False
 
 
-		game.clock.tick(60)
+		game.clock.tick(20)
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				sys.exit()

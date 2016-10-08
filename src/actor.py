@@ -5,7 +5,7 @@ def sign(num):
 	return num/abs(num)
 
 class Actor:
-	def __init__(self, window, game, x, y, name, speed = .5, max_speed = 7, max_fall = 20, gravity = 1, friction = .25):
+	def __init__(self, window, game, x, y, name, speed = 1, max_speed = 7, max_fall = 20, gravity = 1, friction = .25):
 		if name == "Player":
 			self.height = 96
 			self.jump_force = 22
@@ -39,7 +39,7 @@ class Actor:
 		self.rect.x += self.velocity_x
 		self.rect.y += self.velocity_y
 
-		self.velocity_y += self.gravity
+		self.velocity_y += self.gravity*0
 
 		if (abs(self.velocity_x) > 0 ):
 			self.velocity_x -= f*sign(self.velocity_x)
@@ -99,12 +99,10 @@ class Actor:
 		# 	self.deathTimer = self.deathTimer
 		# if self.onGround and self.velocity_x == 0:
 		# 	self.window.blit(self.game.playerBreath)
-		print("DRAQING")
 		if (self.deathTimer>0 and self.deathTimer%2 == 0):
 			self.deathTimer = self.deathTimer
 			# don't do anything, wait a frame before drawing
 		elif (self.onGround and self.velocity_x == 0):
-			print("RUNNING")
 			self.window.blit(self.game.playerBreath[math.floor(self.game.animation/2)], (self.rect.x, self.rect.y+1))
 		elif (not self.onGround):
 			self.window.blit(self.game.playerJump, (self.rect.x, self.rect.y+1))
@@ -181,6 +179,8 @@ class Actor:
 			self.drawPlayer()
 		else:
 			self.drawEnemy()
+		# print("Location: ", self.rect.x, self.rect.y)
+		# print("Velocities: ", self.velocity_x, self.velocity_y)
 
 
 
