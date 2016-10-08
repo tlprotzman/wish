@@ -44,7 +44,7 @@ def main():
 			running = False
 
 
-		game.clock.tick(6s0)
+		game.clock.tick(60)
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				sys.exit()
