@@ -103,6 +103,7 @@ class Actor:
 			self.deathTimer = self.deathTimer
 			# don't do anything, wait a frame before drawing
 		elif (self.onGround and self.velocity_x == 0):
+			# this is breath
 			self.window.blit(self.game.playerBreath[math.floor(self.game.animation/2)], (self.rect.x-cameraX, self.rect.y+1-cameraY))
 		elif (not self.onGround):
 			self.window.blit(self.game.playerJump, (self.rect.x-cameraX, self.rect.y+1-cameraY))
@@ -111,7 +112,7 @@ class Actor:
 		elif (self.velocity_x < 0):
 			self.window.blit(self.game.playerWalk[3-self.game.animation], (self.rect.x-cameraX, self.rect.y+1-cameraY))
 		else:
-			print("Breath")
+			# I think this is the other death animation
 			self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y+1-cameraY))
 
 
@@ -181,8 +182,8 @@ class Actor:
 			self.drawPlayer(cameraX, cameraY)
 		else:
 			self.drawEnemy()
-		print("Location: ", self.rect.x, self.rect.y)
-		print("Velocities: ", self.velocity_x, self.velocity_y)
+		# print("Location: ", self.rect.x, self.rect.y)
+		# print("Velocities: ", self.velocity_x, self.velocity_y)
 
 
 
