@@ -4,7 +4,7 @@ class Game:
 	def __init__(self, window):
 		self.clock = pygame.time.Clock()
 		self.currentLevel = 0
-		self.gameState = 'STARTSCREEN'
+		self.gameState = 'PLAYING'
 		self.levelList = []
 		self.levelCounter = 0
 		self.enemyList = []
@@ -43,7 +43,7 @@ class Game:
 	def setCurrentLevel(self, newLevel):
 		self.currentLevel = newLevel
 
-	def getCurrentlevel(self):
+	def getCurrentLevel(self):
 		return self.currentLevel
 
 	def animate(self):
@@ -78,6 +78,6 @@ class Game:
 			self.dirtImage = pygame.image.load("../images/mountain.png")
 
 	def drawLives(self):
-		for i in range(game.life):
-			self.window.blit(game.lifeImage, (20 + i * 60, 64))		#Make sure to set the life image!!!
+		for i in range(self.life):
+			self.window.blit(self.lifeImage, (20 + i * 60, 64))		#Make sure to set the life image!!!
 

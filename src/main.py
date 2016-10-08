@@ -44,11 +44,11 @@ def main():
 
 		if game.gameState == 'PLAYING':
 			window.fill(backgroundColor)
-			for enemy in game.enemyList[game.levelCounter]:
-				enemy.update()
+			# for enemy in game.enemyList[game.levelCounter]:
+			# 	enemy.update()
 			player.update()
 			game.getCurrentLevel().update()
-			game.levelTitle.update()
+			# game.levelTitle.update()
 			game.drawLives()
 		elif game.gameState == 'STARTSCREEN':
 			startScreen.update()

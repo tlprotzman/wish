@@ -72,8 +72,8 @@ class Actor:
 			self.velocity_y = -self.jump_force
 
 	def collide(self):
-		for wall in game.getCurrentLevel().getWalls():
-			for wall in game.getCurrentLevel().getWalls():
+		for wall in self.game.getCurrentLevel().getWalls():
+			for wall in self.game.getCurrentLevel().getWalls():
 				if self.rect.right + self.velocity_x > wall.rect.left and self.rect.left + self.velocity_x < wall.rect.right:
 					# when you're colliding up/down
 					if self.rect.bottom <= wall.rect.top and self.rect.bottom + self.velocity_y > wall.rect.top:
@@ -129,7 +129,7 @@ class Actor:
 				self.jump()
 				blockedRight = False
 				blockedLeft = False
-				for wall in game.getCurrentLevel().getWalls():
+				for wall in self.game.getCurrentLevel().getWalls():
 					if self.rect.top < wall.rect.bottom and self.rect.bottom > wall.rect.top:
 						if self.rect.right + 10 <= wall.rect.left and self.rect.right + 80 >= wall.rect.left:
 							blockedRight = True
@@ -148,17 +148,18 @@ class Actor:
 
 	def die(self):
 		if (self.deathTimer > 0):
-			self.deatTimer -= 1
+			self.deathTimer -= 1
 		if self.rect.y:
 			self.deathTimer = 50
 			self.rect.x = 32
 			self.rect.y = 0
-			game.life += 1
+			self.game.life += 1
 		else:
-			for enemy in self.game.enemyList[game.levelCounter]:
-				if self.rect.colliderect(enemy) and self.deathTimer == 0:
-					self.deathTimer = 50
-					print("We need to have the user move back to the respawn point!")
+			pass
+			# for enemy in self.game.enemyList[self.game.levelCounter]:
+			# 	if self.rect.colliderect(enemy) and self.deathTimer == 0:
+			# 		self.deathTimer = 50
+			# 		print("We need to have the user move back to the respawn point!")
 					# self.rect.x = 32
 		#             self.rect.y = 0
 		#             game.life += 1
