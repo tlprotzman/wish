@@ -13,3 +13,6 @@ class Tile:
 
 	def update(self, cameraX, cameraY):
 		self.window.blit(self.image, (self.rect.x-cameraX, self.rect.y-cameraY))
+
+	def drawTo(self, cameraX, cameraY, surface):
+		surface.blit(self.image, (self.rect.x-cameraX, self.rect.y-cameraY))

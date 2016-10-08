@@ -12,8 +12,12 @@ class Level:
 		y = 0
 		self.walls = []
 		self.backgrounds = []
+		self.levelWidth = 0
+		self.levelHeight = 0
 		for row in self.levelArray:
+			self.levelHeight += 1
 			for item in row:
+				self.levelWidth += 1
 				if item == "P":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]==" ":
 						if (round(x/64) < 21 and self.levelArray[round(y/64)][round(x/64)+1]!="P"):
@@ -37,6 +41,15 @@ class Level:
 				x += 64
 			y += 64
 			x = 0
+		self.staticTiles = pygame.Surface((self.game.screenWidth, self.game.screenHeight)) #(64*self.levelWidth, 64*self.levelHeight)
+		self.staticTiles.fill((255,255,255,0))
+		print(self.staticTiles.get_colorkey())
+		self.staticTiles.set_colorkey((255,255,255,0))
+		self.makeBackgroundImage()
+
+	def makeBackgroundImage(self):
+		for tile in self.walls:
+			tile.drawTo(0, 0, self.staticTiles)
 
 	def getWalls(self):
 		return self.walls
@@ -45,7 +58,6 @@ class Level:
 		return self.backgrounds
 
 	def update(self, cameraX, cameraY):
-
 		if self.player.rect.right<0:
 			print("THIS SHOULDNT'T HAPPEN! THIS IS LEVEL UPDATING!")
 			if self.game.levelCounter < len(self.game.levelList)-1:
@@ -58,9 +70,15 @@ class Level:
 			else:
 				self.game.gameState = "ENDSCREEN"
 
-		for tile in self.walls:
-			tile.update(cameraX, cameraY)
+		# for tile in self.walls:
+		# 	tile.update(cameraX, cameraY)
+		self.window.blit(self.staticTiles, (-cameraX, -cameraY))
 		for tile in self.backgrounds:
 			if tile.name=="Wave":
 				tile.image = self.game.waveImage[self.game.animation]
-			tile.update(cameraX, cameraY)
+				tile.update(cameraX, cameraY)
+
+
+
+
+
