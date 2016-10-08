@@ -14,9 +14,9 @@ backgroundColor = (25, 134, 242)
 window = pygame.display.set_mode((screenWidth, screenHeight))
 game = Game(window)
 player = Actor(window, game, 95, 500, "Player")
-'''		Uncomment once music is added
+'''
 pygame.mixer.init()
-pygame.mixer.music.load()
+pygame.mixer.music.load("../audio/sondtrack.wav")
 '''
 
 def main():
