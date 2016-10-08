@@ -5,7 +5,7 @@ def sign(num):
 	return num/abs(num)
 
 class Actor:
-	def __init__(self, window, game, x, y, name, speed = 1, max_speed = 7, max_fall = 20, gravity = 1, friction = .25):
+	def __init__(self, window, game, x, y, name, speed = .5, max_speed = 7, max_fall = 20, gravity = 1, friction = .25):
 		if name == "Player":
 			self.height = 96
 			self.jump_force = 22
@@ -39,7 +39,7 @@ class Actor:
 		self.rect.x += self.velocity_x
 		self.rect.y += self.velocity_y
 
-		self.velocity_y += self.gravity*0
+		self.velocity_y += self.gravity
 
 		if (abs(self.velocity_x) > 0 ):
 			self.velocity_x -= f*sign(self.velocity_x)
@@ -101,16 +101,22 @@ class Actor:
 		# 	self.window.blit(self.game.playerBreath)
 		if (self.deathTimer>0 and self.deathTimer%2 == 0):
 			self.deathTimer = self.deathTimer
+			print("DeathTimer")
 			# don't do anything, wait a frame before drawing
 		elif (self.onGround and self.velocity_x == 0):
+			print("On ground")
 			self.window.blit(self.game.playerBreath[math.floor(self.game.animation/2)], (self.rect.x, self.rect.y+1))
 		elif (not self.onGround):
+			print("in air")
 			self.window.blit(self.game.playerJump, (self.rect.x, self.rect.y+1))
 		elif (self.velocity_x > 0):
+			print("right")
 			self.window.blit(self.game.playerWalk[self.game.animation], (self.rect.x, self.rect.y+1))
 		elif (self.velocity_x < 0):
+			print("LEFT")
 			self.window.blit(self.game.playerWalk[3-self.game.animation], (self.rect.x, self.rect.y+1))
 		else:
+			print("Breath")
 			self.window.blit(self.game.playerBreath[1], (self.rect.x, self.rect.y+1))
 
 
@@ -147,9 +153,10 @@ class Actor:
 						self.velocity_x = -5
 
 	def die(self):
+		self.deathTimer = 0
 		if (self.deathTimer > 0):
 			self.deathTimer -= 1
-		if self.rect.y:
+		if self.rect.y > self.game.screenHeight and self.deathTimer==0:
 			self.deathTimer = 50
 			self.rect.x = 32
 			self.rect.y = 0
@@ -161,8 +168,8 @@ class Actor:
 			# 		self.deathTimer = 50
 			# 		print("We need to have the user move back to the respawn point!")
 					# self.rect.x = 32
-		#             self.rect.y = 0
-		#             game.life += 1
+		            # self.rect.y = 0
+					# self.game.life += 1
 
 
 	def update(self):
@@ -179,8 +186,8 @@ class Actor:
 			self.drawPlayer()
 		else:
 			self.drawEnemy()
-		# print("Location: ", self.rect.x, self.rect.y)
-		# print("Velocities: ", self.velocity_x, self.velocity_y)
+		print("Location: ", self.rect.x, self.rect.y)
+		print("Velocities: ", self.velocity_x, self.velocity_y)
 
 
 
