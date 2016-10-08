@@ -10,3 +10,13 @@ them instead of having it be up top.
 
 
 I also need to fix the animation functions for actor
+
+
+Fade in/out
+
+torches
+
+levels
+
+
+tiles that you can jump through

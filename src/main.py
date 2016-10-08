@@ -28,7 +28,7 @@ def main():
 							"               PP                           ",
 							"        PPP                                 ",
 							"                                            ",
-							"             P                              ",
+							"             P      PP                      ",
 							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
 							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
 							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",

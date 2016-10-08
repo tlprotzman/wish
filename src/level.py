@@ -17,7 +17,6 @@ class Level:
 		for row in self.levelArray:
 			self.levelHeight += 1
 			for item in row:
-				self.levelWidth += 1
 				if item == "P":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]==" ":
 						if (round(x/64) < 21 and self.levelArray[round(y/64)][round(x/64)+1]!="P"):
@@ -41,7 +40,9 @@ class Level:
 				x += 64
 			y += 64
 			x = 0
-		self.staticTiles = pygame.Surface((self.game.screenWidth, self.game.screenHeight)) #(64*self.levelWidth, 64*self.levelHeight)
+		self.levelWidth = len(self.levelArray[0])*64
+		self.levelHeight = len(self.levelArray)*64
+		self.staticTiles = pygame.Surface((self.levelWidth, self.levelHeight)) #(64*self.levelWidth, 64*self.levelHeight)
 		self.staticTiles.fill((255,255,255,0))
 		print(self.staticTiles.get_colorkey())
 		self.staticTiles.set_colorkey((255,255,255,0))
