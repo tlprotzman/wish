@@ -4,6 +4,8 @@ from tile import Tile
 
 class Level:
 	def __init__(self, game, player, array):
+		self.game = game
+		self.player = player
 		self.levelArray = array
 		x = 0
 		y = 0
