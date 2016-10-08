@@ -100,18 +100,18 @@ class Actor:
 		# if self.onGround and self.velocity_x == 0:
 		# 	self.window.blit(self.game.playerBreath)
 		if (self.deathTimer>0 and self.deathTimer%2 == 0):
-            self.deathTimer = self.deathTimer
-            # don't do anything, wait a frame before drawing
-        elif (self.onGround and self.velocity_x == 0):
-            self.window.blit(self.game.playerBreath[math.floor(self.game.animation/2)], (self.rect.x, self.rect.y+1))
-        elif (not self.onGround):
-            self.window.blit(self.game.playerJump, (self.rect.x, self.rect.y+1))
-        elif (self.velocity_x > 0):
-            self.window.blit(self.game.playerWalk[self.game.animation], (self.rect.x, self.rect.y+1))
-        elif (self.velocity_x < 0):
-            self.window.blit(self.game.playerWalk[3-self.game.animation], (self.rect.x, self.rect.y+1))
-        else:
-            self.window.blit(self.game.playerBreath[1], (self.rect.x, self.rect.y+1))
+			self.deathTimer = self.deathTimer
+			# don't do anything, wait a frame before drawing
+		elif (self.onGround and self.velocity_x == 0):
+			self.window.blit(self.game.playerBreath[math.floor(self.game.animation/2)], (self.rect.x, self.rect.y+1))
+		elif (not self.onGround):
+			self.window.blit(self.game.playerJump, (self.rect.x, self.rect.y+1))
+		elif (self.velocity_x > 0):
+			self.window.blit(self.game.playerWalk[self.game.animation], (self.rect.x, self.rect.y+1))
+		elif (self.velocity_x < 0):
+			self.window.blit(self.game.playerWalk[3-self.game.animation], (self.rect.x, self.rect.y+1))
+		else:
+			self.window.blit(self.game.playerBreath[1], (self.rect.x, self.rect.y+1))
 
 
 		# come back to this
@@ -119,6 +119,7 @@ class Actor:
 
 	def drawEnemy(self):
 		# come back to this too!
+		pass
 
 
 	def AI(self):
@@ -126,38 +127,38 @@ class Actor:
 		if self.name == "Ostrich":
 			if random.randint(1, 40) == 1 and self.onGround:
 				self.jump()
-          		blockedRight = False
-        	    blockedLeft = False
-            	for wall in game.getCurrentLevel().getWalls():
-               		if self.rect.top < wall.rect.bottom and self.rect.bottom > wall.rect.top:
-                    	if self.rect.right + 10 <= wall.rect.left and self.rect.right + 80 >= wall.rect.left:
-                    	    blockedRight = True
-                    	if self.rect.left + -10 > wall.rect.right and self.rect.left - 80 < wall.rect.right:
-                    	    blockedLeft = True
-            	if random.randint(1,2)==1:
-                	if not blockedLeft:
-                    	self.velocity_x = -5
-                	elif not blockedRight:
-                	    self.velocity_x = 5
-            	else:
-            	    if not blockedRight:
-                	    self.velocity_x = 5
-               		elif not blockedLeft:
-                    	self.velocity_x = -5
+				blockedRight = False
+				blockedLeft = False
+				for wall in game.getCurrentLevel().getWalls():
+					if self.rect.top < wall.rect.bottom and self.rect.bottom > wall.rect.top:
+						if self.rect.right + 10 <= wall.rect.left and self.rect.right + 80 >= wall.rect.left:
+							blockedRight = True
+						if self.rect.left + -10 > wall.rect.right and self.rect.left - 80 < wall.rect.right:
+							blockedLeft = True
+				if random.randint(1,2)==1:
+					if not blockedLeft:
+						self.velocity_x = -5
+					elif not blockedRight:
+						self.velocity_x = 5
+				else:
+					if not blockedRight:
+						self.velocity_x = 5
+					elif not blockedLeft:
+						self.velocity_x = -5
 
-    def die(self):
-    	if (self.deathTimer > 0):
-    		self.deatTimer -= 1
-    	if self.rect.y:
-    		las
-    	else:
-    		for enemy in self.game.enemyList[game.levelCounter]:
-    			if self.rect.colliderect(enemy) and self.deathTimer = 0:
-    				self.deathTimer = 50
-    				print("We need to have the user move back to the respawn point!")
-    				# self.rect.x = 32
-        #             self.rect.y = 0
-        #             game.life += 1
+	def die(self):
+		if (self.deathTimer > 0):
+			self.deatTimer -= 1
+		if self.rect.y:
+			las
+		else:
+			for enemy in self.game.enemyList[game.levelCounter]:
+				if self.rect.colliderect(enemy) and self.deathTimer = 0:
+					self.deathTimer = 50
+					print("We need to have the user move back to the respawn point!")
+					# self.rect.x = 32
+		#             self.rect.y = 0
+		#             game.life += 1
 
 
 	def update(self):
