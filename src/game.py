@@ -43,7 +43,7 @@ class Game:
 	def getGameState(self):
 		return self.gameState
 
-	def setTileSet(self):
+	#def setTileSet(self):
 	#Fill in with the images that are done
 
 	def drawLives(self):
