@@ -60,8 +60,22 @@ class Game:
 	def getGameState(self):
 		return self.gameState
 
-	#def setTileSet(self):
-	#Fill in with the images that are done
+	def setTileset(self, tileSet):
+		if tileSet=="Grass":
+			self.groundImage = pygame.image.load("../images/ground.png")
+			self.groundLImage = pygame.image.load("../images/groundl.png")
+			self.groundRImage = pygame.image.load("../images/groundr.png")
+			self.dirtImage = pygame.image.load("../images/dirt.png")
+		elif tileSet=="Snow":
+			self.groundImage = pygame.image.load("../images/snow.png")
+			self.groundLImage = pygame.image.load("../images/snowl.png")
+			self.groundRImage = pygame.image.load("../images/snowr.png")
+			self.dirtImage = pygame.image.load("../images/dirt.png")
+		elif tileSet=="Mountain":
+			self.groundImage = pygame.image.load("../images/mountain.png")
+			self.groundLImage = pygame.image.load("../images/mountainL.png")
+			self.groundRImage = pygame.image.load("../images/mountainR.png")
+			self.dirtImage = pygame.image.load("../images/mountain.png")
 
 	def drawLives(self):
 		for i in range(game.life):
