@@ -7,3 +7,6 @@ Jordan's thoughts of things we need to do:
 For the actor class (and the die function) we need to be able to
 get the respawn points from the level and then set the x and y to
 them instead of having it be up top.
+
+
+I also need to fix the animation functions for actor

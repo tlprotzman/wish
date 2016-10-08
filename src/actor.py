@@ -68,6 +68,10 @@ class Actor:
 	
 	# I excluded a section about screenwidth and the extra life
 	def jump(self):
+		if self.onGround:
+			self.velocity_y = -self.jump_force
+
+	def collide(self):
 		for wall in game.getCurrentLevel().getWalls():
 			for wall in game.getCurrentLevel().getWalls():
 				if self.rect.right + self.velocity_x > wall.rect.left and self.rect.left + self.velocity_x < wall.rect.right:
@@ -96,7 +100,7 @@ class Actor:
 		# if self.onGround and self.velocity_x == 0:
 		# 	self.window.blit(self.game.playerBreath)
 		if (self.deathTimer>0 and self.deathTimer%2 == 0):
-            #self.deathTimer = self.deathTimer
+            self.deathTimer = self.deathTimer
             # don't do anything, wait a frame before drawing
         elif (self.onGround and self.velocity_x == 0):
             self.window.blit(self.game.playerBreath[math.floor(self.game.animation/2)], (self.rect.x, self.rect.y+1))
