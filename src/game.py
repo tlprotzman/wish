@@ -1,7 +1,7 @@
 import pygame
 
 class Game:
-	def __init__(self, window):
+	def __init__(self, window, screenHeight, screenWidth):
 		self.clock = pygame.time.Clock()
 		self.currentLevel = 0
 		self.gameState = 'PLAYING'
@@ -13,6 +13,8 @@ class Game:
 		self.animation = 0
 		self.animationCounter = 0
 		self.window = window
+		self.screenHeight
+		self.screenWidth
 
 
 		self.lifeImage = pygame.image.load("../images/life.png")

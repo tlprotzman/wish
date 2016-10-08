@@ -12,7 +12,7 @@ backgroundColor = (25, 134, 242)
 
 #Remember to pass window into all the functions that need it!
 window = pygame.display.set_mode((screenWidth, screenHeight))
-game = Game(window)
+game = Game(window, screenHeight, screenWidth)
 player = Actor(window, game, 95, 200, "Player")
 '''
 pygame.mixer.init()
