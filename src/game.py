@@ -1,7 +1,7 @@
 import pygame
 
 class Game:
-	def __init__(self):
+	def __init__(self, window):
 		self.clock = pygame.time.Clock()
 		self.currentLevel = 0
 		self.gameState = 'STARTSCREEN'
@@ -12,6 +12,8 @@ class Game:
 		self.life = 3
 		self.animation = 0
 		self.animationCounter = 0
+		self.window = window
+
 
 		self.lifeImage = pygame.image.load()
 		self.waterImage = pygame.image.load()
@@ -21,6 +23,7 @@ class Game:
 		self.playerJump = pygame.image.load()
 		self.enemyBreath = pygame.image.load()
 		self.enemyJump = pygame.image.load()
+
 
 
 	def setCurrentLevel(self, newLevel):
@@ -48,5 +51,5 @@ class Game:
 
 	def drawLives(self):
 		for i in range(game.life):
-			window.blit(game.lifeImage, (20 + i * 60, 64))		#Make sure to set the life image!!!
+			self.window.blit(game.lifeImage, (20 + i * 60, 64))		#Make sure to set the life image!!!
 
