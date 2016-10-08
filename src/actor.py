@@ -7,7 +7,7 @@ def sign(num):
 class Actor:
 	def __init__(self, window, game, x, y, name, speed = .5, max_speed = 20, max_fall = 20, gravity = 1, friction = .25):
 		if name == "Player":
-			self.height = 96
+			self.height = 18*8
 			self.jump_force = 22
 		else:
 			self.height = 56
@@ -104,7 +104,7 @@ class Actor:
 			# don't do anything, wait a frame before drawing
 		elif (self.onGround and self.velocity_x == 0):
 			# this is breath
-			self.window.blit(self.game.playerBreath[math.floor(self.game.animation/2)], (self.rect.x-cameraX, self.rect.y+1-cameraY))
+			self.window.blit(self.game.playerBreath[self.game.animation], (self.rect.x-cameraX, self.rect.y+1-cameraY))
 		elif (not self.onGround):
 			self.window.blit(self.game.playerJump, (self.rect.x-cameraX, self.rect.y+1-cameraY))
 		elif (self.velocity_x > 0):

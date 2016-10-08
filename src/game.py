@@ -15,7 +15,7 @@ class Game:
 		self.window = window
 		self.screenHeight = screenHeight
 		self.screenWidth = screenWidth
-		self.camera_x = 0
+		self.camera_x = screenWidth/2
 		self.camera_y = 0
 
 
@@ -29,15 +29,17 @@ class Game:
 						  pygame.image.load("../images/wave3.png"),
 						  pygame.image.load("../images/wave4.png")]
 
-		self.playerBreath = [pygame.image.load("../images/player-breath1.png"),
-							 pygame.image.load("../images/player-breath2.png")]
+		self.playerBreath = [pygame.image.load("../images/player-idle-1.png"),
+							 pygame.image.load("../images/player-idle-2.png"),
+							 pygame.image.load("../images/player-idle-3.png"),
+							 pygame.image.load("../images/player-idle-4.png")]
 
-		self.playerWalk = [pygame.image.load("../images/player-walk1.png"),
-						   pygame.image.load("../images/player-walk2.png"),
-						   pygame.image.load("../images/player-walk3.png"),
-						   pygame.image.load("../images/player-walk4.png")]
+		self.playerWalk = [pygame.image.load("../images/player-run-1.png"),
+						   pygame.image.load("../images/player-run-2.png"),
+						   pygame.image.load("../images/player-run-3.png"),
+						   pygame.image.load("../images/player-run-4.png")]
 
-		self.playerJump = pygame.image.load("../images/player-jump.png")
+		self.playerJump = pygame.image.load("../images/player-jump-1.png")
 
 		self.enemyBreath = [pygame.image.load("../images/enemy1.png"),
 							pygame.image.load("../images/enemy2.png")]
@@ -67,10 +69,10 @@ class Game:
 
 	def setTileset(self, tileSet):
 		if tileSet=="Grass":
-			self.groundImage = pygame.image.load("../images/ground.png")
-			self.groundLImage = pygame.image.load("../images/groundl.png")
-			self.groundRImage = pygame.image.load("../images/groundr.png")
-			self.dirtImage = pygame.image.load("../images/dirt.png")
+			self.groundImage = pygame.image.load("../images/sand.png")
+			self.groundLImage = pygame.image.load("../images/sandl.png")
+			self.groundRImage = pygame.image.load("../images/sandr.png")
+			self.dirtImage = pygame.image.load("../images/sanddeep.png")
 		elif tileSet=="Snow":
 			self.groundImage = pygame.image.load("../images/snow.png")
 			self.groundLImage = pygame.image.load("../images/snowl.png")

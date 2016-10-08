@@ -8,7 +8,7 @@ from level import Level
 
 screenWidth = 22 * 64
 screenHeight = 11 * 64
-backgroundColor = (25, 134, 242)
+backgroundColor = (49, 27, 146)
 
 #Remember to pass window into all the functions that need it!
 window = pygame.display.set_mode((screenWidth, screenHeight))
@@ -55,8 +55,11 @@ def main():
 			# 	enemy.update()
 			player.update(game.camera_x, game.camera_y)
 			game.getCurrentLevel().update(game.camera_x, game.camera_y)
-			game.camera_x = player.rect.x+player.rect.width/2 - game.screenWidth/2
+			
+			
+			game.camera_x += ((player.rect.x+player.rect.width/2-game.screenWidth/2) - game.camera_x)/5
 			game.camera_y = 0
+		
 			# game.levelTitle.update()
 			# game.drawLives()
 		elif game.gameState == 'STARTSCREEN':
