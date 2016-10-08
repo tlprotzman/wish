@@ -15,14 +15,28 @@ class Game:
 		self.window = window
 
 
-		self.lifeImage = pygame.image.load()
-		self.waterImage = pygame.image.load()
-		self.waveImage = pygame.image.load()
-		self.playerBreath = pygame.image.load()
-		self.playerWalk = pygame.image.load()
-		self.playerJump = pygame.image.load()
-		self.enemyBreath = pygame.image.load()
-		self.enemyJump = pygame.image.load()
+		self.lifeImage = pygame.image.load("../images/life.png")
+
+		self.waterImage = pygame.image.load("../images/water.png")
+
+		self.waveImage = [pygame.image.load("../images/wave1.png"),
+						  pygame.image.load("../images/wave2.png"),
+						  pygame.image.load("../images/wave3.png"),
+						  pygame.image.load("../images/wave4.png")]
+
+		self.playerBreath = [pygame.image.load("../images/player-breath1.png"),
+							 pygame.image.load("../images/player-breath2.png")]
+
+		self.playerWalk = [pygame.image.load("../images/player-walk1.png"),
+						   pygame.image.load("../images/player-walk2.png"),
+						   pygame.image.load("../images/player-walk3.png"),
+						   pygame.image.load("../images/player-walk4.png")]
+
+		self.playerJump = pygame.image.load("../images/player-jump.png")
+
+		self.enemyBreath = [pygame.image.load("../images/enemy1.png"),
+							pygame.image.load("../images/enemy2.png")]
+		self.enemyJump = pygame.image.load("../images/enemy3.png")
 
 
 
