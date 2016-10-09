@@ -128,6 +128,7 @@ class Actor:
 	def getInput(self):
 		pressed = pygame.key.get_pressed()
 		# handling wish choices!
+		print("inded", self.game.getLevelIndex())
 		genie = self.game.genieList[self.game.getLevelIndex()][0]
 		if genie.isInMenu():
 			if pressed[pygame.K_1]:

@@ -42,8 +42,10 @@ class Level:
 				elif item == "w":
 					enemyList += [Actor(self.window, self.game, x, y, "Bat")]
 				elif item == "G":
+					print("LOADED G")
 					genieList += [Genie(self.window, self.game, self.player, x-64, y-87, self.genieMessage, self.genieWishes, False)] # THERE'S ONLY ONE GENIE PER LEVEL, IF THERE ISN'T YOU'RE FUCKED!
 				elif item == "g":
+					print("LOADED g")
 					genieList += [Genie(self.window, self.game, self.player, x-64, y-87, self.genieMessage, self.genieWishes)]
 				elif item == "P":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]!="P":
