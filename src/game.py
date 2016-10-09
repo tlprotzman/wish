@@ -51,9 +51,13 @@ class Game:
 		self.knife = [pygame.image.load("../images/weapon-1.png"),
 					  pygame.image.load("../images/weapon-2.png")]
 
-		self.enemyBreath = [pygame.image.load("../images/enemy1.png"),
-							pygame.image.load("../images/enemy2.png")]
-		self.enemyJump = pygame.image.load("../images/enemy3.png")
+		self.enemyBreath = [pygame.image.load("../images/ostrich-idle-1.png"),
+							pygame.image.load("../images/ostrich-idle-2.png"),
+							pygame.image.load("../images/ostrich-idle-3.png"),
+							pygame.image.load("../images/ostrich-idle-4.png")]
+
+		self.enemyJump = pygame.image.load("../images/ostrich-idle-1.png")
+		
 		self.farParallax = pygame.image.load("../images/blue_parallax.png")
 		self.closeParallax = pygame.image.load("../images/color_parallax.png")
 

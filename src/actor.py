@@ -13,7 +13,7 @@ class Actor:
 			self.height = 16*8
 			self.jump_force = 45
 		else:
-			self.height = 56
+			self.height = 128
 			self.jump_force = 15
 
 		self.window = window
