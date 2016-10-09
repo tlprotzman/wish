@@ -55,7 +55,7 @@ class Game:
 
 	def animate(self):
 		self.animationCounter += 1
-		if self.animationCounter == 5:
+		if self.animationCounter == 7:
 			self.animation += 1
 			if self.animation == 4:
 				self.animation = 0

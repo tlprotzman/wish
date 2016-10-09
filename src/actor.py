@@ -5,7 +5,7 @@ def sign(num):
 	return num/abs(num)
 
 class Actor:
-	def __init__(self, window, game, x, y, name, speed = 2, max_speed = 20, max_fall = 20, gravity = 1.3, friction = 1):
+	def __init__(self, window, game, x, y, name, speed = 1, max_speed = 12, max_fall = 20, gravity = 1.3, friction = 0.5):
 		if name == "Player":
 			self.height = 18*8
 			self.jump_force = 45
@@ -42,14 +42,13 @@ class Actor:
 		self.velocity_y += self.gravity
 		
 		#Uncomment if it's time to dance!
-		#if (abs(self.velocity_x) < f):
-		#	self.velocity = 0
+		if (abs(self.velocity_x) < f / 2):
+			self.velocity = 0
 
 
-		if (abs(self.velocity_x) > f ):
+		if (abs(self.velocity_x) > 0):
 			self.velocity_x -= f * sign(self.velocity_x)
-		else:
-			self.velocity_x = 0
+
 
 
 		if (abs(self.velocity_x) > self.max_speed):
