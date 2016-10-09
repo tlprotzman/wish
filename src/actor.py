@@ -54,6 +54,9 @@ class Actor:
 		self.doubleJump = False
 		self.jumpDelay = 0
 		self.backwards = False
+		
+		# this is for preventing skipping all levels on one press by accident
+		self.cheat = False
 
 
 	def movement(self):
@@ -112,6 +115,13 @@ class Actor:
 				genie.chooseWish(1)
 			elif pressed[pygame.K_3]:
 				genie.chooseWish(2)
+
+		# this is a cheat key for testing and winning:
+		if pressed[pygame.K_u] and not self.cheat:
+			self.cheat = True
+			self.rect.x = self.game.getCurrentLevel().getLevelWidth()+1
+		if pressed[pygame.K_i]:
+			self.cheat = False
 
 		# handling actor movements and random stuff
 		if not self.backwards:
