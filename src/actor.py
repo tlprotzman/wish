@@ -72,6 +72,14 @@ class Actor:
 
 		if abs(self.velocity_y) > self.max_fall:
 			self.velocity_y = self.max_fall * sign(self.velocity_y)
+			
+	def spiked(self):	
+		for spike in self.game.getCurrentLevel().getBackgrounds():	
+			if spike.name=="Spike" and self.rect.colliderect(spike.getRect()):
+				self.health -= 1
+			
+			
+		
 
 		#print(abs(self.velocity_x))
 	def getInput(self):
@@ -102,7 +110,7 @@ class Actor:
 			self.fightTimer +=1
 			if self.fightTimer>14:
 				self.isAttacking = True
-			if self.fightTimer>=40:
+			if self.fightTimer>=90:
 				self.fightTimer = 100
 				self.isAttacking = False
 
@@ -258,13 +266,13 @@ class Actor:
 				if self.rect.colliderect(enemy) and self.deathTimer == 0:
 					self.health -= 20
 					print(self.health)
-					if self.health <= 0 and self.deathTimer == 0:
-						self.deathTimer = 100
-						print("We need to have the user move back to the respawn point!")
-						self.rect.x = 32
-						self.rect.y = 0
-						self.health = 100
 					self.deathTimer = 100
+		if self.health <= 0 and self.deathTimer == 0:
+			self.deathTimer = 100
+			print("We need to have the user move back to the respawn point!")
+			self.rect.x = 32
+			self.rect.y = 0
+			self.health = 100
 
 	def enemyDamage(self, isBeingAttacked, damage, player):
 		if (self.deathTimer > 0):
@@ -280,10 +288,12 @@ class Actor:
 
 
 
+
 	def update(self, cameraX, cameraY):
 		self.getInput()
 		self.die()
 		self.movement()
+		self.spiked()
 		self.attack()
 		self.drawPlayer(cameraX, cameraY)
 		#print(self.health)
@@ -299,12 +309,23 @@ class Actor:
 					self.facing = 'left'
 				self.changeDirection = 0
 			else:
+<<<<<<< HEAD
+				self.facing = 'left'
+			self.changeDirection = 0
+		else:
+			self.changeDirection += 1
+		self.movement()
+		self.spiked()
+		self.AI(self.facing, playerX, playerY)
+		self.drawEnemy(cameraX, cameraY, self.facing)
+=======
 				self.changeDirection += 1
 			self.movement()
 			print(self.health)
 			self.enemyDamage(isBeingAttacked, damage, player)
 			self.AI(self.facing, playerX, playerY)
 			self.drawEnemy(cameraX, cameraY, self.facing)
+>>>>>>> 3d49a480cd5f4bf3b800aa8ebcd2d50063aa2951
 
 
 
