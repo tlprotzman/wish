@@ -92,7 +92,17 @@ class Actor:
 	# I excluded a section about screenwidth and the extra life
 	def fight(self):
 		if (not self.isAttacking):
-			self.fightTimer = 1		
+			self.fightTimer = 0
+			self.isAttacking = True
+	
+	def attack(self):
+		if (self.isAttacking):
+			self.fightTimer +=1
+			if self.fightTimer>=40:
+				self.fighTimer = 0
+				self.isAttacking = False
+		print(self.fightTimer)
+			
 	
 	def jump(self):
 		if self.onGround:
@@ -144,8 +154,21 @@ class Actor:
 			elif self.velocity_x > 0:
 				self.shouldFlip = False
 				self.direction = 1
-
-			if (self.onGround and self.velocity_x == 0):
+			
+			if (self.isAttacking):
+				if self.fightTimer < 7:
+					self.window.blit(pygame.transform.flip((self.game.playerFight[0]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
+					self.window.blit(pygame.transform.flip((self.game.weaponFight[0]), self.shouldFlip, False), (self.rect.x-cameraX+(self.direction-1)*(16), self.rect.y-16-cameraY))
+				elif self.fightTimer < 14:
+					self.window.blit(pygame.transform.flip((self.game.playerFight[1]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
+					self.window.blit(pygame.transform.flip((self.game.weaponFight[2]), self.shouldFlip, False), (self.rect.x-cameraX+(self.direction-1)*(16), self.rect.y-16-cameraY))
+				elif self.fightTimer < 34:
+					self.window.blit(pygame.transform.flip((self.game.playerFight[2]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
+					self.window.blit(pygame.transform.flip((self.game.weaponFight[3]), self.shouldFlip, False), (self.rect.x-cameraX+(self.direction-1)*(16), self.rect.y-16-cameraY))
+				else:
+					self.window.blit(pygame.transform.flip((self.game.playerFight[4]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
+					self.window.blit(pygame.transform.flip((self.game.weaponFight[4]), self.shouldFlip, False), (self.rect.x-cameraX+(self.direction-1)*(16), self.rect.y-16-cameraY))
+			elif (self.onGround and self.velocity_x == 0):
 				# this is breath
 				self.window.blit(pygame.transform.flip((self.game.playerBreath[self.game.animation]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
 			elif (not self.onGround):
@@ -157,13 +180,14 @@ class Actor:
 			else:
 				self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		
-			if self.direction==1:
-				self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-16-cameraX, self.rect.y-8-cameraY))
-			else:
-				if self.velocity_x < 0:
-					self.window.blit(pygame.transform.flip((self.game.knife[1-math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
+			if (not self.isAttacking):
+				if self.direction==1:
+					self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-16-cameraX, self.rect.y-8-cameraY))
 				else:
-					self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
+					if self.velocity_x < 0:
+						self.window.blit(pygame.transform.flip((self.game.knife[1-math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
+					else:
+						self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
 
 				
 			
@@ -243,6 +267,7 @@ class Actor:
 		self.getInput()
 		self.die()
 		self.movement()
+		self.attack()
 		self.drawPlayer(cameraX, cameraY)
 		#print(self.health)
 		# print("Location: ", self.rect.x, self.rect.y)
