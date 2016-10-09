@@ -20,3 +20,30 @@ levels
 
 
 tiles that you can jump through
+
+
+
+double jump
+spike immunity
+become an ostrich
+get weapon
+	- several
+get hats
+	-several
+raining ______ (no collision box?)
+	-several?
+walked backwards? (the theme was backwards)
+low gravity?
+faster running
+more health
+	- full health
+	- to enemies
+	- expand healthbar?
+
+
+
+
+
+
+
+
