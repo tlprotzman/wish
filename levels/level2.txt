@@ -2,20 +2,20 @@
 2
 What do you
 desire?
-healthpack
+confetti
 doublejump
 amsimon
                                                                                                                                             p
                                                                                                                                             p
                               C              T                                                                                              p
                             SSSSS           SSS        T                                                                                    p
-                            |   |                     SSSSSSSSSSSSSSSSSSS                                                                   p
-                            |   |    T             SSSS   |             PPPPPPPPPPP                                                         p
+                            |   |                     SSSSSSSSSSSSSSSSSSS  O                                                                 p
+                            |   |    T             SSSS   |             PPPPPPPPPPP  T                                       C              p
                            SSSSSSSSSSSSSSSS               |               PPPPPPPPPPPPPP                                 SSSSSSSSS          p
-               SSSSSSSS     |        W  |                 |                     PPPPPPPPPPPPP                             |     |           p
-                |    |      |           |                 |                      PPPPPPPPPPPPPPPP                         |     |           p
-       _    T   |    |      |           |                 |     T            C PPPPPPPPPPPPPPPPPPP    T           g       |     |           p
-PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
+               SSSSSSSS     |        W  |                 |                     PPPPPPPPPP                                |     |           p
+                |    |      |           |                 |                      PPPPPPPPPP   PPP                         |     |           p
+       _    T   |    |      |           |                 |     T            C PPPPPPPPPPPP   PPPP    T           g       |     |           p
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP^^^PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP     PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
