@@ -8,7 +8,7 @@ def sign(num):
 		return num/abs(num)
 
 class Actor:
-	def __init__(self, window, game, x, y, name, speed = 1, max_speed = 12, max_fall = 20, gravity = 1.3, friction = 0.5):
+	def __init__(self, window, game, x, y, name, speed = 1, max_speed = 12, max_fall = 20, gravity = 1.3, friction = 0.5, health = 100):
 		if name == "Player":
 			self.height = 16*8
 			self.jump_force = 45
@@ -39,6 +39,9 @@ class Actor:
 		self.fightTimer = 0
 		self.isAttacking = False
 		self.wasRunning = False
+		self.health = health
+		self.deathTimer = 0
+
 
 	def movement(self):
 		f = self.friction
@@ -196,34 +199,38 @@ class Actor:
 						blockedLeft = True
 			if facing == 'right':
 				if ((not blockedRight) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 300) and (0 < (playerX - (self.rect.x + self.rect.width / 2)) < 800)):
-					print('wrk?')
+					#print('wrk?')
 					self.velocity_x = 13
-				print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
+				#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 			if facing == 'left':
 				if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 300) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
-					print('wrk?')
+					#print('wrk?')
 					self.velocity_x = -13
-				print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
+				#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 
 
 	def die(self):
-		self.deathTimer = 0
 		if (self.deathTimer > 0):
 			self.deathTimer -= 1
 		if self.rect.y > self.game.getCurrentLevel().getLevelHeight() and self.deathTimer==0:
-			self.deathTimer = 50
+			self.deathTimer = 100
 			self.rect.x = 32
 			self.rect.y = 0
 			self.game.life += 1
 		else:
-			pass
 			for enemy in self.game.enemyList[self.game.levelCounter]:
 				if self.rect.colliderect(enemy) and self.deathTimer == 0:
-					self.deathTimer = 50
-					print("We need to have the user move back to the respawn point!")
-					self.rect.x = 32
-					self.rect.y = 0
-					self.game.life += 1
+					self.health -= 20
+					print(self.health)
+					if self.health <= 0 and self.deathTimer == 0:
+						self.deathTimer = 100
+						print("We need to have the user move back to the respawn point!")
+						self.rect.x = 32
+						self.rect.y = 0
+						self.health = 100
+					self.deathTimer = 100
+
+
 
 
 	def update(self, cameraX, cameraY):
@@ -231,6 +238,7 @@ class Actor:
 		self.die()
 		self.movement()
 		self.drawPlayer(cameraX, cameraY)
+		#print(self.health)
 		# print("Location: ", self.rect.x, self.rect.y)
 		# print("Velocities: ", self.velocity_x, self.velocity_y)
 
