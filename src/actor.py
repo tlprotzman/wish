@@ -106,6 +106,7 @@ class Actor:
 			if coin.name == "Coin" and self.rect.colliderect(coin.getRect()):
 				self.game.getCurrentLevel().getBackgrounds().remove(coin)
 				self.coins += 1
+				self.game.coins = self.coins
 
 	def getHealth(self):
 		for health in self.game.getCurrentLevel().getBackgrounds():

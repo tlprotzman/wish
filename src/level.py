@@ -1,5 +1,6 @@
 
 import pygame
+import math
 from tile import Tile
 from actor import Actor
 from genie import Genie
@@ -78,16 +79,16 @@ class Level:
 				elif item == "T":
 					tile = Tile(self.window, x, y-64, "Torch", self.game.torchImage[self.game.animation])
 					self.backgrounds.append(tile)
-<<<<<<< HEAD
 					self.lightSources += [(x+32, y-64)]
-=======
+
 				elif item == "C":
 					tile = Tile(self.window, x, y, "Coin", self.game.coinImage)
 					self.backgrounds.append(tile)
+					self.game.maxCoins+=1
 				elif item == "M":
 					tile = Tile(self.window, x, y, "Health", self.game.healthImage)
 					self.backgrounds.append(tile)					
->>>>>>> coin
+
 				elif item == ".":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]==" ":
 						tile = Tile(self.window, x, y, "Wave", self.game.waveImage[self.game.animation])
@@ -186,6 +187,10 @@ class Level:
 				tile.image = self.game.waveImage[self.game.animation]
 			elif tile.name=="Torch":
 				tile.image = self.game.torchImage[self.game.animation]
+			elif tile.name=="Coin":
+				tile.image = self.game.coinImage[self.game.animation]
+			elif tile.name=="Health":
+				tile.image = self.game.lifeImage[math.floor(self.game.animation/2)]
 				
 			tile.update(cameraX, cameraY)
 

@@ -1,4 +1,5 @@
 import pygame
+from word import Word
 pygame.font.init()
 
 class Game:
@@ -13,6 +14,8 @@ class Game:
 		self.nameList = []
 		self.wishTable = {} # this should be overwritten
 		self.life = 0
+		self.coins = 0
+		self.maxCoins = 0
 		self.animation = 0
 		self.animationCounter = 0
 		self.window = window
@@ -31,11 +34,16 @@ class Game:
 		self.speechImage = pygame.image.load("../images/speech.png")
 		self.speechLImage = pygame.transform.flip(self.speechImage, True, False)
 
-		self.lifeImage = pygame.image.load("../images/life.png")
+		self.lifeImage = [pygame.image.load("../images/life.png"),
+						  pygame.image.load("../images/life-2.png")]
 
 		self.waterImage = pygame.image.load("../images/water.png")
 
-		self.coinImage = pygame.image.load("../images/snow.png")
+		self.coinImage = [pygame.image.load("../images/coin-1.png"),
+						  pygame.image.load("../images/coin-2.png"),
+						  pygame.image.load("../images/coin-3.png"),
+						  pygame.image.load("../images/coin-2.png")]
+						  
 		self.healthImage = pygame.image.load("../images/life.png")
 
 		self.waveImage = [pygame.image.load("../images/wave1.png"),
@@ -248,6 +256,8 @@ class Game:
 	def update(self):
 		self.window.blit(self.UIImage, (0, 0))	
 		pygame.draw.rect(self.window, (176, 18, 10), (104, 40,  self.life * 3.92, 32))		#Make sure to set the life image!!!
+		coinStat = Word(self.window, str(self.coins) + " / " + str(self.maxCoins), 670, 30, 40, (255, 160, 0))
+		coinStat.update()
 			
 		
 
