@@ -20,8 +20,14 @@ class GenieWishDisplay:
 		self.selected += [self.genie.game.genieFont.render(wish, 1, color2) for wish in self.wishes]
 
 	def displayWishes(self, cameraX, cameraY, selectedWish = -2):
-		x = self.genie.rect.x - cameraX
-		y = self.genie.rect.y - cameraY - 120 - 20*len(self.message)
+		y = self.genie.rect.y - cameraY - 120 - 20*len(self.message) - 48
+		x = self.genie.rect.x - cameraX + 136
+		if (not self.leftFacing):
+			self.window.blit(self.genie.game.speechImage, (x-16, y-16))
+		else:
+			x -= 316
+			y = self.genie.rect.y - cameraY - 120 - 20*len(self.message) - 48
+			self.window.blit(self.genie.game.speechLImage, (x-16, y-16))
 		for i in range(len(self.wishes)+len(self.message)):
 			if i == selectedWish+1 and i != 0:
 				self.window.blit(self.selected[i], (x, y))

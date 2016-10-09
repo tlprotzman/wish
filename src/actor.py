@@ -75,8 +75,9 @@ class Actor:
 			
 	def spiked(self):	
 		for spike in self.game.getCurrentLevel().getBackgrounds():	
-			if spike.name=="Spike" and self.rect.colliderect(spike.getRect()):
-				self.health -= 1
+			if spike.name=="Spike" and self.rect.colliderect(spike.getRect()) and self.deathTimer==0:
+				self.health -= 20
+				self.deathTimer=50
 			
 			
 		

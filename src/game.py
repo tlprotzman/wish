@@ -22,11 +22,13 @@ class Game:
 		self.camera_y = 0
 		self.close_parallax_scale = .25
 		self.far_parallax_scale = .1
-		self.genieFont = pygame.font.Font("../fonts/joystixMonospace.ttf", 20)
+		self.genieFont = pygame.font.Font("../fonts/joystixMonospace.ttf", 18)
 
 
 
 		self.UIImage = pygame.image.load("../images/ui.png")
+		self.speechImage = pygame.image.load("../images/speech.png")
+		self.speechLImage = pygame.transform.flip(self.speechImage, True, False)
 
 		self.lifeImage = pygame.image.load("../images/life.png")
 
