@@ -71,7 +71,7 @@ class GenieWishDisplay:
 			y = self.genie.rect.y - cameraY - 120 - 20*len(self.message) - 48
 			self.window.blit(self.genie.game.speechLImage, (x-16, y-16))
 
-		y += 24*3
+		y += 24*2
 		for i in range(len(self.posttext[self.chosenWish])):
 			self.window.blit(self.posttext[self.chosenWish][i], (x, y))
 			y += 24

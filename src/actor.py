@@ -136,8 +136,13 @@ class Actor:
 			self.rect.x = self.game.getCurrentLevel().getLevelWidth()+1
 		if pressed[pygame.K_i]:
 			self.cheat = False
+		if pressed[pygame.K_c]:
+			self.game.makeParticles(self.rect.x+self.rect.width/2, self.rect.y+self.rect.height/2, (1,1,1), 10, 100)
 
 		# handling actor movements and random stuff
+		if pressed[pygame.K_c]:
+			if self.game.wishTable["confetti"][0]:
+				self.game.makeParticles(self.rect.x+self.rect.width/2, self.rect.y+self.rect.height/2, (1,1,1), 10, 10)
 		if not self.backwards:
 			if pressed[pygame.K_a]:
 				self.velocity_x -= self.speed
@@ -472,6 +477,7 @@ class Actor:
 				
 
 	def grantWish(self):
+		self.game.makeParticles(self.rect.x + self.rect.width/2, self.rect.y + self.rect.height/2, (1,1,1), 1000, 100, 20)
 		if self.game.wishTable["lowgravity"][0]:
 			self.gravity = 0.4
 		if self.game.wishTable["fasterrunning"][0]:
