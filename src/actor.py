@@ -7,7 +7,7 @@ def sign(num):
 class Actor:
 	def __init__(self, window, game, x, y, name, speed = 1, max_speed = 12, max_fall = 20, gravity = 1.3, friction = 0.5):
 		if name == "Player":
-			self.height = 18*8
+			self.height = 16*8
 			self.jump_force = 45
 		else:
 			self.height = 56
@@ -110,13 +110,13 @@ class Actor:
 			# don't do anything, wait a frame before drawing
 		elif (self.onGround and self.velocity_x == 0):
 			# this is breath
-			self.window.blit(self.game.playerBreath[self.game.animation], (self.rect.x-cameraX, self.rect.y+1-cameraY))
+			self.window.blit(self.game.playerBreath[self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		elif (not self.onGround):
-			self.window.blit(self.game.playerJump, (self.rect.x-cameraX, self.rect.y+1-cameraY))
+			self.window.blit(self.game.playerJump, (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		elif (self.velocity_x > 0):
-			self.window.blit(self.game.playerWalk[self.game.animation], (self.rect.x-cameraX, self.rect.y+1-cameraY))
+			self.window.blit(self.game.playerWalk[self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		elif (self.velocity_x < 0):
-			self.window.blit(self.game.playerWalk[3-self.game.animation], (self.rect.x-cameraX, self.rect.y+1-cameraY))
+			self.window.blit(self.game.playerWalk[3-self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		else:
 			# I think this is the other death animation
 			self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y+1-cameraY))
