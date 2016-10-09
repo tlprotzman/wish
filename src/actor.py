@@ -370,8 +370,8 @@ class Actor:
 		else:
 			d1 = 0
 		d2 = 1-d1
-		print(d1)
-		print(d2)
+		# print(d1)
+		# print(d2)
 		if (self.deathTimer > 0):
 			self.deathTimer -= 1
 		if (self.health <= 0) or (self.rect.y > self.game.getCurrentLevel().getLevelHeight() and self.deathTimer==0):
