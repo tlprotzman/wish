@@ -30,7 +30,7 @@ wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a doubl
 			 "backwards":[False, "it was last theme", ["more", "words"]],
 			 "amsimon":[False, "to include", ["He couldn't be here", "in person, but", "he's here in spirit"]],
 			 "regen":[False, "words about regen", ["I hope you like", "regenerating health"]],
-			 "confetti":[True, "spread love and joy", ["Spread happy -", "be happy"]],
+			 "confetti":[True, "to spread love and joy", ["Spread happy -", "be happy"]],
 			}
 
 
