@@ -155,7 +155,7 @@ class Level:
 	def setupStars(self):
 		self.starBackground = pygame.Surface((self.game.screenWidth*2, self.game.screenHeight*2))
 		for i in range(50):
-			self.starBackground.blit(pygame.rect())
+			# self.starBackground.blit(pygame.rect())
 			pygame.draw.rect(self.starBackground, (255, 255, 255), (random.randint(0, self.game.screenWidth*2-1), random.randint(0, self.game.screenWidth*2-1), 8, 8))
 
 	def drawStars(self, cameraX, cameraY):
