@@ -50,6 +50,9 @@ class Level:
 	def getLevelWidth(self):
 		return self.levelWidth
 
+	def getLevelHeight(self):
+		return self.levelHeight
+
 	def makeBackgroundImage(self):
 		for tile in self.walls:
 			tile.drawTo(0, 0, self.staticTiles)
