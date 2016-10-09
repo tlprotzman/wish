@@ -168,7 +168,7 @@ class Actor:
 		self.deathTimer = 0
 		if (self.deathTimer > 0):
 			self.deathTimer -= 1
-		if self.rect.y > self.game.screenHeight and self.deathTimer==0:
+		if self.rect.y > self.game.getCurrentLevel().getLevelHeight() and self.deathTimer==0:
 			self.deathTimer = 50
 			self.rect.x = 32
 			self.rect.y = 0
