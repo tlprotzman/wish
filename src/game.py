@@ -11,6 +11,7 @@ class Game:
 		self.enemyList = []
 		self.genieList = []
 		self.nameList = []
+		self.wishTable = {} # this should be overwritten
 		self.life = 0
 		self.animation = 0
 		self.animationCounter = 0

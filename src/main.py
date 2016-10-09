@@ -21,6 +21,16 @@ pygame.mixer.init()
 pygame.mixer.music.load("../audio/sondtrack.wav")
 '''
 
+wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a double jump"]],
+			 "tophat":[False, "for a snazzy hat", ["You now have", "the snazziest hat"]],
+			 "ostrich":[False, "for friends", ["Be free, handsome one"]]
+			 "healthpack":[False, "for more health", ["Stay safe out", "there!"]]
+			 "spikeimmune":[False, "to be spikeproof", ["A late night", "roundevous with", "a cactus?"]]
+			 "fasterrunning":[False, "to join the olympics", [""]]
+			}
+game.wishTable = wishTable
+
+
 def main():
 	game.setTileset("Grass")
 
