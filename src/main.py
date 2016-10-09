@@ -59,7 +59,8 @@ def main():
 
 	levelsLocations = ["../levels/testlevel.txt",
 			 		   "../levels/testlevel2.txt",
-			 		   "../levels/tristanlevel1.txt"]
+			 		   "../levels/tristanlevel1.txt",
+			 		   "../levels/jordanIntroLevel1.txt"]
 	# game.enemyList.append([Actor(window, game, 200, 300, 'Ostrich')])
 	for level in levelsLocations:
 		game.levelList.append(Level(game, player, window, level))
@@ -69,6 +70,7 @@ def main():
 	# game.levelList.append(Level(game, player, window,"../levels/testlevel.txt"))
 	# game.levelList.append(Level(game, player, window,"../levels/testlevel2.txt"))
 	# game.levelList.append(Level(game, player, window, "../levels/tristanlevel1.txt"))
+
  
 	game.setCurrentLevel(game.levelList[0])
 
