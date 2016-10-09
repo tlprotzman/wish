@@ -503,12 +503,15 @@ class Actor:
 
 	def grantWish(self):
 		self.game.makeParticles(self.rect.x + self.rect.width/2, self.rect.y + self.rect.height/2, (1,1,1), 1000, 100, 20)
-		if self.game.wishTable["quit"][0]:
-			pygame.quit()
-		if self.game.wishTable["yay"][0]:
-			pygame.quit()
-		if self.game.wishTable["retry"][0]:
-			pygame.quit()
+		# if self.game.wishTable["quit"][0]:
+		# 	# sys.exit(0)
+		# 	# pygame.quit()
+		# if self.game.wishTable["yay"][0]:
+		# 	# pygame.quit()
+		# 	# sys.exit(0)
+		# if self.game.wishTable["retry"][0]:
+		# 	# pygame.quit()
+		# 	# sys.exit(0)
 		if self.game.wishTable["lowgravity"][0]:
 			self.gravity = 0.4
 		if self.game.wishTable["fasterrunning"][0]:

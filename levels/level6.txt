@@ -2,19 +2,19 @@
 2
 What do you 
 wish for?
-quit
-retry
-yay
- PP                                                                                          PP 
- PP                                  T                                                       PP 
- PP                          SSSSSSSSSSSSSS                                                  PP 
- PP                           |          |                                                   PP 
- PP                           |          |                                                   PP 
- PP                  CCCCTCCC |CCCCTCCCC |                                                   PP 
- PP               SSSSSSSSSSSSSSSSSSSSSSSSS                                                  PP 
- PP                |          |          |                                                   PP 
- PP                |          |          |                                                   PP 
- PP    _  T        |     T    |    T     |      T          T                g                PP 
- PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 
- PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 
- PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 
+confetti
+confetti
+confetti
+PP                                                                                          PP
+PP                                  T                                                       PP
+PP                          SSSSSSSSSSSSSS                                                  PP
+PP                           |          |                                                   PP
+PP                           |          |                                                   PP
+PP                  CCCCTCCC |CCCCTCCCC |                                                   PP
+PP               SSSSSSSSSSSSSSSSSSSSSSSSS                                                  PP
+PP                |          |          |                                                   PP
+PP                |          |          |                                                   PP
+PP    _  T        |     T    |    T     |      T          T                g                PP
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
