@@ -24,7 +24,7 @@ class Level:
 			for item in row:
 				if item == "P":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]==" ":
-						if (round(x/64) < 21 and self.levelArray[round(y/64)][round(x/64)+1]!="P"):
+						if (round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="P"):
 							tile = Tile(self.window, x, y, "Ground", self.game.groundRImage)
 						elif (round(x/64) > 0 and self.levelArray[round(y/64)][round(x/64)-1]!="P"):
 							tile = Tile(self.window, x, y, "Ground", self.game.groundLImage)
