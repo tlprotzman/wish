@@ -73,6 +73,7 @@ def main():
 
 			# game.levelTitle.update()
 			# game.drawLives()
+			game.update()
 		elif game.gameState == 'STARTSCREEN':
 			startScreen.update()
 		elif game.gameState == 'CREDITSSCREEN':
