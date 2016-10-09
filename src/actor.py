@@ -101,13 +101,13 @@ class Actor:
 			if self.fightTimer>=40:
 				self.fighTimer = 0
 				self.isAttacking = False
-		print(self.fightTimer)
+		#print(self.fightTimer)
 			
 	
 	def jump(self):
 		if self.onGround:
 			self.jump_force_adjusted = self.jump_force + abs(self.velocity_x) * 2
-			print(self.jump_force_adjusted)
+			#print(self.jump_force_adjusted)
 			self.velocity_y = -self.jump_force_adjusted
 
 	def collideX(self):
