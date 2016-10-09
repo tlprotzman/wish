@@ -25,9 +25,10 @@ class Genie:
 		self.chosenWish = -1
 
 	def chooseWish(self, wish):
-		self.chosenWish = wish
-		self.wishDisplay.chooseWish(wish)
-		self.wishDisplay.setWishFlagTrue()
+		if self.chosenWish == -1:
+			self.chosenWish = wish
+			self.wishDisplay.chooseWish(wish)
+			self.wishDisplay.setWishFlagTrue()
 
 	def isInMenu(self):
 		return self.growingAnimationFrame == 4
