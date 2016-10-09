@@ -44,6 +44,7 @@ class Actor:
 		self.isAlive = True
 		self.doubleJump = False
 		self.jumpDelay = 0
+		self.backwards = False
 
 
 	def movement(self):
@@ -52,7 +53,7 @@ class Actor:
 		# 	f = self.friction / 4
 
 		self.onGround = False
-		self.rect.x += self.velocity_x
+		self.rect.x += self.velocity_x 
 		self.collideX()
 		self.rect.y += self.velocity_y
 		self.collideY()
@@ -65,13 +66,12 @@ class Actor:
 
 
 		if (abs(self.velocity_x) > 0):
-			self.velocity_x -= f * sign(self.velocity_x)
+			self.velocity_x -= f * sign(self.velocity_x) 
 
 
 
 		if (abs(self.velocity_x) > self.max_speed):
-			self.velocity_x = self.max_speed * sign(self.velocity_x)
-
+			self.velocity_x = self.max_speed * sign(self.velocity_x) 
 		if abs(self.velocity_y) > self.max_fall:
 			self.velocity_y = self.max_fall * sign(self.velocity_y)
 			
@@ -88,13 +88,19 @@ class Actor:
 		#print(abs(self.velocity_x))
 	def getInput(self):
 		pressed = pygame.key.get_pressed()
+		if not self.backwards:
+			if pressed[pygame.K_a]:
+				self.velocity_x -= self.speed
 
-		if pressed[pygame.K_a]:
-			self.velocity_x -= self.speed
+			if pressed[pygame.K_d]:
+				self.velocity_x += self.speed
+		else:
+			if pressed[pygame.K_a]:
+				self.velocity_x += self.speed
 
-		if pressed[pygame.K_d]:
-			self.velocity_x += self.speed
-			
+			if pressed[pygame.K_d]:
+				self.velocity_x -= self.speed
+
 		if pressed[pygame.K_j]:
 			self.fight()
 			
@@ -177,14 +183,20 @@ class Actor:
 
 
 		else:
-			
-			if self.velocity_x < 0:
-				self.shouldFlip = True
-				self.direction = -1
-			elif self.velocity_x > 0:
-				self.shouldFlip = False
-				self.direction = 1
-			
+			if not self.backwards:
+				if self.velocity_x < 0:
+					self.shouldFlip = True
+					self.direction = -1
+				elif self.velocity_x > 0:
+					self.shouldFlip = False
+					self.direction = 1
+			else:
+				if self.velocity_x < 0:
+					self.shouldFlip = False
+					self.direction = -1
+				elif self.velocity_x > 0:
+					self.shouldFlip = True
+					self.direction = 1
 			if (self.fightTimer < 100):
 				if self.fightTimer < 7:
 					self.window.blit(pygame.transform.flip((self.game.playerFight[0]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
@@ -339,6 +351,11 @@ class Actor:
 	def grantWish(self):
 		if self.game.wishTable["lowgravity"][0]:
 			self.gravity = 0.4
+		if self.game.wishTable["fasterrunning"][0]:
+			self.speed = 2
+			self.max_speed = 20
+		if self.game.wishTable["backwards"][0]:
+			self.backwards = True
 
 
 
