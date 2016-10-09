@@ -11,18 +11,20 @@ screenWidth = 22 * 64
 screenHeight = 11 * 64
 backgroundColor = (49, 27, 146)
 
+
 wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a double jump"]],
 			 "tophat":[True, "for a snazzy hat", ["You now have", "the snazziest hat"]],
 			 "knife":[True, "i could kill people", ["Congrats, press j", "to murder!"]],
-			 "ostrich":[True, "for friends", ["Be free, handsome one"]],
+			 "amostrich":[True, "for friends", ["Be free, handsome one"]],
 			 "healthpack":[False, "for more health", ["Stay safe out", "there!"]],
 			 "spikeimmune":[False, "to be spikeproof", ["A late night", "roundevous with", "a cactus?"]],
 			 "fasterrunning":[False, "to join the olympics", ["Hope you like", "running!"]],
 			 "lowgravity":[False, "be an astronaut!", ["Hope you make", "it to the moon!"]],
 			 "backwards":[False, "words", ["more", "words"]],
 			 "amsimon":[False, "words", ["more", "words"]],
-			 "amostrich":[True, "words", ["more", "words"]]
 			}
+
+
 #Remember to pass window into all the functions that need it!
 window = pygame.display.set_mode((screenWidth, screenHeight))
 game = Game(window, screenHeight, screenWidth)
