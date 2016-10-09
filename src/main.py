@@ -1,6 +1,6 @@
 
 
-import pygame, sys
+import pygame, sys, timeit
 from game import Game 
 from actor import Actor 
 from level import Level
@@ -31,6 +31,7 @@ def main():
 
 	running = True
 	while running:
+		startTime = timeit.default_timer()
 		pressed = pygame.key.get_pressed()
 		if pressed[pygame.K_ESCAPE]:
 			running = False
@@ -86,6 +87,10 @@ def main():
 
 		game.animate()
 		pygame.display.update()
+
+		#FPS Counter
+		print(round(1 / (timeit.default_timer() - startTime), 0))
+
 
 
 if __name__ == '__main__':
