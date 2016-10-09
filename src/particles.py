@@ -15,8 +15,7 @@ class Particle:
 			self.rect.x += self.velocity_x
 			self.rect.y += self.velocity_y
 			self.velocity_y += 1
-			
-			print("DRAWING PARTICLE")
+
 			pygame.draw.rect(self.window, self.color, pygame.Rect(self.rect.x-self.game.camera_x, self.rect.y-self.game.camera_y, 8, 8))
 		
 	def isGone(self):
