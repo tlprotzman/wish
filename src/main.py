@@ -27,7 +27,7 @@ def main():
 	game.enemyList.append([Actor(window, game, 200, 300, 'Ostrich')])
 	game.levelList.append(Level(game, player, window,"../levels/testlevel.txt"))
 	wishes = ["Nope", "Just kidding", "Yada Yada"]
-	game.genieList.append([Genie(window, game, player, 320, 361, wishes, True)])
+	game.genieList.append([Genie(window, game, player, 320, 361, "Hello, what do you wish for?", wishes, True)])
  
 	game.setCurrentLevel(game.levelList[0])
 
@@ -45,8 +45,7 @@ def main():
 
 		if game.gameState == 'PLAYING':
 			window.fill(backgroundColor)
-			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)									#PARALLAX TOGGLE
-
+			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
 			player.update(game.camera_x, game.camera_y)
 			for enemy in game.enemyList[game.levelCounter]:
 			 	enemy.updateEnemy(game.camera_x, game.camera_y, player.rect.x+player.rect.width/2, player.rect.y+player.rect.height/2)
