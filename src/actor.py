@@ -50,6 +50,7 @@ class Actor:
 		self.isAlive = True
 		self.doubleJump = False
 		self.jumpDelay = 0
+		self.backwards = False
 
 
 	def movement(self):
@@ -58,7 +59,7 @@ class Actor:
 		# 	f = self.friction / 4
 
 		self.onGround = False
-		self.rect.x += self.velocity_x
+		self.rect.x += self.velocity_x 
 		self.collideX()
 		self.rect.y += self.velocity_y
 		self.collideY()
@@ -71,21 +72,21 @@ class Actor:
 
 
 		if (abs(self.velocity_x) > 0):
-			self.velocity_x -= f * sign(self.velocity_x)
+			self.velocity_x -= f * sign(self.velocity_x) 
 
 
 
 		if (abs(self.velocity_x) > self.max_speed):
-			self.velocity_x = self.max_speed * sign(self.velocity_x)
-
+			self.velocity_x = self.max_speed * sign(self.velocity_x) 
 		if abs(self.velocity_y) > self.max_fall:
 			self.velocity_y = self.max_fall * sign(self.velocity_y)
 			
 	def spiked(self):	
-		for spike in self.game.getCurrentLevel().getBackgrounds():	
-			if spike.name=="Spike" and self.rect.colliderect(spike.getRect()) and self.deathTimer==0:
-				self.health -= 20
-				self.deathTimer=50
+		if not self.game.wishTable["spikeimmune"][0]:
+			for spike in self.game.getCurrentLevel().getBackgrounds():	
+				if spike.name=="Spike" and self.rect.colliderect(spike.getRect()) and self.deathTimer==0:
+					self.health -= 20
+					self.deathTimer=50
 			
 			
 		
@@ -93,13 +94,19 @@ class Actor:
 		#print(abs(self.velocity_x))
 	def getInput(self):
 		pressed = pygame.key.get_pressed()
+		if not self.backwards:
+			if pressed[pygame.K_a]:
+				self.velocity_x -= self.speed
 
-		if pressed[pygame.K_a]:
-			self.velocity_x -= self.speed
+			if pressed[pygame.K_d]:
+				self.velocity_x += self.speed
+		else:
+			if pressed[pygame.K_a]:
+				self.velocity_x += self.speed
 
-		if pressed[pygame.K_d]:
-			self.velocity_x += self.speed
-			
+			if pressed[pygame.K_d]:
+				self.velocity_x -= self.speed
+
 		if pressed[pygame.K_j]:
 			self.fight()
 			
@@ -175,6 +182,13 @@ class Actor:
 		#Draw health
 		self.game.life = self.health
 
+		if self.game.currentCharacter == 'ostrich' and self.velocity_x != 0:
+			self.rect.height = 80
+			self.wasRunning = True
+		elif self.game.currentCharacter == 'ostrich' and self.wasRunning == True:
+			self.rect.y -= 32
+			self.rect.height = 112
+			self.wasRunning = False
 
 		if (self.deathTimer>0 and self.deathTimer%2 == 0):
 			self.deathTimer = self.deathTimer
@@ -182,14 +196,20 @@ class Actor:
 
 
 		else:
-			
-			if self.velocity_x < 0:
-				self.shouldFlip = True
-				self.direction = -1
-			elif self.velocity_x > 0:
-				self.shouldFlip = False
-				self.direction = 1
-			
+			if not self.backwards:
+				if self.velocity_x < 0:
+					self.shouldFlip = True
+					self.direction = -1
+				elif self.velocity_x > 0:
+					self.shouldFlip = False
+					self.direction = 1
+			else:
+				if self.velocity_x < 0:
+					self.shouldFlip = False
+					self.direction = -1
+				elif self.velocity_x > 0:
+					self.shouldFlip = True
+					self.direction = 1
 			if (self.fightTimer < 100):
 				if self.fightTimer < 7:
 					self.window.blit(pygame.transform.flip((self.game.playerFight[0]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
@@ -311,9 +331,10 @@ class Actor:
 		else:
 			for enemy in self.game.enemyList[self.game.levelCounter]:
 				if self.rect.colliderect(enemy) and self.deathTimer == 0:
-					self.health -= 20
-					print(self.health)
-					self.deathTimer = 100
+					if enemy.name.lower() != self.game.currentCharacter:
+						self.health -= 20
+						print(self.health)
+						self.deathTimer = 100
 		if self.health <= 0:
 			self.deathTimer = 100
 			print("We need to have the user move back to the respawn point!")
@@ -343,6 +364,7 @@ class Actor:
 
 	def update(self, cameraX, cameraY):
 		self.getInput()
+		self.grantWish()
 		self.die()
 		self.movement()
 		self.spiked()
@@ -350,6 +372,15 @@ class Actor:
 		self.drawPlayer(cameraX, cameraY)
 		if self.jumpDelay > 0:
 			self.jumpDelay -= 1
+		if self.game.wishTable['amsimon'][0] and self.game.currentCharacter != 'simon':
+			self.game.setPlayerType('simon')
+			self.rect.width = 64
+			self.rect.height = 80
+		if self.game.wishTable['amostrich'][0] and self.game.currentCharacter != 'ostrich':
+			self.game.setPlayerType('ostrich')
+			self.rect.width = 120
+			self.rect.height = 112
+
 		#print(self.doubleJump)
 		#print(self.health)
 		# print("Location: ", self.rect.x, self.rect.y)
@@ -362,6 +393,16 @@ class Actor:
 			self.enemyDamage(isBeingAttacked, damage, player)
 			self.AI(self.facing, playerX, playerY)
 			self.drawEnemy(cameraX, cameraY, self.facing)
+
+	def grantWish(self):
+		if self.game.wishTable["lowgravity"][0]:
+			self.gravity = 0.4
+		if self.game.wishTable["fasterrunning"][0]:
+			self.speed = 2
+			self.max_speed = 20
+		if self.game.wishTable["backwards"][0]:
+			self.backwards = True
+
 
 
 
