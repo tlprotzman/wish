@@ -1,6 +1,7 @@
 
 import pygame
 import math
+import random
 from tile import Tile
 from actor import Actor
 from genie import Genie
@@ -154,9 +155,10 @@ class Level:
 
 	def setupStars(self):
 		self.starBackground = pygame.Surface((self.game.screenWidth*2, self.game.screenHeight*2))
-		for i in range(50):
+		self.starBackground.fill((26, 35, 126))
+		for i in range(500):
 			# self.starBackground.blit(pygame.rect())
-			pygame.draw.rect(self.starBackground, (255, 255, 255), (random.randint(0, self.game.screenWidth*2-1), random.randint(0, self.game.screenWidth*2-1), 8, 8))
+			pygame.draw.rect(self.starBackground, (80, 106, 255), (random.randint(0, self.game.screenWidth*2-1), random.randint(0, self.game.screenWidth*2-1), 8, 8))
 
 	def drawStars(self, cameraX, cameraY):
 		self.window.blit(self.starBackground, (0-cameraX*.01, -cameraY*.01))
