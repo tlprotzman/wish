@@ -83,6 +83,7 @@ class Game:
 			self.stoneCImage = pygame.image.load("../images/stonec.png")
 			self.pillarImage = pygame.image.load("../images/pillar.png")
 			self.pillarTImage = pygame.image.load("../images/pillart.png")
+			self.spikeImage = pygame.image.load("../images/spikes.png")
 		elif tileSet=="Snow":
 			self.groundImage = pygame.image.load("../images/snow.png")
 			self.groundLImage = pygame.image.load("../images/snowl.png")

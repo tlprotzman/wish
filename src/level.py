@@ -50,6 +50,9 @@ class Level:
 					else:
 						tile = Tile(self.window, x, y, "Ground", self.game.pillarImage)
 					self.walls.append(tile)
+				elif item == "^":
+					tile = Tile(self.window, x, y, "Spike", self.game.spikeImage)
+					self.backgrounds.append(tile)
 				elif item == "H":
 					tile = Tile(self.window, x, y, "Hidden", self.game.waterImage)
 					self.walls.append(tile)
@@ -127,7 +130,7 @@ class Level:
 		for tile in self.backgrounds:
 			if tile.name=="Wave":
 				tile.image = self.game.waveImage[self.game.animation]
-				tile.update(cameraX, cameraY)
+			tile.update(cameraX, cameraY)
 
 
 
