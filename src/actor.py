@@ -250,7 +250,7 @@ class Actor:
 			else:
 				self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		
-			if (self.fightTimer==100 and self.game.wishTable["knife"][0]):
+			if (self.fightTimer==100 and self.game.wishTable["knife"][0] and self.game.currentCharacter=="player"):
 				if self.direction==1:
 					self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-16-cameraX, self.rect.y-8-cameraY))
 				else:
@@ -261,8 +261,18 @@ class Actor:
 
 				
 			if (self.game.wishTable["tophat"][0]):
-				if (self.direction==-1 and self.fightTimer<100):
-					self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+16-cameraX+self.direction*8, self.rect.y-48-cameraY+(1-math.floor(self.game.animation/2))*8))
+				if (self.game.wishTable["amostrich"][0]):
+					if (self.direction==-1):
+						self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))
+					else:
+						self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+80-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))	
+				elif (self.fightTimer<100):
+					if (self.direction==-1):
+						self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+16-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))
+					else:
+						self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+8-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))
+				elif (not self.onGround):
+					self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+8-cameraX+self.direction*8, self.rect.y-48-cameraY+8))
 				else:
 					self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+8-cameraX+self.direction*8, self.rect.y-48-cameraY+(1-math.floor(self.game.animation/2))*8))
 				
