@@ -29,7 +29,7 @@ Check once done |X| ==>	become an ostrich
 Check once done | | ==>	get weapon
 Check once done |X| ==>		- Knife
 Check once done | | ==>	get hats
-Check once done | | ==>		- tophat
+Check once done |X| ==>		- tophat
 Check once done | | ==>		- flying hat
 Check once done | | ==>		- cowboy?
 Check once done | | ==>		- turban?
@@ -61,6 +61,15 @@ Add the jump leniency
 add the ui bar at the top
 
 add a nice menu
+
+
+
+Things to do:
+coins
+consumable life
+timer
+level progression
+
 
 
 
