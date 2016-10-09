@@ -81,26 +81,25 @@ class Actor:
 
 	def collide(self):
 		for wall in self.game.getCurrentLevel().getWalls():
-			for wall in self.game.getCurrentLevel().getWalls():
-				if self.rect.right + self.velocity_x > wall.rect.left and self.rect.left + self.velocity_x < wall.rect.right:
-					# when you're colliding up/down
-					if self.rect.bottom <= wall.rect.top and self.rect.bottom + self.velocity_y > wall.rect.top:
-						self.velocity_y = 0
-						self.rect.bottom = wall.rect.top
-						self.onGround = True
-					if self.rect.top >= wall.rect.bottom and self.rect.top + self.velocity_y < wall.rect.bottom:
-						# you hit your head on something
-						self.velocity_y = 0
-						self.rect.top = wall.rect.bottom
-				if self.rect.top < wall.rect.bottom and self.rect.bottom > wall.rect.top:
-					# this is sideways collisions now
-					if self.rect.right <= wall.rect.left and self.rect.right + self.velocity_x + 1 > wall.rect.left:
-						# collided with the wall to the right
-						self.velocity_x = 0
-						self.rect.right = wall.rect.left -1
-					if self.rect.left >= wall.rect.right and self.rect.left + self.velocity_x - 1 <= wall.rect.right:
-						self.velocity_x = 0
-						self.rect.left = wall.rect.right + 2
+			if self.rect.right + self.velocity_x > wall.rect.left and self.rect.left + self.velocity_x < wall.rect.right:
+				# when you're colliding up/down
+				if self.rect.bottom <= wall.rect.top and self.rect.bottom + self.velocity_y > wall.rect.top:
+					self.velocity_y = 0
+					self.rect.bottom = wall.rect.top
+					self.onGround = True
+				if self.rect.top >= wall.rect.bottom and self.rect.top + self.velocity_y < wall.rect.bottom:
+					# you hit your head on something
+					self.velocity_y = 0
+					self.rect.top = wall.rect.bottom
+			if self.rect.top < wall.rect.bottom and self.rect.bottom > wall.rect.top:
+				# this is sideways collisions now
+				if self.rect.right <= wall.rect.left and self.rect.right + self.velocity_x + 1 > wall.rect.left:
+					# collided with the wall to the right
+					self.velocity_x = 0
+					self.rect.right = wall.rect.left -1
+				if self.rect.left >= wall.rect.right and self.rect.left + self.velocity_x - 1 <= wall.rect.right:
+					self.velocity_x = 0
+					self.rect.left = wall.rect.right + 2
 	
 	def drawPlayer(self, cameraX, cameraY):
 		# if (self.deathTimer > 0 and self.deathTimer %2 == 0):
