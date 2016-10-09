@@ -1,5 +1,3 @@
-
-
 import pygame
 
 
@@ -8,7 +6,7 @@ class GenieWishDisplay:
 		self.window = window
 		self.genie = genie
 		self.leftFacing = genie.leftFacing
-		self.message = message
+		self.message = message + ["", "I wish..."]
 		self.wishes = wishes
 		self.renderText()
 
@@ -23,7 +21,7 @@ class GenieWishDisplay:
 
 	def displayWishes(self, cameraX, cameraY, selectedWish = -2):
 		x = self.genie.rect.x - cameraX
-		y = self.genie.rect.y - cameraY - 120
+		y = self.genie.rect.y - cameraY - 120 - 20*len(self.message)
 		for i in range(len(self.wishes)+len(self.message)):
 			if i == selectedWish+1 and i != 0:
 				self.window.blit(self.selected[i], (x, y))
