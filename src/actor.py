@@ -23,10 +23,6 @@ class Actor:
 			self.jump_force = 15
 			self.health = 25
 			
-		
-
-		
-
 		self.window = window
 		self.game = game
 

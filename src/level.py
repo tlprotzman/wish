@@ -66,10 +66,10 @@ class Level:
 					self.walls.append(tile)
 				elif item == "|":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]!="|":
-						tile = Tile(self.window, x, y, "Ground", self.game.pillarTImage)
+						tile = Tile(self.window, x, y, "Pilar", self.game.pillarTImage)
 					else:
-						tile = Tile(self.window, x, y, "Ground", self.game.pillarImage)
-					self.walls.append(tile)
+						tile = Tile(self.window, x, y, "Pillar", self.game.pillarImage)
+					self.backgrounds.append(tile)
 				elif item == "^":
 					tile = Tile(self.window, x, y, "Spike", self.game.spikeImage)
 					self.backgrounds.append(tile)

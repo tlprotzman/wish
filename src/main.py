@@ -5,6 +5,7 @@ from game import Game
 from actor import Actor 
 from level import Level
 from genie import Genie
+from mainmenu import Mainmenu
 
 
 screenWidth = 22 * 64
@@ -103,8 +104,8 @@ def main():
 			# game.levelTitle.update()
 			# game.drawLives()
 			game.update()
-		elif game.gameState == 'STARTSCREEN':
-			startScreen.update()
+		elif game.gameState == 'MAINMENU':
+			Mainmenu.update()
 		elif game.gameState == 'CREDITSSCREEN':
 			creditsScreen.update()
 		elif game.gameState == 'ENDSCREEN':
