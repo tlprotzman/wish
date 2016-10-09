@@ -427,6 +427,8 @@ class Actor:
 			self.max_speed = 20
 		if self.game.wishTable["backwards"][0]:
 			self.backwards = True
+		if self.game.wishTable["healthpack"][0]:
+			self.health +=50
 
 
 
