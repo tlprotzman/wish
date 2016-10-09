@@ -96,9 +96,9 @@ class Level:
 		self.parallaxHeight = float(firstLine[0])*64
 		lengthOfMessage = int(lines[1])
 		self.genieMessage = [line[:-1] for line in lines[2:2+lengthOfMessage]]
-		self.genieWishes = [line[:-1] for line in lines[2+lengthOfMessage : 6+lengthOfMessage]]
+		self.genieWishes = [line[:-1] for line in lines[2+lengthOfMessage : 5+lengthOfMessage]]
 		
-		self.levelArray = [line[:-1] for line in lines[6+lengthOfMessage:]]
+		self.levelArray = [line[:-1] for line in lines[5+lengthOfMessage:]]
 		f.close()
 
 	def getLevelWidth(self):
