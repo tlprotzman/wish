@@ -1,4 +1,4 @@
-6.5
+10
 2
 What do you 
 wish for?
@@ -8,13 +8,13 @@ doublejump
                                                                                                                         
                                                                                                                         
                                                                                                                         
-                                C    P                                                                                  
-                               PPP   P                                                                                  
-                                     P                                                                                  
+                                C    S                                                                                  
+                               SSS   S                                                                                  
+                                     S                                                                                  
                                                C                                                                        
-                                               SSSSSSSSS                                         PP g                   
-                     PPPPPPP                   |     W |                           T              PPPPPP                
-                 PPPP                          |       |             T     PPPPPPPPPPPPPPP                              
+                                               SSSSSSSSSSSS                                      PP g                   
+                     SSSSSSS                   |     W |                           T              PPPPPP                
+                 SSSS                          |       |             T     PPPPPPPPPPPPPPP                              
       T                                        | T   T |        PPPPPPPPPPPPPPPPPPPPPPPPPPP                 T           
 PPPPPPP                           T         PPPSSSSSSSSSPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP           PPPPPPPPPPPPPPPPPPPPPPP
 PPPPPPPPPP                O       PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP            PPPPPPPPPPPPPPPPPPPPPPPP
