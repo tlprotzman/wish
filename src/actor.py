@@ -1,5 +1,6 @@
 
 import pygame, math, random
+from particles import Particle
 
 def sign(num):
 	if (num==0):
@@ -404,8 +405,7 @@ class Actor:
 			for enemy in self.game.enemyList[self.game.levelCounter]:
 				if self.rect.colliderect(enemy) and self.deathTimer == 0:
 					if enemy.name.lower() != self.game.currentCharacter:
-						self.health -= 20
-						print(self.health)
+						self.health -= 10
 						self.deathTimer = 100
 		if self.health <= 0:
 			self.deathTimer = 100
@@ -428,6 +428,7 @@ class Actor:
 			self.isAlive = False
 			self.rect.x = 0
 			self.rect.y = 0
+			self.game.makeParticles(500, 500, (1, 0, 0), 10)
 		playerHitBox = pygame.Rect(player.rect.x+d1*(player.rect.width-16)-d2*80, player.rect.y, 80, player.rect.height)
 
 		# pygame.draw.rect(self.window, (255, 0, 0), playerHitBox)

@@ -1,5 +1,6 @@
 import pygame
 from word import Word
+from particles import Particle
 pygame.font.init()
 
 class Game:
@@ -155,6 +156,10 @@ class Game:
 		
 		self.hatImage = self.topHat
 
+		self.particles = []
+		
+		
+		
 	def setPlayerType(self, playerType):
 		if playerType == 'simon':
 			self.currentCharacter = 'simon'
@@ -197,7 +202,11 @@ class Game:
 
 			self.playerJump = pygame.image.load("../images/ostrich-run-1.png")
 
-
+	def makeParticles(self, x, y, color, count):
+		for i in range (0, count):
+			if len(self.particles) < 250:
+				self.particles.append(Particle(self, self.window, x, y, color))
+			
 	def setCurrentLevel(self, newLevel):
 		self.currentLevel = newLevel
 
