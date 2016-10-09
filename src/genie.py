@@ -6,10 +6,11 @@ from geniewishdisplay import GenieWishDisplay
 
 
 class Genie:
-	def __init__(self, window, game, player, x, y, wishChoices, facingLeft = True):
+	def __init__(self, window, game, player, x, y, message, wishChoices, facingLeft = True):
 		self.leftFacing = facingLeft
 		self.window = window
 		self.player = player
+		self.message = message
 		self.wishChoices = wishChoices
 		self.game = game
 		self.width=15*8
@@ -18,8 +19,8 @@ class Genie:
 		self.interactionDistanceSquared = 16384
 		self.growingAnimationFrame = -1
 		self.idleAnimation = 0
-		self.wishDisplay = GenieWishDisplay(self.window, self, wishChoices)
-		
+		self.wishDisplay = GenieWishDisplay(self.window, self, message, wishChoices)
+
 		self.wishesAlpha = 0
 
 	def distanceSquared(self, x, y):

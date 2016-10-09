@@ -29,9 +29,12 @@ become an ostrich
 get weapon
 	- several
 get hats
-	-several
+	- tophat
+	- flying hat
+	- cowboy?
+	- turban?
 raining ______ (no collision box?)
-	-several?
+	- several?
 walked backwards? (the theme was backwards)
 low gravity?
 faster running
@@ -39,10 +42,24 @@ more health
 	- full health
 	- to enemies
 	- expand healthbar?
+ostriches were harder
 
 
 
 
+restart game
+	- with no genies
+quit game
+
+
+Things to do:
+Add the textbox for the genie speaking
+
+Add the jump leniency
+
+add the ui bar at the top
+
+add a nice menu
 
 
 
