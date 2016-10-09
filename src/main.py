@@ -76,13 +76,17 @@ def main():
 			if game.camera_x > game.getCurrentLevel().getLevelWidth()-game.screenWidth:
 				game.camera_x = game.getCurrentLevel().getLevelWidth()-game.screenWidth
 
-			game.camera_y += ((player.rect.y+player.rect.height/2-game.screenHeight/2) - game.camera_y-64)/50
+			if game.wishTable["lowgravity"][0]:
+				game.camera_y += ((player.rect.y+player.rect.height/2-game.screenHeight/2) - game.camera_y-64)/6
+			else:
+				game.camera_y += ((player.rect.y+player.rect.height/2-game.screenHeight/2) - game.camera_y-64)/50
+				
 
 			# if game.camera_y < 0:
 			# 	game.camera_y = 0
 
-			if game.camera_y > game.getCurrentLevel().getLevelHeight()-game.screenHeight:
-				game.camera_Y = game.getCurrentLevel().getLevelHeight()-game.screenHeight
+			# if game.camera_y > game.getCurrentLevel().getLevelHeight()-game.screenHeight:
+			# 	game.camera_Y = game.getCurrentLevel().getLevelHeight()-game.screenHeight
 			# print(player.rect.x+player.rect.width/2)
 
 			# game.levelTitle.update()
