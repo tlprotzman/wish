@@ -130,8 +130,9 @@ class Actor:
 	
 	# I excluded a section about screenwidth and the extra life
 	def fight(self):
-		if (self.fightTimer == 100 and self.game.wishTable["knife"][0]):
-			self.fightTimer = 0
+		if self.game.currentCharacter == 'player':	
+			if (self.fightTimer == 100 and self.game.wishTable["knife"][0]):
+				self.fightTimer = 0
 	
 	def attack(self):
 		if (self.fightTimer < 100):
