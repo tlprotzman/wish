@@ -24,7 +24,7 @@ class Level:
 			self.levelHeight += 1
 			for item in row:
 				if item == "P":
-					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]==" ":
+					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]!="P":
 						if (round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="P"):
 							tile = Tile(self.window, x, y, "Ground", self.game.groundRImage)
 						elif (round(x/64) > 0 and self.levelArray[round(y/64)][round(x/64)-1]!="P"):
@@ -56,6 +56,9 @@ class Level:
 				elif item == "H":
 					tile = Tile(self.window, x, y, "Hidden", self.game.waterImage)
 					self.walls.append(tile)
+				elif item == "T":
+					tile = Tile(self.window, x, y-64, "Torch", self.game.torchImage[self.game.animation])
+					self.backgrounds.append(tile)
 				elif item == ".":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]==" ":
 						tile = Tile(self.window, x, y, "Wave", self.game.waveImage[self.game.animation])
@@ -133,6 +136,9 @@ class Level:
 		for tile in self.backgrounds:
 			if tile.name=="Wave":
 				tile.image = self.game.waveImage[self.game.animation]
+			elif tile.name=="Torch":
+				tile.image = self.game.torchImage[self.game.animation]
+				
 			tile.update(cameraX, cameraY)
 
 

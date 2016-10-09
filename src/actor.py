@@ -34,6 +34,8 @@ class Actor:
 		self.deathTimer = 0
 		self.shouldFlip = False
 		self.direction = 1
+		self.fightTimer = 0
+		self.isAttacking = False
 
 	def movement(self):
 		f = self.friction
@@ -73,12 +75,19 @@ class Actor:
 
 		if pressed[pygame.K_d]:
 			self.velocity_x += self.speed
-
+			
+		if pressed[pygame.K_j]:
+			self.fight()
+			
 		if pressed[pygame.K_SPACE]:
 			self.jump()
 
 	
 	# I excluded a section about screenwidth and the extra life
+	def fight(self):
+		if (not self.isAttacking):
+			self.fightTimer = 1		
+	
 	def jump(self):
 		if self.onGround:
 			self.jump_force_adjusted = self.jump_force + abs(self.velocity_x) * 2
