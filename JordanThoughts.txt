@@ -72,5 +72,32 @@ level progression
 
 
 
+Current Tile Types:
+
+_ = spawn location
+S = stone
+| = collumn
+P = sand
+T = torch
+^ = spike
+H = water
+C = coin
+M = health
+. = wave/water
+
+Creatures:
+W = hanging bat
+w = flying bat
+
+O = ostrich
+
+g = genie left
+G = genie right
+
+
+
+
+
+
 
 
