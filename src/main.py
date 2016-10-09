@@ -56,8 +56,13 @@ def main():
 			player.update(game.camera_x, game.camera_y)
 			game.getCurrentLevel().update(game.camera_x, game.camera_y)
 			
-			if player.rect.x + player.rect.width / 2 < 704:
+
+			game.camera_x += ((player.rect.x+player.rect.width/2-game.screenWidth/2) - game.camera_x)/5
+			game.camera_y = 0
+
+			if game.camera_x < 0:
 				game.camera_x = 0
+<<<<<<< HEAD
 				game.camera_y = 0
 			elif player.rect.x + player.rect.width / 2 > game.getCurrentLevel().getLevelWidth():
 				game.camera_x - game.getCurrentLevel().getLevelWidth() - screenWidth
@@ -65,6 +70,12 @@ def main():
 				game.camera_x += ((player.rect.x+player.rect.width/2-game.screenWidth/2) - game.camera_x)/5
 				game.camera_y = 0
 			#print(player.rect.x+player.rect.width/2)
+=======
+			if game.camera_x > game.getCurrentLevel().getLevelWidth()-game.screenWidth:
+				game.camera_x = game.getCurrentLevel().getLevelWidth()-game.screenWidth
+			
+			print(player.rect.x+player.rect.width/2)
+>>>>>>> 188c7688f2cbabdea9d6f6192906041a294f352c
 			# game.levelTitle.update()
 			# game.drawLives()
 		elif game.gameState == 'STARTSCREEN':

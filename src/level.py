@@ -44,12 +44,11 @@ class Level:
 		self.levelHeight = len(self.levelArray)*64
 		self.staticTiles = pygame.Surface((self.levelWidth, self.levelHeight)) #(64*self.levelWidth, 64*self.levelHeight)
 		self.staticTiles.fill((255,255,255,0))
-		print(self.staticTiles.get_colorkey())
 		self.staticTiles.set_colorkey((255,255,255,0))
 		self.makeBackgroundImage()
 
 	def getLevelWidth(self):
-		return 64*self.levelWidth
+		return self.levelWidth
 
 	def makeBackgroundImage(self):
 		for tile in self.walls:
