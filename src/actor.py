@@ -398,12 +398,9 @@ class Actor:
 
 	def updateEnemy(self, cameraX, cameraY, playerX, playerY, isBeingAttacked, damage, player):
 		if self.isAlive:
-<<<<<<< HEAD
 			self.movement()
 			#print(self.health)
 			self.enemyDamage(isBeingAttacked, damage, player)
-=======
->>>>>>> test
 			self.AI(self.facing, playerX, playerY)
 			self.drawEnemy(cameraX, cameraY, self.facing)
 			if self.name!="BatSleep":
