@@ -51,24 +51,24 @@ class Game:
 		self.closeParallax = pygame.image.load("../images/color_parallax.png")
 
 		# Genie images:
-		self.genieAppearR = [pygame.image.load("../images/genie-appear-1.png"),
-							pygame.image.load("../images/genie-appear-2.png"),
-							pygame.image.load("../images/genie-appear-3.png"),
-							pygame.image.load("../images/genie-appear-4.png"),]
-		self.genieIdleR = [pygame.image.load("../images/genie-idle-1.png"),
-							pygame.image.load("../images/genie-idle-2.png"),
-							pygame.image.load("../images/genie-idle-3.png"),
-							pygame.image.load("../images/genie-idle-4.png"),]
-		self.genieLampR = pygame.image.load("../images/lamp.png")
-		self.genieAppearL = [pygame.image.load("../images/genie-appear-1.png"),
-							pygame.image.load("../images/genie-appear-2.png"),
-							pygame.image.load("../images/genie-appear-3.png"),
-							pygame.image.load("../images/genie-appear-4.png"),]
-		self.genieIdleL = [pygame.image.load("../images/genie-idle-1.png"),
-							pygame.image.load("../images/genie-idle-2.png"),
-							pygame.image.load("../images/genie-idle-3.png"),
-							pygame.image.load("../images/genie-idle-4.png"),]
-		self.genieLampL = pygame.image.load("../images/lamp.png")
+		self.genieAppearR = [pygame.image.load("../images/genie-appear-1R.png"),
+							pygame.image.load("../images/genie-appear-2R.png"),
+							pygame.image.load("../images/genie-appear-3R.png"),
+							pygame.image.load("../images/genie-appear-4R.png"),]
+		self.genieIdleR = [pygame.image.load("../images/genie-idle-1R.png"),
+							pygame.image.load("../images/genie-idle-2R.png"),
+							pygame.image.load("../images/genie-idle-3R.png"),
+							pygame.image.load("../images/genie-idle-4R.png"),]
+		self.genieLampR = pygame.image.load("../images/lampR.png")
+		self.genieAppearL = [pygame.image.load("../images/genie-appear-1L.png"),
+							pygame.image.load("../images/genie-appear-2L.png"),
+							pygame.image.load("../images/genie-appear-3L.png"),
+							pygame.image.load("../images/genie-appear-4L.png"),]
+		self.genieIdleL = [pygame.image.load("../images/genie-idle-1L.png"),
+							pygame.image.load("../images/genie-idle-2L.png"),
+							pygame.image.load("../images/genie-idle-3L.png"),
+							pygame.image.load("../images/genie-idle-4L.png"),]
+		self.genieLampL = pygame.image.load("../images/lampL.png")
 
 
 
