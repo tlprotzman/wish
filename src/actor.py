@@ -173,10 +173,12 @@ class Actor:
 			if self.wasRunning == True:
 				self.rect.y -= 32
 				self.wasRunning = False
-			self.rect.height = 128
+				self.rect.width = 120
+				self.rect.height = 128
 			self.window.blit(pygame.transform.flip(self.game.enemyBreath[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
 		else:
 			self.rect.height = 96
+			self.rect.width = 136
 			self.wasRunning = True
 			self.window.blit(pygame.transform.flip(self.game.enemyRun[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
 
