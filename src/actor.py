@@ -76,10 +76,11 @@ class Actor:
 			self.velocity_y = self.max_fall * sign(self.velocity_y)
 			
 	def spiked(self):	
-		for spike in self.game.getCurrentLevel().getBackgrounds():	
-			if spike.name=="Spike" and self.rect.colliderect(spike.getRect()) and self.deathTimer==0:
-				self.health -= 20
-				self.deathTimer=50
+		if not self.game.wishTable["spikeimmune"][0]:
+			for spike in self.game.getCurrentLevel().getBackgrounds():	
+				if spike.name=="Spike" and self.rect.colliderect(spike.getRect()) and self.deathTimer==0:
+					self.health -= 20
+					self.deathTimer=50
 			
 			
 		
@@ -306,6 +307,7 @@ class Actor:
 
 	def update(self, cameraX, cameraY):
 		self.getInput()
+		self.grantWish()
 		self.die()
 		self.movement()
 		self.spiked()
@@ -333,6 +335,11 @@ class Actor:
 			self.enemyDamage(isBeingAttacked, damage, player)
 			self.AI(self.facing, playerX, playerY)
 			self.drawEnemy(cameraX, cameraY, self.facing)
+
+	def grantWish(self):
+		if self.game.wishTable["lowgravity"][0]:
+			self.gravity = 0.4
+
 
 
 

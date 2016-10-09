@@ -23,11 +23,11 @@ tiles that you can jump through
 
 
 
-Check once done | | ==>	double jump
-Check once done | | ==>	spike immunity
+Check once done |X| ==>	double jump
+Check once done |X| ==>	spike immunity
 Check once done | | ==>	become an ostrich
 Check once done | | ==>	get weapon
-Check once done | | ==>		- several
+Check once done |X| ==>		- Knife
 Check once done | | ==>	get hats
 Check once done | | ==>		- tophat
 Check once done | | ==>		- flying hat
@@ -36,7 +36,7 @@ Check once done | | ==>		- turban?
 Check once done | | ==>	raining ______ (no collision box?)
 Check once done | | ==>		- several?
 Check once done | | ==>	walked backwards? (the theme was backwards)
-Check once done | | ==>	low gravity?
+Check once done |X| ==>	low gravity?
 Check once done | | ==>	faster running
 Check once done | | ==>	more health
 Check once done | | ==>		- full health

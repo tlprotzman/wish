@@ -26,9 +26,9 @@ wishTable = {"doublejump":[True, "for a double jump", ["You now have", "a double
 			 "knife":[True, "i could kill people", ["Congrats, press j", "to murder!"]],
 			 "ostrich":[False, "for friends", ["Be free, handsome one"]],
 			 "healthpack":[False, "for more health", ["Stay safe out", "there!"]],
-			 "spikeimmune":[False, "to be spikeproof", ["A late night", "roundevous with", "a cactus?"]],
+			 "spikeimmune":[True, "to be spikeproof", ["A late night", "roundevous with", "a cactus?"]],
 			 "fasterrunning":[False, "to join the olympics", ["Hope you like", "running!"]],
-
+			 "lowgravity":[True, "be an astronaut!", ["Hope you make", "it to the moon!"]]
 			}
 game.wishTable = wishTable
 
