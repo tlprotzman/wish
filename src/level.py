@@ -3,17 +3,21 @@ import pygame
 from tile import Tile
 
 class Level:
-	def __init__(self, game, player, window, array):
+	def __init__(self, game, player, window, arrayOrFilename):
 		self.window = window
 		self.game = game
 		self.player = player
-		self.levelArray = array
+		if type(arrayOrFilename) == "string":
+			self.loadLevelFile(arrayOrFilename)
+		else:
+			self.levelArray = arrayOrFilename
 		x = 0
 		y = 0
 		self.walls = []
 		self.backgrounds = []
 		self.levelWidth = 0
 		self.levelHeight = 0
+
 		for row in self.levelArray:
 			self.levelHeight += 1
 			for item in row:
@@ -46,6 +50,11 @@ class Level:
 		self.staticTiles.fill((255,255,255,0))
 		self.staticTiles.set_colorkey((255,255,255,0))
 		self.makeBackgroundImage()
+
+	def loadLevelFile(self, filename):
+		f = open(filename, "rb")
+		self.levelArray = [line[:-1] for line in f.readlines()]
+		f.close()
 
 	def getLevelWidth(self):
 		return self.levelWidth

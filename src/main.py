@@ -21,19 +21,20 @@ pygame.mixer.music.load("../audio/sondtrack.wav")
 
 def main():
 	game.setTileset("Grass")
-	game.levelList.append(Level(game, player, window,
-							["                                            ",
-							"                                            ",
-							"                                            ",
-							"                            PPP             ",
-							"           PPP               P              ",
-							"                             P              ",
-							"                             P              ",
-							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP", ]))
-
+	# game.levelList.append(Level(game, player, window,
+	# 						["                                            ",
+	# 						"                                            ",
+	# 						"                                            ",
+	# 						"                            PPP             ",
+	# 						"           PPP               P              ",
+	# 						"                             P              ",
+	# 						"                             P              ",
+	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP", ]))
+	
+	game.levelList.append(Level(game, player, window,"testlevel.txt"))
 
 	game.setCurrentLevel(game.levelList[0])
 
