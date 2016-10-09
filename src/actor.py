@@ -125,6 +125,12 @@ class Actor:
 		# 	self.deathTimer = self.deathTimer
 		# if self.onGround and self.velocity_x == 0:
 		# 	self.window.blit(self.game.playerBreath)
+
+
+		#Draw health
+		pygame.draw.rect(self.window, (176, 18, 10), (10, 10,  self.health * 1.5, 15))
+
+
 		if (self.deathTimer>0 and self.deathTimer%2 == 0):
 			self.deathTimer = self.deathTimer
 			# don't do anything, wait a frame before drawing
