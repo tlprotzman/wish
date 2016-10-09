@@ -70,6 +70,8 @@ def main():
 			game.getCurrentLevel().update(game.camera_x, game.camera_y)
 			for genie in game.genieList[game.levelCounter]:
 			 	genie.update(game.camera_x, game.camera_y)
+			# this is the lighting system:
+			game.getCurrentLevel().drawLights(game.camera_x, game.camera_y)
 			
 
 			game.camera_x += ((player.rect.x+player.rect.width/2-game.screenWidth/2) - game.camera_x)/5

@@ -83,6 +83,12 @@ class Actor:
 			self.velocity_x = self.max_speed * sign(self.velocity_x) 
 		if abs(self.velocity_y) > self.max_fall:
 			self.velocity_y = self.max_fall * sign(self.velocity_y)
+
+		# this is level progression:
+		if self.rect.x > self.game.getCurrentLevel().getLevelWidth():
+			self.game.progressALevel()
+			self.rect.x = self.game.getCurrentLevel().spawnX
+			self.rect.y = self.game.getCurrentLevel().spawnY
 			
 	def spiked(self):	
 		if not self.game.wishTable["spikeimmune"][0]:

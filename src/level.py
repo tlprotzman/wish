@@ -21,6 +21,7 @@ class Level:
 		self.backgrounds = []
 		self.levelWidth = 0
 		self.levelHeight = 0
+		self.lightSources = []
 
 		enemyList = []
 		genieList = []
@@ -29,6 +30,10 @@ class Level:
 			for item in row:
 				if item == "O":
 					enemyList += [Actor(self.window, self.game, x, y-64, "Ostrich")]
+				elif item == "_":
+					# place the spawn point for the level
+					self.spawnX = x-64
+					self.spawnY = y-64
 				elif item == "W":
 					enemyList += [Actor(self.window, self.game, x, y, "BatSleep")]
 				elif item == "w":
@@ -73,6 +78,7 @@ class Level:
 				elif item == "T":
 					tile = Tile(self.window, x, y-64, "Torch", self.game.torchImage[self.game.animation])
 					self.backgrounds.append(tile)
+					self.lightSources += [(x+32, y-64)]
 				elif item == ".":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]==" ":
 						tile = Tile(self.window, x, y, "Wave", self.game.waveImage[self.game.animation])
@@ -92,6 +98,13 @@ class Level:
 		self.makeBackgroundImage()
 		self.game.enemyList.append(enemyList)
 		self.game.genieList.append(genieList)
+		# lighting here:
+		# this first one is darkness the size of the screen
+		self.darknessMap = pygame.Surface((self.game.screenWidth, self.game.screenHeight))
+		self.darknessMap.fill((0, 0, 0, 100))
+		self.torchMap = pygame.Surface((256, 256))
+		pygame.draw.circle(self.torchMap, (255, 255, 255, 100), (128, 128), 128)
+		self.torchMap.set_colorkey((0,0,0))
 
 	def loadLevelFile(self, filename):
 		f = open(filename, "r")
@@ -120,6 +133,12 @@ class Level:
 
 	def getBackgrounds(self):
 		return self.backgrounds
+
+	def drawLights(self, cameraX, cameraY):
+		self.window.blit(self.darknessMap, (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+		for torch in self.lightSources:
+			self.window.blit(self.torchMap, (torch[0]-cameraX, torch[1]-cameraY))
+
 
 	def drawParallax(self, cameraX, cameraY):
 		parallaxWidth = self.game.screenWidth-32
