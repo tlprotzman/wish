@@ -142,6 +142,7 @@ class Game:
 		self.genieLampL = pygame.image.load("../images/lampL.png")
 		
 		self.topHat = pygame.image.load("../images/topHat.png")
+		self.fireman = pygame.image.load("../images/fireHat.png")
 		self.turban = pygame.image.load("../images/beanie.png")
 		
 		self.hatImage = self.topHat

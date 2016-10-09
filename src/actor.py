@@ -293,7 +293,7 @@ class Actor:
 						self.window.blit(pygame.transform.flip((self.game.weapon[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
 
 				
-			if (self.game.wishTable["tophat"][0] or self.game.wishTable["turban"][0]):
+			if (self.game.wishTable["tophat"][0] or self.game.wishTable["turban"][0] or self.game.wishTable["fireman"][0]):
 				if (self.game.wishTable["amostrich"][0]):
 					if (self.direction==-1):
 						self.window.blit(pygame.transform.flip((self.game.hatImage), self.shouldFlip, False), (self.rect.x-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))
@@ -483,7 +483,12 @@ class Actor:
 			self.health +=50
 		if self.game.wishTable["turban"][0]:
 			self.game.wishTable["tophat"][0] = False
+			self.game.wishTable["fireman"][0] = False
 			self.game.hatImage = self.game.turban
+		if self.game.wishTable["fireman"][0]:
+			self.game.wishTable["tophat"][0] = False
+			self.game.wishTable["turban"][0] = False
+			self.game.hatImage = self.game.fireman
 		if self.game.wishTable["goldknife"][0]:
 			self.game.wishTable["knife"][0] = False
 			self.game.wishTable["fryingpan"][0] = False

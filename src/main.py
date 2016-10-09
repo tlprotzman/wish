@@ -14,9 +14,10 @@ backgroundColor = (49, 27, 146)
 
 wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a double jump"]],
 			 "tophat":[True, "for a snazzy hat", ["You now have", "the snazziest hat"]],
+			 "fireman":[True, "I could stop fires", ["You can't stop fires", "but here's a nice hat!"]],
 			 "turban":[False, "to wear a turban", ["That is one", "cool turban!"]],
-			 "knife":[True, "i could kill people", ["Congrats, press j", "to murder!"]],
-			 "goldknife":[True, "i had a super weapon", ["Congrats, press j", "to destroy!"]],
+			 "knife":[False, "i could kill people", ["Congrats, press j", "to murder!"]],
+			 "goldknife":[False, "i had a super weapon", ["Congrats, press j", "to destroy!"]],
 			 "fryingpan":[True, "i were a chef", ["Now, press j", "to fry enemies!"]],
 			 "amostrich":[False, "for friends", ["Be free, handsome one"]],
 			 "healthpack":[False, "for more health", ["Stay safe out", "there!"]],
@@ -72,8 +73,6 @@ def main():
 			game.getCurrentLevel().update(game.camera_x, game.camera_y)
 			for genie in game.genieList[game.levelCounter]:
 			 	genie.update(game.camera_x, game.camera_y)
-			# this is the lighting system:
-			game.getCurrentLevel().drawLights(game.camera_x, game.camera_y)
 			
 
 			game.camera_x += ((player.rect.x+player.rect.width/2-game.screenWidth/2) - game.camera_x)/5
