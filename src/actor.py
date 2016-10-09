@@ -266,17 +266,17 @@ class Actor:
 						self.health = 100
 					self.deathTimer = 100
 
-	def enemyDamage(self, isBeingAttacked, damage):
+	def enemyDamage(self, isBeingAttacked, damage, player):
 		if (self.deathTimer > 0):
 			self.deathTimer -= 1
-		if(self.deathTimer == 0 and self.health > 0 and isBeingAttacked):
-			self.health -= damage
-			deathTimer = 100
 		if (self.health <= 0) or (self.rect.y > self.game.getCurrentLevel().getLevelHeight() and self.deathTimer==0):
 			self.isAlive = False
 			self.rect.x = 0
 			self.rect.y = 0
-
+		playerHitBox = pygame.Rect(player.rect.x, player.rect.y, player.rect.width, player.rect.height)
+		if(self.deathTimer == 0 and self.health > 0 and isBeingAttacked and self.rect.colliderect(playerHitBox)):
+			self.health -= damage
+			deathTimer = 100
 
 
 
@@ -290,7 +290,7 @@ class Actor:
 		# print("Location: ", self.rect.x, self.rect.y)
 		# print("Velocities: ", self.velocity_x, self.velocity_y)
 
-	def updateEnemy(self, cameraX, cameraY, playerX, playerY, isBeingAttacked, damage):
+	def updateEnemy(self, cameraX, cameraY, playerX, playerY, isBeingAttacked, damage, player):
 		if self.isAlive:
 			if self.changeDirection == 25:	
 				if random.randint(1, 2) == 1:
@@ -302,7 +302,7 @@ class Actor:
 				self.changeDirection += 1
 			self.movement()
 			print(self.health)
-			self.enemyDamage(isBeingAttacked, damage)
+			self.enemyDamage(isBeingAttacked, damage, player)
 			self.AI(self.facing, playerX, playerY)
 			self.drawEnemy(cameraX, cameraY, self.facing)
 
