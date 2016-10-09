@@ -151,18 +151,22 @@ class Level:
 		return self.backgrounds
 
 	def makeFullLightMap(self):
+		self.torchImage = pygame.transform.scale(self.torchImage, (4*self.torchR, 4*self.torchR))
+		print("CREATED LIGHTING MAP")
 		self.fullLightingMap = pygame.Surface((self.getLevelWidth(), self.getLevelHeight()))
+		self.fullLightingMap.fill((50, 50, 50))
 		for torch in self.lightSources:
-			self.fullLightingMap.blit(self.torchMap, (torch[0]-self.torchR+6, torch[1]-self.torchR+48))
+			self.fullLightingMap.blit(self.torchImage, (torch[0]-2*self.torchR, torch[1]-1.5*self.torchR))
+			# self.fullLightingMap.blit(self.torchImage, (torch[0]-self.torchR+6, torch[1]-self.torchR+48))
 
-	def drawFullLightMap(self):
-		self.window.blit(self.fullLightingMap, (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+	def drawFullLightMap(self, cameraX, cameraY):
+		self.window.blit(self.fullLightingMap, (0-cameraX, 0-cameraY) , special_flags=pygame.BLEND_RGBA_SUB)
 
 	def drawLights(self, cameraX, cameraY):
-		self.drawFullLightMap()
+		self.drawFullLightMap(cameraX, cameraY)
 		# for torch in self.lightSources:
-		# 	self.darknessMap.blit(self.torchMap, map(lambda x: x-self.torchR, (torch[0]-cameraX-self.torchR+6, torch[1]-cameraY-self.torchR+48)))
-		# self.window.blit(self.darknessMap, (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+		# 	self.darknessMap.blit(self.torchImage, (torch[0]-cameraX-self.torchR+6, torch[1]-cameraY-self.torchR+48))
+		# self.window.blit(self.darknessMap, (0, 0))#, special_flags=pygame.BLEND_RGBA_SUB)
 
 	def drawParallax(self, cameraX, cameraY):
 		parallaxWidth = self.game.screenWidth-32
