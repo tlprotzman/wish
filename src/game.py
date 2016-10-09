@@ -43,6 +43,8 @@ class Game:
 						   pygame.image.load("../images/player-run-4.png")]
 
 		self.playerJump = pygame.image.load("../images/player-run-1.png")
+		self.knife = [pygame.image.load("../images/weapon-1.png"),
+					  pygame.image.load("../images/weapon-2.png")]
 
 		self.enemyBreath = [pygame.image.load("../images/enemy1.png"),
 							pygame.image.load("../images/enemy2.png")]
