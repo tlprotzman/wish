@@ -13,7 +13,7 @@ backgroundColor = (49, 27, 146)
 
 wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a double jump"]],
 			 "tophat":[False, "for a snazzy hat", ["You now have", "the snazziest hat"]],
-			 "knife":[False, "i could kill people", ["Congrats, press j", "to murder!"]],
+			 "knife":[False, "to kill.", ["Congrats, press j", "to murder!"]],
 			 "amostrich":[False, "for friends", ["Be free, handsome one"]],
 			 "healthpack":[False, "for more health", ["Stay safe out", "there!"]],
 			 "spikeimmune":[False, "to be spikeproof", ["A late night", "roundevous with", "a cactus?"]],

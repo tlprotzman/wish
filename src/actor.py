@@ -17,10 +17,13 @@ class Actor:
 			self.height = 128
 			self.jump_force = 15
 			self.health = 50
-		elif name == "Bat":
+		elif name == "Bat" or name == "BatSleep":
 			self.height = 64
 			self.jump_force = 15
 			self.health = 25
+			
+		
+
 		
 
 		self.window = window
@@ -287,7 +290,10 @@ class Actor:
 			else:
 				enemyFlip = False
 			self.window.blit(pygame.transform.flip(self.game.batFly[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
-
+		elif self.name=="BatSleep":
+			self.window.blit(pygame.transform.flip(self.game.batHang, enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
+	
+			
 
 
 
@@ -330,6 +336,10 @@ class Actor:
 						self.velocity_x = 0
 					if self.rect.left + 5 >= wall.rect.right and self.rect.left + self.velocity_x - 1 <= wall.rect.right:
 						self.velocity_x = 0
+		elif self.name == "BatSleep":
+			if abs(self.rect.x - playerX) < 64*3:
+				self.name = "Bat"
+			
 
 	def die(self):
 		if (self.deathTimer > 0):
@@ -368,7 +378,9 @@ class Actor:
 			self.rect.x = 0
 			self.rect.y = 0
 		playerHitBox = pygame.Rect(player.rect.x+d1*(player.rect.width-16)-d2*80, player.rect.y, 80, player.rect.height)
+
 		# pygame.draw.rect(self.window, (255, 0, 0), playerHitBox)
+
 		if(self.deathTimer == 0 and self.health > 0 and isBeingAttacked and self.rect.colliderect(playerHitBox)):
 			self.health -= damage
 			deathTimer = 100
@@ -399,11 +411,12 @@ class Actor:
 
 	def updateEnemy(self, cameraX, cameraY, playerX, playerY, isBeingAttacked, damage, player):
 		if self.isAlive:
-			self.movement()
-			#print(self.health)
-			self.enemyDamage(isBeingAttacked, damage, player)
 			self.AI(self.facing, playerX, playerY)
 			self.drawEnemy(cameraX, cameraY, self.facing)
+			if self.name!="BatSleep":
+				self.movement()
+				self.enemyDamage(isBeingAttacked, damage, player)
+				
 
 	def grantWish(self):
 		if self.game.wishTable["lowgravity"][0]:
