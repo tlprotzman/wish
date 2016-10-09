@@ -2,6 +2,7 @@
 import pygame
 from tile import Tile
 from actor import Actor
+from genie import Genie
 
 class Level:
 	def __init__(self, game, player, window, arrayOrFilename):
@@ -22,13 +23,17 @@ class Level:
 		self.levelHeight = 0
 
 		enemyList = []
-
+		genieList = []
 		for row in self.levelArray:
 			self.levelHeight += 1
 			for item in row:
 				if item == "O":
 					enemyList += [Actor(self.window, self.game, x, y-64, "Ostrich")]
-				if item == "P":
+				elif item == "G":
+					genieList += [Genie(self.window, self.game, self.player, x-64, y-87, self.genieMessage, self.genieWishes, False)] # THERE'S ONLY ONE GENIE PER LEVEL, IF THERE ISN'T YOU'RE FUCKED!
+				elif item == "g":
+					genieList += [Genie(self.window, self.game, self.player, x-64, y-87, self.genieMessage, self.genieWishes)]
+				elif item == "P":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]!="P":
 						if (round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="P"):
 							tile = Tile(self.window, x, y, "Ground", self.game.groundRImage)
@@ -82,13 +87,18 @@ class Level:
 		self.staticTiles.set_colorkey((255,255,255,0))
 		self.makeBackgroundImage()
 		self.game.enemyList.append(enemyList)
+		self.game.genieList.append(genieList)
 
 	def loadLevelFile(self, filename):
 		f = open(filename, "r")
 		lines = f.readlines()
 		firstLine = lines[0].split()
 		self.parallaxHeight = float(firstLine[0])*64
-		self.levelArray = [line[:-1] for line in lines[1:]]
+		lengthOfMessage = int(lines[1])
+		self.genieMessage = [line[:-1] for line in lines[2:2+lengthOfMessage]]
+		self.genieWishes = [line[:-1] for line in lines[2+lengthOfMessage : 6+lengthOfMessage]]
+		
+		self.levelArray = [line[:-1] for line in lines[6+lengthOfMessage:]]
 		f.close()
 
 	def getLevelWidth(self):

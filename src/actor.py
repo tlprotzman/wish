@@ -41,6 +41,7 @@ class Actor:
 		self.wasRunning = False
 		self.health = health
 		self.deathTimer = 0
+		self.isAlive = True
 
 
 	def movement(self):
@@ -246,7 +247,7 @@ class Actor:
 					self.velocity_x = 13
 				#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 			if facing == 'left':
-				if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 100) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
+				if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 300) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
 					#print('wrk?')
 					self.velocity_x = -13
 				#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
@@ -266,13 +267,24 @@ class Actor:
 					self.health -= 20
 					print(self.health)
 					self.deathTimer = 100
-
 		if self.health <= 0 and self.deathTimer == 0:
 			self.deathTimer = 100
 			print("We need to have the user move back to the respawn point!")
 			self.rect.x = 32
 			self.rect.y = 0
 			self.health = 100
+
+	def enemyDamage(self, isBeingAttacked, damage):
+		if (self.deathTimer > 0):
+			self.deathTimer -= 1
+		if(self.deathTimer == 0 and self.health > 0 and isBeingAttacked):
+			self.health -= damage
+			deathTimer = 100
+		if (self.health <= 0) or (self.rect.y > self.game.getCurrentLevel().getLevelHeight() and self.deathTimer==0):
+			self.isAlive = False
+			self.rect.x = 0
+			self.rect.y = 0
+
 
 
 
@@ -288,11 +300,16 @@ class Actor:
 		# print("Location: ", self.rect.x, self.rect.y)
 		# print("Velocities: ", self.velocity_x, self.velocity_y)
 
-	def updateEnemy(self, cameraX, cameraY, playerX, playerY):
-		if self.changeDirection == 25:	
-			if random.randint(1, 2) == 1:
-				self.facing = 'right'
+	def updateEnemy(self, cameraX, cameraY, playerX, playerY, isBeingAttacked, damage):
+		if self.isAlive:
+			if self.changeDirection == 25:	
+				if random.randint(1, 2) == 1:
+					self.facing = 'right'
+				else:
+					self.facing = 'left'
+				self.changeDirection = 0
 			else:
+<<<<<<< HEAD
 				self.facing = 'left'
 			self.changeDirection = 0
 		else:
@@ -301,6 +318,14 @@ class Actor:
 		self.spiked()
 		self.AI(self.facing, playerX, playerY)
 		self.drawEnemy(cameraX, cameraY, self.facing)
+=======
+				self.changeDirection += 1
+			self.movement()
+			print(self.health)
+			self.enemyDamage(isBeingAttacked, damage)
+			self.AI(self.facing, playerX, playerY)
+			self.drawEnemy(cameraX, cameraY, self.facing)
+>>>>>>> 3d49a480cd5f4bf3b800aa8ebcd2d50063aa2951
 
 
 
