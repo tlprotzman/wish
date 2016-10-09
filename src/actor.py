@@ -101,9 +101,7 @@ class Actor:
 	
 	# I excluded a section about screenwidth and the extra life
 	def fight(self):
-		print(self.fightTimer)
-		print(self.isAttacking)
-		if (self.fightTimer == 100):
+		if (self.fightTimer == 100 and self.game.wishTable["knife"][0]):
 			self.fightTimer = 0
 	
 	def attack(self):
@@ -198,7 +196,7 @@ class Actor:
 			else:
 				self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		
-			if (self.fightTimer==100):
+			if (self.fightTimer==100 and self.game.wishTable["knife"][0]):
 				if self.direction==1:
 					self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-16-cameraX, self.rect.y-8-cameraY))
 				else:
