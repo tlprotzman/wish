@@ -108,7 +108,7 @@ class Actor:
 				self.coins += 1
 				self.coinsThisRun += 1
 				self.game.coins = self.coins
-				self.game.coinEffect.play()
+				# self.game.coinEffect.play()
 
 
 	def getHealth(self):
@@ -499,6 +499,12 @@ class Actor:
 
 	def grantWish(self):
 		self.game.makeParticles(self.rect.x + self.rect.width/2, self.rect.y + self.rect.height/2, (1,1,1), 1000, 100, 20)
+		if self.game.wishTable["quit"][0]:
+			pygame.quit()
+		if self.game.wishTable["yay"][0]:
+			pygame.quit()
+		if self.game.wishTable["retry"][0]:
+			pygame.quit()
 		if self.game.wishTable["lowgravity"][0]:
 			self.gravity = 0.4
 		if self.game.wishTable["fasterrunning"][0]:
