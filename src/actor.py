@@ -16,11 +16,14 @@ class Actor:
 		elif name == "Ostrich":
 			self.height = 128
 			self.jump_force = 15
-			self.health = 25
-		elif name == "Bat":
+			self.health = 50
+		elif name == "Bat" or name == "BatSleep":
 			self.height = 64
 			self.jump_force = 15
-			self.health = 10
+			self.health = 25
+			
+		
+
 		
 
 		self.window = window
@@ -276,7 +279,10 @@ class Actor:
 			else:
 				enemyFlip = False
 			self.window.blit(pygame.transform.flip(self.game.batFly[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
-
+		elif self.name=="BatSleep":
+			self.window.blit(pygame.transform.flip(self.game.batHang, enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
+	
+			
 
 
 
@@ -319,6 +325,10 @@ class Actor:
 						self.velocity_x = 0
 					if self.rect.left + 5 >= wall.rect.right and self.rect.left + self.velocity_x - 1 <= wall.rect.right:
 						self.velocity_x = 0
+		elif self.name == "BatSleep":
+			if abs(self.rect.x - playerX) < 64*3:
+				self.name = "Bat"
+			
 
 	def die(self):
 		if (self.deathTimer > 0):
@@ -388,11 +398,18 @@ class Actor:
 
 	def updateEnemy(self, cameraX, cameraY, playerX, playerY, isBeingAttacked, damage, player):
 		if self.isAlive:
+<<<<<<< HEAD
 			self.movement()
 			#print(self.health)
 			self.enemyDamage(isBeingAttacked, damage, player)
+=======
+>>>>>>> test
 			self.AI(self.facing, playerX, playerY)
 			self.drawEnemy(cameraX, cameraY, self.facing)
+			if self.name!="BatSleep":
+				self.movement()
+				self.enemyDamage(isBeingAttacked, damage, player)
+				self.AI(self.facing, playerX, playerY)
 
 	def grantWish(self):
 		if self.game.wishTable["lowgravity"][0]:
