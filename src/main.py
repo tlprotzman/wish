@@ -45,7 +45,7 @@ def main():
 
 		if game.gameState == 'PLAYING':
 			window.fill(backgroundColor)
-			#game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
+			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)									#PARALLAX TOGGLE
 
 			player.update(game.camera_x, game.camera_y)
 			for enemy in game.enemyList[game.levelCounter]:

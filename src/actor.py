@@ -233,7 +233,7 @@ class Actor:
 					self.velocity_x = 13
 				#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 			if facing == 'left':
-				if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 300) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
+				if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 100) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
 					#print('wrk?')
 					self.velocity_x = -13
 				#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
