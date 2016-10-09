@@ -110,7 +110,7 @@ class Actor:
 			self.fightTimer +=1
 			if self.fightTimer>14:
 				self.isAttacking = True
-			if self.fightTimer>=90:
+			if self.fightTimer>=40:
 				self.fightTimer = 100
 				self.isAttacking = False
 
@@ -256,7 +256,7 @@ class Actor:
 	def die(self):
 		if (self.deathTimer > 0):
 			self.deathTimer -= 1
-		if self.rect.y > self.game.getCurrentLevel().getLevelHeight() and self.deathTimer==0:
+		if self.rect.y > self.game.getCurrentLevel().getLevelHeight():
 			self.deathTimer = 100
 			self.rect.x = 32
 			self.rect.y = 0
@@ -267,7 +267,7 @@ class Actor:
 					self.health -= 20
 					print(self.health)
 					self.deathTimer = 100
-		if self.health <= 0 and self.deathTimer == 0:
+		if self.health <= 0:
 			self.deathTimer = 100
 			print("We need to have the user move back to the respawn point!")
 			self.rect.x = 32
