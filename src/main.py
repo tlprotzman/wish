@@ -80,6 +80,7 @@ def main():
 		if game.gameState == 'PLAYING':
 			window.fill(backgroundColor)
 			# parallax
+			game.getCurrentLevel().drawStars(game.camera_x, game.camera_y)
 			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
 			player.update(game.camera_x, game.camera_y)
 			for enemy in game.enemyList[game.levelCounter]:

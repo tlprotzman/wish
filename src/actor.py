@@ -145,6 +145,7 @@ class Actor:
 		if pressed[pygame.K_c]:
 			if self.game.wishTable["confetti"][0]:
 				self.game.makeParticles(self.rect.x+self.rect.width/2, self.rect.y+self.rect.height/2, (1,1,1), 10, 10)
+				self.game.hoorayEffect.play()
 		if not self.backwards:
 			if pressed[pygame.K_a]:
 				self.velocity_x -= self.speed

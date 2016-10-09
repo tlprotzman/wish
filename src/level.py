@@ -151,6 +151,15 @@ class Level:
 	def getBackgrounds(self):
 		return self.backgrounds
 
+	def setupStars(self):
+		self.starBackground = pygame.Surface((self.game.screenWidth*2, self.game.screenHeight*2))
+		for i in range(50):
+			self.starBackground.blit(pygame.rect())
+			pygame.draw.rect(self.starBackground, (255, 255, 255), (random.randint(0, self.game.screenWidth*2-1), random.randint(0, self.game.screenWidth*2-1), 8, 8))
+
+	def drawStars(self, cameraX, cameraY):
+		self.window.blit(self.starBackground, (0-cameraX*.01, -cameraY*.01))
+
 	def makeFullLightMap(self):
 		self.tallDarkness = pygame.Surface((self.getLevelWidth(), self.getLevelHeight()/2))
 		self.tallDarkness.fill((50, 50, 50))
