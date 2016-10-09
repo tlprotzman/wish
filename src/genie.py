@@ -44,12 +44,21 @@ class Genie:
 		#self.window.blit(self.game.genieLamp, (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		if self.growingAnimationFrame == 4:
 			# then do the idle expanded animation
-			self.window.blit(self.game.genieIdle[self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
+			if self.leftFacing:
+				self.window.blit(self.game.genieIdleL[self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
+			else:
+				self.window.blit(self.game.genieIdleR[self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		elif self.growingAnimationFrame > -1:
 			# then do the expansion frame
-			self.window.blit(self.game.genieAppear[self.growingAnimationFrame], (self.rect.x-cameraX, self.rect.y-16-cameraY))
+			if self.leftFacing:
+				self.window.blit(self.game.genieAppearL[self.growingAnimationFrame], (self.rect.x-cameraX, self.rect.y-16-cameraY))
+			else:
+				self.window.blit(self.game.genieAppearR[self.growingAnimationFrame], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 			
 		else:
 			# do the sitting in the lamp animation/image
-			self.window.blit(self.game.genieLamp, (self.rect.x-cameraX, self.rect.y-16-cameraY))
+			if self.leftFacing:
+				self.window.blit(self.game.genieLampL, (self.rect.x-cameraX, self.rect.y-16-cameraY))
+			else:
+				self.window.blit(self.game.genieLampR, (self.rect.x-cameraX, self.rect.y-16-cameraY))
 

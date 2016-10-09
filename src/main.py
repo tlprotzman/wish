@@ -38,7 +38,7 @@ def main():
 
 	game.levelList.append(Level(game, player, window,"../levels/testlevel.txt"))
 	wishes = ["Nope", "Just kidding", "Yada Yada"]
-	game.genieList.append([Genie(window, game, player, 320, 368, wishes)])
+	game.genieList.append([Genie(window, game, player, 320, 361, wishes)])
 
 	game.setCurrentLevel(game.levelList[0])
 
