@@ -105,7 +105,7 @@ class Level:
 		self.levelWidth = len(self.levelArray[0])*64
 		self.levelHeight = len(self.levelArray)*64
 		self.staticTiles = pygame.Surface((self.levelWidth, self.levelHeight)) #(64*self.levelWidth, 64*self.levelHeight)
-		self.belowGroundBackground = pygame.Surface((self.game.screenWidth, self.game.screenHeight))
+		self.belowGroundBackground = pygame.Surface((self.game.screenWidth, self.levelHeight))
 		self.belowGroundBackground.fill((109, 99, 52))
 		self.staticTiles.fill((255,255,255,0))
 		self.staticTiles.set_colorkey((255,255,255,0))
