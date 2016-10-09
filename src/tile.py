@@ -10,6 +10,9 @@ class Tile:
 		self.rect=pygame.Rect(x, y, self.width, self.height)
 		self.name= name
 		self.image=image
+		
+	def getRect(self):
+		return self.rect
 
 	def update(self, cameraX, cameraY):
 		self.window.blit(self.image, (self.rect.x-cameraX, self.rect.y-cameraY))
