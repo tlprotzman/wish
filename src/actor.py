@@ -307,25 +307,15 @@ class Actor:
 					self.facing = 'right'
 				else:
 					self.facing = 'left'
-				self.changeDirection = 0
+					self.changeDirection = 0
 			else:
-<<<<<<< HEAD
-				self.facing = 'left'
-			self.changeDirection = 0
-		else:
-			self.changeDirection += 1
-		self.movement()
-		self.spiked()
-		self.AI(self.facing, playerX, playerY)
-		self.drawEnemy(cameraX, cameraY, self.facing)
-=======
 				self.changeDirection += 1
 			self.movement()
 			print(self.health)
 			self.enemyDamage(isBeingAttacked, damage, player)
 			self.AI(self.facing, playerX, playerY)
 			self.drawEnemy(cameraX, cameraY, self.facing)
->>>>>>> 3d49a480cd5f4bf3b800aa8ebcd2d50063aa2951
+
 
 
 
