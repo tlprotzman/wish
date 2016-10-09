@@ -35,7 +35,7 @@ class Level:
 						tile = Tile(self.window, x, y, "Ground", self.game.dirtImage)
 					self.walls.append(tile)
 				elif item == "S":
-					if (round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="S" and round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="S"):
+					if (round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="S" and round(x/64) > 0 and self.levelArray[round(y/64)][round(x/64)-1]!="S"):
 						tile = Tile(self.window, x, y, "Ground", self.game.stoneCImage)
 					elif (round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="S"):
 						tile = Tile(self.window, x, y, "Ground", self.game.stoneRImage)
