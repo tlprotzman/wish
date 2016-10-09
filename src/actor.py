@@ -305,7 +305,7 @@ class Actor:
 
 	def updateEnemy(self, cameraX, cameraY, playerX, playerY, isBeingAttacked, damage, player):
 		if self.isAlive:
-			if self.changeDirection == 25:	
+			if self.changeDirection == 50:	
 				if random.randint(1, 2) == 1:
 					self.facing = 'right'
 				else:
