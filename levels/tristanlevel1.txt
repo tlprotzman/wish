@@ -15,7 +15,7 @@ doublejump
                                               SSSSSSSSSSS                                        PP g                   
                      SSSSSSS                   |     W |                           T              PPPPPP                
                  SSSS                          |       |             T     PPPPPPPPPPPPPPP                              
-      T                                        | T   T |        PPPPPPPPPPPPPPPPPPPPPPPPPPP                 T           
+ _    T                                        | T   T |        PPPPPPPPPPPPPPPPPPPPPPPPPPP                 T           
 PPPPPPP                           T         PPPSSSSSSSSSPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP           PPPPPPPPPPPPPPPPPPPPPPP
 PPPPPPPPPP                O       PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP            PPPPPPPPPPPPPPPPPPPPPPPP
 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP             T     PPPPPPPPPPPPPPPPPPPPPPP
