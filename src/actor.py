@@ -214,7 +214,6 @@ class Actor:
 		self.die()
 		self.movement()
 		self.drawPlayer(cameraX, cameraY)
-		self.drawEnemy(cameraX, cameraY, self.facing)
 		# print("Location: ", self.rect.x, self.rect.y)
 		# print("Velocities: ", self.velocity_x, self.velocity_y)
 
