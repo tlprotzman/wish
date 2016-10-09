@@ -8,6 +8,7 @@ class Game:
 		self.levelList = []
 		self.levelCounter = 0
 		self.enemyList = []
+		self.genieList = []
 		self.nameList = []
 		self.life = 3
 		self.animation = 0

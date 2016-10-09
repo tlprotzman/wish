@@ -4,6 +4,7 @@ import pygame, sys
 from game import Game 
 from actor import Actor 
 from level import Level
+from genie import Genie
 
 
 screenWidth = 22 * 64
@@ -36,6 +37,8 @@ def main():
 	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP", ]))
 
 	game.levelList.append(Level(game, player, window,"../levels/testlevel.txt"))
+	wishes = ["Nope", "Just kidding", "Yada Yada"]
+	game.genieList.append([Genie(window, game, player, 320, 384, wishes)])
 
 	game.setCurrentLevel(game.levelList[0])
 
@@ -58,6 +61,8 @@ def main():
 			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
 			player.update(game.camera_x, game.camera_y)
 			game.getCurrentLevel().update(game.camera_x, game.camera_y)
+			for genie in game.genieList[game.levelCounter]:
+			 	genie.update(game.camera_x, game.camera_y)
 			
 
 			game.camera_x += ((player.rect.x+player.rect.width/2-game.screenWidth/2) - game.camera_x)/5
