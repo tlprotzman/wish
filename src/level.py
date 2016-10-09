@@ -8,6 +8,7 @@ class Level:
 		self.game = game
 		self.player = player
 		self.parallaxHeight = 0
+		self.parallaxImageHeight = 480 # this should be the height of the image martin made
 		if type(arrayOrFilename) == type("hello world"):
 			self.loadLevelFile(arrayOrFilename)
 		else:
@@ -56,8 +57,7 @@ class Level:
 		f = open(filename, "r")
 		lines = f.readlines()
 		firstLine = lines[0].split()
-		self.parallaxHeight = int(firstLine[0])*64
-		print(self.parallaxHeight/64)
+		self.parallaxHeight = float(firstLine[0])*64
 		self.levelArray = [line[:-1] for line in lines[1:]]
 		f.close()
 
@@ -78,7 +78,19 @@ class Level:
 		return self.backgrounds
 
 	def drawParallax(self, cameraX, cameraY):
-		self.window.blit(self.game.farParallax, (-cameraX*self.game.close_parallax_scale, self.parallaxHeight-self.game.screenHeight/2)) # -cameraY*self.game.close_parallax_scale
+		parallaxWidth = self.game.screenWidth-32
+		x = -((cameraX*self.game.far_parallax_scale)%(parallaxWidth))
+		# do the background one
+		self.window.blit(self.game.farParallax, (x, (self.parallaxHeight-self.game.screenHeight/2)-cameraY)) # -cameraY*self.game.close_parallax_scale
+		self.window.blit(self.game.farParallax, (x+parallaxWidth, (self.parallaxHeight-self.game.screenHeight/2)-cameraY))
+		self.window.blit(self.game.farParallax, (x+2*parallaxWidth, (self.parallaxHeight-self.game.screenHeight/2)-cameraY))
+		x = -((cameraX*self.game.close_parallax_scale)%(parallaxWidth))
+		# then do the foreground one
+		self.window.blit(self.game.closeParallax, (x, (self.parallaxHeight-self.game.screenHeight/2)-cameraY)) # -cameraY*self.game.close_parallax_scale
+		self.window.blit(self.game.closeParallax, (x+parallaxWidth, (self.parallaxHeight-self.game.screenHeight/2)-cameraY))
+		self.window.blit(self.game.closeParallax, (x+2*parallaxWidth, (self.parallaxHeight-self.game.screenHeight/2)-cameraY))
+		backgroundColor = (109, 99, 52)
+		pygame.draw.rect(self.window, backgroundColor, (0, (self.parallaxHeight-self.game.screenHeight/2)-cameraY+self.parallaxImageHeight, self.getLevelWidth(), self.getLevelHeight()))
 
 	def update(self, cameraX, cameraY):
 		if self.player.rect.right<0:
@@ -95,7 +107,6 @@ class Level:
 
 		# for tile in self.walls:
 		# 	tile.update(cameraX, cameraY)
-		self.drawParallax(cameraX, cameraY)
 		self.window.blit(self.staticTiles, (-cameraX, -cameraY))
 		for tile in self.backgrounds:
 			if tile.name=="Wave":

@@ -38,7 +38,9 @@ class Actor:
 
 		self.onGround = False
 		self.rect.x += self.velocity_x
+		self.collideX()
 		self.rect.y += self.velocity_y
+		self.collideY()
 
 		self.velocity_y += self.gravity
 		
@@ -79,27 +81,25 @@ class Actor:
 			print(self.jump_force_adjusted)
 			self.velocity_y = -self.jump_force_adjusted
 
-	def collide(self):
+	def collideX(self):
 		for wall in self.game.getCurrentLevel().getWalls():
-			if self.rect.right + self.velocity_x > wall.rect.left and self.rect.left + self.velocity_x < wall.rect.right:
-				# when you're colliding up/down
+			if self.rect.right+self.velocity_x > wall.rect.left and self.rect.left + self.velocity_x < wall.rect.right:
 				if self.rect.bottom <= wall.rect.top and self.rect.bottom + self.velocity_y > wall.rect.top:
 					self.velocity_y = 0
 					self.rect.bottom = wall.rect.top
 					self.onGround = True
 				if self.rect.top >= wall.rect.bottom and self.rect.top + self.velocity_y < wall.rect.bottom:
-					# you hit your head on something
 					self.velocity_y = 0
 					self.rect.top = wall.rect.bottom
-			if self.rect.top < wall.rect.bottom and self.rect.bottom > wall.rect.top:
-				# this is sideways collisions now
+	def collideY(self):
+		for wall in self.game.getCurrentLevel().getWalls():
+			if self.rect.top < wall.rect.bottom and self.rect.bottom  > wall.rect.top:
 				if self.rect.right <= wall.rect.left and self.rect.right + self.velocity_x + 1 > wall.rect.left:
-					# collided with the wall to the right
 					self.velocity_x = 0
-					self.rect.right = wall.rect.left -1
+					self.rect.right = wall.rect.left - 1
 				if self.rect.left >= wall.rect.right and self.rect.left + self.velocity_x - 1 <= wall.rect.right:
 					self.velocity_x = 0
-					self.rect.left = wall.rect.right + 2
+					self.rect.left = wall.rect.right+2
 	
 	def drawPlayer(self, cameraX, cameraY):
 		# if (self.deathTimer > 0 and self.deathTimer %2 == 0):
@@ -128,8 +128,7 @@ class Actor:
 			elif (self.velocity_x < 0):
 				self.window.blit(pygame.transform.flip((self.game.playerWalk[3-self.game.animation]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
 			else:
-				# I think this is the other death animation
-				self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y+1-cameraY))
+				self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 
 
 
@@ -193,7 +192,6 @@ class Actor:
 			self.AI()
 
 		self.movement()
-		self.collide()
 
 		if self.name == "Player":
 			self.drawPlayer(cameraX, cameraY)
