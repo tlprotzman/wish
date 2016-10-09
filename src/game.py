@@ -116,6 +116,9 @@ class Game:
 		self.genieLampL = pygame.image.load("../images/lampL.png")
 		
 		self.topHat = pygame.image.load("../images/topHat.png")
+		self.turban = pygame.image.load("../images/beanie.png")
+		
+		self.hatImage = self.topHat
 
 	def setPlayerType(self, playerType):
 		if playerType == 'simon':

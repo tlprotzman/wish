@@ -261,21 +261,21 @@ class Actor:
 						self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
 
 				
-			if (self.game.wishTable["tophat"][0]):
+			if (self.game.wishTable["tophat"][0] or self.game.wishTable["turban"][0]):
 				if (self.game.wishTable["amostrich"][0]):
 					if (self.direction==-1):
-						self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))
+						self.window.blit(pygame.transform.flip((self.game.hatImage), self.shouldFlip, False), (self.rect.x-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))
 					else:
-						self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+80-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))	
+						self.window.blit(pygame.transform.flip((self.game.hatImage), self.shouldFlip, False), (self.rect.x+80-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))	
 				elif (self.fightTimer<100):
 					if (self.direction==-1):
-						self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+16-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))
+						self.window.blit(pygame.transform.flip((self.game.hatImage), self.shouldFlip, False), (self.rect.x+16-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))
 					else:
-						self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+8-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))
+						self.window.blit(pygame.transform.flip((self.game.hatImage), self.shouldFlip, False), (self.rect.x+8-cameraX+self.direction*8, self.rect.y-48-cameraY-(math.floor(self.game.animation/2))*8))
 				elif (not self.onGround):
-					self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+8-cameraX+self.direction*8, self.rect.y-48-cameraY+8))
+					self.window.blit(pygame.transform.flip((self.game.hatImage), self.shouldFlip, False), (self.rect.x+8-cameraX+self.direction*8, self.rect.y-48-cameraY+8))
 				else:
-					self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+8-cameraX+self.direction*8, self.rect.y-48-cameraY+(1-math.floor(self.game.animation/2))*8))
+					self.window.blit(pygame.transform.flip((self.game.hatImage), self.shouldFlip, False), (self.rect.x+8-cameraX+self.direction*8, self.rect.y-48-cameraY+(1-math.floor(self.game.animation/2))*8))
 				
 				
 		
@@ -405,12 +405,12 @@ class Actor:
 
 	def update(self, cameraX, cameraY):
 		self.getInput()
-		self.grantWish()
 		self.die()
 		self.movement()
 		self.spiked()
 		self.attack()
 		self.drawPlayer(cameraX, cameraY)
+		self.grantWish()
 		if self.jumpDelay > 0:
 			self.jumpDelay -= 1
 		if self.game.wishTable['amsimon'][0] and self.game.currentCharacter != 'simon':
@@ -446,7 +446,9 @@ class Actor:
 			self.backwards = True
 		if self.game.wishTable["healthpack"][0]:
 			self.health +=50
-
+		if self.game.wishTable["turban"][0]:
+			self.game.wishTable["tophat"][0] = False
+			self.game.hatImage = self.game.turban
 
 
 
