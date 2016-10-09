@@ -8,7 +8,7 @@ class Actor:
 	def __init__(self, window, game, x, y, name, speed = 2, max_speed = 20, max_fall = 20, gravity = 1.3, friction = 1):
 		if name == "Player":
 			self.height = 18*8
-			self.jump_force = 40
+			self.jump_force = 45
 		else:
 			self.height = 56
 			self.jump_force = 15
@@ -58,7 +58,7 @@ class Actor:
 		if abs(self.velocity_y) > self.max_fall:
 			self.velocity_y = self.max_fall * sign(self.velocity_y)
 
-		print(abs(self.velocity_x))
+		#print(abs(self.velocity_x))
 	def getInput(self):
 		pressed = pygame.key.get_pressed()
 
@@ -75,7 +75,9 @@ class Actor:
 	# I excluded a section about screenwidth and the extra life
 	def jump(self):
 		if self.onGround:
-			self.velocity_y = -self.jump_force
+			self.jump_force_adjusted = self.jump_force + abs(self.velocity_x) * 2
+			print(self.jump_force_adjusted)
+			self.velocity_y = -self.jump_force_adjusted
 
 	def collide(self):
 		for wall in self.game.getCurrentLevel().getWalls():
