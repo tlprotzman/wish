@@ -5,17 +5,17 @@ desire?
 confetti
 doublejump
 amsimon
-                                                                                                                                            p
-                                                                                                                                            p
-                              C              T                                                                                              p
-                            SSSSS           SSS        T                                                                                    p
-                            |   |                     SSSSSSSSSSSSSSSSSSS  O                                                                 p
-                            |   |    T             SSSS   |             PPPPPPPPPPP  T                                       C              p
-                           SSSSSSSSSSSSSSSS               |               PPPPPPPPPPPPPP                                 SSSSSSSSS          p
-               SSSSSSSS     |        W  |                 |                     PPPPPPPPPP                                |     |           p
-                |    |      |           |                 |                      PPPPPPPPPP   PPP                         |     |           p
-       _    T   |    |      |           |                 |     T            C PPPPPPPPPPPP   PPPP    T           g       |     |           p
-PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP^^^PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
-PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
-PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
-PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP     PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
+                                                                                                                                            
+                                                                                                                                            
+                              C              T                                                                                              
+                            SSSSS           SSS        T                                                                                    
+                            |   |                     SSSSSSSSSSSSSSSSSSS  O                                                                
+                            |   |    T             SSSS   |             PPPPPPPPPPP  T                                       C              
+                           SSSSSSSSSSSSSSSS               |               PPPPPPPPPPPPPP                                 SSSSSSSSS          
+               SSSSSSSS     |        W  |                 |                     PPPPPPPPPP                                |     |           
+                |    |      |           |                 |                      PPPPPPPPPP   PPP                         |     |           
+       _    T   |    |      |           |                 |     T            C PPPPPPPPPPPP   PPPP    T           g       |     |           
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP^^^PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP     PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP

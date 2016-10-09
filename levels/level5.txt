@@ -12,7 +12,7 @@ regen
                                                                                                                                         SS 
                                                                                                                                         SS 
                                                                                                               S            C            SS 
-    G                                            S  C  S                                                      W            S            SS 
+     G                                           S  C  S                                                      W            S            SS 
     SSSS                                         SSSSSSS                                                                ^^^^^^^         SS 
                    SSSSS                                                                                    S           SSSSSSS         SS 
  _                             SSSSSS                                                                 S                                 SS 

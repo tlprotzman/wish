@@ -227,6 +227,9 @@ class Game:
 
 	def progressALevel(self):
 		self.levelCounter += 1
+		if self.levelCounter == 6:
+			pygame.quit()
+			return
 		self.currentLevel = self.levelList[self.levelCounter]
 
 	def animate(self):
