@@ -8,13 +8,20 @@ def sign(num):
 		return num/abs(num)
 
 class Actor:
-	def __init__(self, window, game, x, y, name, speed = 1, max_speed = 12, max_fall = 20, gravity = 1.3, friction = 0.5, health = 100):
+	def __init__(self, window, game, x, y, name, speed = 1, max_speed = 12, max_fall = 20, gravity = 1.3, friction = 0.5):
 		if name == "Player":
 			self.height = 16*8
 			self.jump_force = 45
-		else:
+			self.health = 100
+		elif name == "Ostrich":
 			self.height = 128
 			self.jump_force = 15
+			self.health = 50
+		elif name == "Bat":
+			self.height = 64
+			self.jump_force = 15
+			self.health = 25
+		
 
 		self.window = window
 		self.game = game
@@ -39,7 +46,6 @@ class Actor:
 		self.fightTimer = 100
 		self.isAttacking = False
 		self.wasRunning = False
-		self.health = health
 		self.deathTimer = 0
 		self.isAlive = True
 
@@ -218,42 +224,68 @@ class Actor:
 		else:
 			enemyFlip = False
 
-		if (self.velocity_x == 0):
-			if self.wasRunning == True:
-				self.rect.y -= 32
-				self.wasRunning = False
-				self.rect.width = 120
-				self.rect.height = 128
-			self.window.blit(pygame.transform.flip(self.game.enemyBreath[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
-		else:
-			self.rect.height = 96
-			self.rect.width = 136
-			self.wasRunning = True
-			self.window.blit(pygame.transform.flip(self.game.enemyRun[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
+		if self.name=="Ostrich":
+			if (self.velocity_x == 0):
+				if self.wasRunning == True:
+					self.rect.y -= 32
+					self.wasRunning = False
+					self.rect.width = 120
+					self.rect.height = 128
+				self.window.blit(pygame.transform.flip(self.game.enemyBreath[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
+			else:
+				self.rect.height = 96
+				self.rect.width = 136
+				self.wasRunning = True
+				self.window.blit(pygame.transform.flip(self.game.enemyRun[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
+		elif self.name=="Bat":
+			if self.velocity_x > 0:
+				enemyFlip = True
+			else:
+				enemyFlip = False
+			self.window.blit(pygame.transform.flip(self.game.batFly[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
+
+
 
 
 	def AI(self, facing, playerX, playerY):
 		# depends on what the type of creature is
 		if self.name == "Ostrich":
-			blockedRight = False
-			blockedLeft = False
+			if self.changeDirection == 50:	
+				if random.randint(1, 2) == 1:
+					self.facing = 'right'
+				else:
+					self.facing = 'left'
+				self.changeDirection = 0
+			else:
+				self.changeDirection += 1
+				blockedRight = False
+				blockedLeft = False
+				for wall in self.game.getCurrentLevel().getWalls():
+					if self.rect.top < wall.rect.bottom and self.rect.bottom > wall.rect.top:
+						if self.rect.right + 10 <= wall.rect.left and self.rect.right + 80 >= wall.rect.left:
+							blockedRight = True
+						if self.rect.left + -10 > wall.rect.right and self.rect.left - 80 < wall.rect.right:
+							blockedLeft = True
+				if facing == 'right':
+					if ((not blockedRight) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 300) and (0 < (playerX - (self.rect.x + self.rect.width / 2)) < 800)):
+						#print('wrk?')
+						self.velocity_x = 13
+					#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
+				if facing == 'left':
+					if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 300) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
+						#print('wrk?')
+						self.velocity_x = -13
+					#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
+		elif self.name == "Bat":
+			if self.onGround or self.rect.y > playerY:
+				self.velocity_y = random.randint(-8, -3)
+			self.velocity_x = sign(playerX - self.rect.x)*random.randint(4, 6)
 			for wall in self.game.getCurrentLevel().getWalls():
-				if self.rect.top < wall.rect.bottom and self.rect.bottom > wall.rect.top:
-					if self.rect.right + 10 <= wall.rect.left and self.rect.right + 80 >= wall.rect.left:
-						blockedRight = True
-					if self.rect.left + -10 > wall.rect.right and self.rect.left - 80 < wall.rect.right:
-						blockedLeft = True
-			if facing == 'right':
-				if ((not blockedRight) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 300) and (0 < (playerX - (self.rect.x + self.rect.width / 2)) < 800)):
-					#print('wrk?')
-					self.velocity_x = 13
-				#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
-			if facing == 'left':
-				if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 300) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
-					#print('wrk?')
-					self.velocity_x = -13
-				#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
-
+				if self.rect.top < wall.rect.bottom and self.rect.bottom  > wall.rect.top:
+					if self.rect.right - 5 <= wall.rect.left and self.rect.right + self.velocity_x + 2 > wall.rect.left:
+						self.velocity_x = 0
+					if self.rect.left + 5 >= wall.rect.right and self.rect.left + self.velocity_x - 1 <= wall.rect.right:
+						self.velocity_x = 0
 
 	def die(self):
 		if (self.deathTimer > 0):
@@ -277,19 +309,24 @@ class Actor:
 			self.health = 100
 
 	def enemyDamage(self, isBeingAttacked, damage, player):
+		if (player.direction==1):
+			d1 = 1
+		else:
+			d1 = 0
+		d2 = 1-d1
+		print(d1)
+		print(d2)
 		if (self.deathTimer > 0):
 			self.deathTimer -= 1
 		if (self.health <= 0) or (self.rect.y > self.game.getCurrentLevel().getLevelHeight() and self.deathTimer==0):
 			self.isAlive = False
 			self.rect.x = 0
 			self.rect.y = 0
-		playerHitBox = pygame.Rect(player.rect.x, player.rect.y, player.rect.width, player.rect.height)
+		playerHitBox = pygame.Rect(player.rect.x+d1*(player.rect.width-16)-d2*80, player.rect.y, 80, player.rect.height)
+		pygame.draw.rect(self.window, (255, 0, 0), playerHitBox)
 		if(self.deathTimer == 0 and self.health > 0 and isBeingAttacked and self.rect.colliderect(playerHitBox)):
 			self.health -= damage
 			deathTimer = 100
-
-
-
 
 	def update(self, cameraX, cameraY):
 		self.getInput()
@@ -304,14 +341,6 @@ class Actor:
 
 	def updateEnemy(self, cameraX, cameraY, playerX, playerY, isBeingAttacked, damage, player):
 		if self.isAlive:
-			if self.changeDirection == 50:	
-				if random.randint(1, 2) == 1:
-					self.facing = 'right'
-				else:
-					self.facing = 'left'
-				self.changeDirection = 0
-			else:
-				self.changeDirection += 1
 			self.movement()
 			print(self.health)
 			self.enemyDamage(isBeingAttacked, damage, player)
