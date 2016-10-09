@@ -34,6 +34,22 @@ class Level:
 					else:
 						tile = Tile(self.window, x, y, "Ground", self.game.dirtImage)
 					self.walls.append(tile)
+				elif item == "S":
+					if (round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="S" and round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="S"):
+						tile = Tile(self.window, x, y, "Ground", self.game.stoneCImage)
+					elif (round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="S"):
+						tile = Tile(self.window, x, y, "Ground", self.game.stoneRImage)
+					elif (round(x/64) > 0 and self.levelArray[round(y/64)][round(x/64)-1]!="S"):
+						tile = Tile(self.window, x, y, "Ground", self.game.stoneLImage)
+					else:
+						tile = Tile(self.window, x, y, "Ground", self.game.stoneImage)
+					self.walls.append(tile)
+				elif item == "|":
+					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]!="|":
+						tile = Tile(self.window, x, y, "Ground", self.game.pillarTImage)
+					else:
+						tile = Tile(self.window, x, y, "Ground", self.game.pillarImage)
+					self.walls.append(tile)
 				elif item == "H":
 					tile = Tile(self.window, x, y, "Hidden", self.game.waterImage)
 					self.walls.append(tile)

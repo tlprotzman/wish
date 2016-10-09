@@ -77,6 +77,12 @@ class Game:
 			self.groundLImage = pygame.image.load("../images/sandl.png")
 			self.groundRImage = pygame.image.load("../images/sandr.png")
 			self.dirtImage = pygame.image.load("../images/sanddeep.png")
+			self.stoneImage = pygame.image.load("../images/stone.png")
+			self.stoneLImage = pygame.image.load("../images/stonel.png")
+			self.stoneRImage = pygame.image.load("../images/stoner.png")
+			self.stoneCImage = pygame.image.load("../images/stonec.png")
+			self.pillarImage = pygame.image.load("../images/pillar.png")
+			self.pillarTImage = pygame.image.load("../images/pillart.png")
 		elif tileSet=="Snow":
 			self.groundImage = pygame.image.load("../images/snow.png")
 			self.groundLImage = pygame.image.load("../images/snowl.png")
