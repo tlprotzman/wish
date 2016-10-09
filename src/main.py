@@ -57,10 +57,9 @@ pygame.mixer.music.load("../audio/sondtrack.wav")
 def main():
 	game.setTileset("Grass")
 
-	levelsLocations = ["../levels/testlevel.txt",
-			 		   "../levels/testlevel2.txt",
-			 		   "../levels/tristanlevel1.txt",
-			 		   "../levels/jordanIntroLevel1.txt"]
+	levelsLocations = ["../levels/level1.txt",
+			 		   "../levels/level2.txt",
+			 		   "../levels/tristanlevel1.txt"]
 	# game.enemyList.append([Actor(window, game, 200, 300, 'Ostrich')])
 	for level in levelsLocations:
 		game.levelList.append(Level(game, player, window, level))
