@@ -101,10 +101,16 @@ class Level:
 		# lighting here:
 		# this first one is darkness the size of the screen
 		self.darknessMap = pygame.Surface((self.game.screenWidth, self.game.screenHeight))
-		self.darknessMap.fill((0, 0, 0, 100))
-		self.torchMap = pygame.Surface((256, 256))
-		pygame.draw.circle(self.torchMap, (255, 255, 255, 100), (128, 128), 128)
+		self.darknessMap.fill((0, 0, 0))
+		self.torchR = 128
+		self.torchMap = pygame.Surface((self.torchR*2, self.torchR*2))
+		pygame.draw.circle(self.torchMap, (255, 255, 255), (128, 128), 128)
+		self.torchMap.set_alpha(25)
+		self.darknessMap.set_alpha(100)
 		self.torchMap.set_colorkey((0,0,0))
+		self.torchImage = pygame.image.load("../images/torch.png")
+		self.makeFullLightMap()
+		#self.torchImage.set_colorkey(255, 255, 255)
 
 	def loadLevelFile(self, filename):
 		f = open(filename, "r")
@@ -134,11 +140,19 @@ class Level:
 	def getBackgrounds(self):
 		return self.backgrounds
 
-	def drawLights(self, cameraX, cameraY):
-		self.window.blit(self.darknessMap, (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+	def makeFullLightMap(self):
+		self.fullLightingMap = pygame.Surface((self.game.getCurrentLevel().getLevelWidth(), self.game.getCurrentLevel().getLevelHeight()))
 		for torch in self.lightSources:
-			self.window.blit(self.torchMap, (torch[0]-cameraX, torch[1]-cameraY))
+			self.fullLightingMap.blit(self.torchMap, (torch[0]-self.torchR+6, torch[1]-self.torchR+48))
 
+	def drawFullLightMap(self):
+		self.window.blit(self.fullLightingMap, (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+
+	def drawLights(self, cameraX, cameraY):
+		self.drawFullLightMap():
+		# for torch in self.lightSources:
+		# 	self.darknessMap.blit(self.torchMap, map(lambda x: x-self.torchR, (torch[0]-cameraX-self.torchR+6, torch[1]-cameraY-self.torchR+48)))
+		# self.window.blit(self.darknessMap, (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
 
 	def drawParallax(self, cameraX, cameraY):
 		parallaxWidth = self.game.screenWidth-32
