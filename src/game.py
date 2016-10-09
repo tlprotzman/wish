@@ -8,6 +8,7 @@ class Game:
 		self.levelList = []
 		self.levelCounter = 0
 		self.enemyList = []
+		self.genieList = []
 		self.nameList = []
 		self.life = 3
 		self.animation = 0
@@ -15,7 +16,7 @@ class Game:
 		self.window = window
 		self.screenHeight = screenHeight
 		self.screenWidth = screenWidth
-		self.camera_x = screenWidth/2
+		self.camera_x = 0
 		self.camera_y = 0
 		self.close_parallax_scale = .25
 		self.far_parallax_scale = .1
@@ -42,12 +43,34 @@ class Game:
 						   pygame.image.load("../images/player-run-4.png")]
 
 		self.playerJump = pygame.image.load("../images/player-run-1.png")
+		self.knife = [pygame.image.load("../images/weapon-1.png"),
+					  pygame.image.load("../images/weapon-2.png")]
 
 		self.enemyBreath = [pygame.image.load("../images/enemy1.png"),
 							pygame.image.load("../images/enemy2.png")]
 		self.enemyJump = pygame.image.load("../images/enemy3.png")
 		self.farParallax = pygame.image.load("../images/blue_parallax.png")
 		self.closeParallax = pygame.image.load("../images/color_parallax.png")
+
+		# Genie images:
+		self.genieAppearR = [pygame.image.load("../images/genie-appear-1R.png"),
+							pygame.image.load("../images/genie-appear-2R.png"),
+							pygame.image.load("../images/genie-appear-3R.png"),
+							pygame.image.load("../images/genie-appear-4R.png"),]
+		self.genieIdleR = [pygame.image.load("../images/genie-idle-1R.png"),
+							pygame.image.load("../images/genie-idle-2R.png"),
+							pygame.image.load("../images/genie-idle-3R.png"),
+							pygame.image.load("../images/genie-idle-4R.png"),]
+		self.genieLampR = pygame.image.load("../images/lampR.png")
+		self.genieAppearL = [pygame.image.load("../images/genie-appear-1L.png"),
+							pygame.image.load("../images/genie-appear-2L.png"),
+							pygame.image.load("../images/genie-appear-3L.png"),
+							pygame.image.load("../images/genie-appear-4L.png"),]
+		self.genieIdleL = [pygame.image.load("../images/genie-idle-1L.png"),
+							pygame.image.load("../images/genie-idle-2L.png"),
+							pygame.image.load("../images/genie-idle-3L.png"),
+							pygame.image.load("../images/genie-idle-4L.png"),]
+		self.genieLampL = pygame.image.load("../images/lampL.png")
 
 
 
@@ -83,6 +106,7 @@ class Game:
 			self.stoneCImage = pygame.image.load("../images/stonec.png")
 			self.pillarImage = pygame.image.load("../images/pillar.png")
 			self.pillarTImage = pygame.image.load("../images/pillart.png")
+			self.spikeImage = pygame.image.load("../images/spikes.png")
 		elif tileSet=="Snow":
 			self.groundImage = pygame.image.load("../images/snow.png")
 			self.groundLImage = pygame.image.load("../images/snowl.png")

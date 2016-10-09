@@ -2,7 +2,10 @@
 import pygame, math, random
 
 def sign(num):
-	return num/abs(num)
+	if (num==0):
+		return 0
+	else:
+		return num/abs(num)
 
 class Actor:
 	def __init__(self, window, game, x, y, name, speed = 1, max_speed = 12, max_fall = 20, gravity = 1.3, friction = 0.5):
@@ -32,6 +35,8 @@ class Actor:
 		self.shouldFlip = False
 		self.facing = 'right'
 		self.changeDirection = 0
+		self.direction = 1
+
 
 	def movement(self):
 		f = self.friction
@@ -96,9 +101,9 @@ class Actor:
 	def collideY(self):
 		for wall in self.game.getCurrentLevel().getWalls():
 			if self.rect.top < wall.rect.bottom and self.rect.bottom  > wall.rect.top:
-				if self.rect.right <= wall.rect.left and self.rect.right + self.velocity_x + 1 > wall.rect.left:
+				if self.rect.right <= wall.rect.left and self.rect.right + self.velocity_x + 2 > wall.rect.left:
 					self.velocity_x = 0
-					self.rect.right = wall.rect.left - 1
+					self.rect.right = wall.rect.left - 2
 				if self.rect.left >= wall.rect.right and self.rect.left + self.velocity_x - 1 <= wall.rect.right:
 					self.velocity_x = 0
 					self.rect.left = wall.rect.right+2
@@ -117,8 +122,10 @@ class Actor:
 			
 			if self.velocity_x < 0:
 				self.shouldFlip = True
+				self.direction = -1
 			elif self.velocity_x > 0:
 				self.shouldFlip = False
+				self.direction = 1
 
 			if (self.onGround and self.velocity_x == 0):
 				# this is breath
@@ -131,8 +138,18 @@ class Actor:
 				self.window.blit(pygame.transform.flip((self.game.playerWalk[3-self.game.animation]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
 			else:
 				self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y-16-cameraY))
+		
+			if self.direction==1:
+				self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-16-cameraX, self.rect.y-8-cameraY))
+			else:
+				if self.velocity_x < 0:
+					self.window.blit(pygame.transform.flip((self.game.knife[1-math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
+				else:
+					self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
 
-
+				
+			
+		
 
 		# come back to this
 
