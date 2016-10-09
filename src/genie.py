@@ -5,7 +5,8 @@ import word
 
 
 class Genie:
-	def __init__(self, window, game, player, x, y, wishChoices):
+	def __init__(self, window, game, player, x, y, wishChoices, facingLeft = True):
+		self.leftFacing = facingLeft
 		self.window = window
 		self.player = player
 		self.wishChoices = wishChoices
