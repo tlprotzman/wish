@@ -1,4 +1,5 @@
 import pygame
+pygame.font.init()
 
 class Game:
 	def __init__(self, window, screenHeight, screenWidth):
@@ -20,6 +21,7 @@ class Game:
 		self.camera_y = 0
 		self.close_parallax_scale = .25
 		self.far_parallax_scale = .1
+		self.font = pygame.font.Font("../fonts/joystixMonospace.ttf", size)
 
 
 
