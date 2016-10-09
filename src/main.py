@@ -23,7 +23,7 @@ pygame.mixer.music.load("../audio/sondtrack.wav")
 
 wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a double jump"]],
 			 "tophat":[False, "for a snazzy hat", ["You now have", "the snazziest hat"]],
-			 "knife":[False, "i could kill people", ["Congrats, press j", "to murder!"]],
+			 "knife":[True, "i could kill people", ["Congrats, press j", "to murder!"]],
 			 "ostrich":[False, "for friends", ["Be free, handsome one"]],
 			 "healthpack":[False, "for more health", ["Stay safe out", "there!"]],
 			 "spikeimmune":[False, "to be spikeproof", ["A late night", "roundevous with", "a cactus?"]],
