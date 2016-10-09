@@ -35,7 +35,7 @@ def main():
 	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
 	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP", ]))
 
-	game.levelList.append(Level(game, player, window,"testlevel.txt"))
+	game.levelList.append(Level(game, player, window,"../levels/testlevel.txt"))
 
 	game.setCurrentLevel(game.levelList[0])
 
