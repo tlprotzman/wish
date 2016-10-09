@@ -120,6 +120,7 @@ class Level:
 		self.torchMap.set_colorkey((0,0,0))
 		self.torchImage = pygame.image.load("../images/torchmap.png")
 		self.makeFullLightMap()
+		self.setupParallax()
 		#self.torchImage.set_colorkey(255, 255, 255)
 
 	def loadLevelFile(self, filename):
@@ -171,7 +172,32 @@ class Level:
 		# 	self.darknessMap.blit(self.torchImage, (torch[0]-cameraX-self.torchR+6, torch[1]-cameraY-self.torchR+48))
 		# self.window.blit(self.darknessMap, (0, 0))#, special_flags=pygame.BLEND_RGBA_SUB)
 
+	def setupParallax(self):
+		self.parallaxWidth = self.game.screenWidth-32
+		self.parallaxDrawHeight = self.parallaxHeight - self.game.screenHeight/2
+
+		# then set up the close parallax
+		self.completeCloseParallax = pygame.Surface((3*self.parallaxWidth, self.parallaxImageHeight))
+		self.completeCloseParallax.set_colorkey((0,0,0))
+		self.completeCloseParallax.blit(self.game.closeParallax, (0, 0))
+		self.completeCloseParallax.blit(self.game.closeParallax, (self.parallaxWidth, 0))
+		self.completeCloseParallax.blit(self.game.closeParallax, (self.parallaxWidth*2, 0))
+
+		# then set up the far parallax
+		self.completeFarParallax = pygame.Surface((3*self.parallaxWidth, self.parallaxHeight))
+		self.completeFarParallax.set_colorkey((0,0,0))
+		self.completeFarParallax.blit(self.game.farParallax, (0, 0))
+		self.completeFarParallax.blit(self.game.farParallax, (self.parallaxWidth, 0))
+		self.completeFarParallax.blit(self.game.farParallax, (self.parallaxWidth*2, 0))
+
 	def drawParallax(self, cameraX, cameraY):
+		closeX = -((cameraX*self.game.close_parallax_scale)%(self.parallaxWidth))
+		farX = -((cameraX*self.game.far_parallax_scale)%(self.parallaxWidth))
+		self.window.blit(self.completeFarParallax, (farX, self.parallaxDrawHeight-cameraY))
+		self.window.blit(self.completeCloseParallax, (closeX, self.parallaxDrawHeight-cameraY))
+		self.window.blit(self.belowGroundBackground, (0, (self.parallaxHeight-self.game.screenHeight/2)-cameraY+self.parallaxImageHeight))
+
+	def drawParallaxOLD(self, cameraX, cameraY):
 		parallaxWidth = self.game.screenWidth-32
 		x = -((cameraX*self.game.far_parallax_scale)%(parallaxWidth))
 		# do the background one
