@@ -121,6 +121,7 @@ class Level:
 		self.torchImage = pygame.image.load("../images/torchmap.png")
 		self.makeFullLightMap()
 		self.setupParallax()
+		self.setupStars()
 		#self.torchImage.set_colorkey(255, 255, 255)
 
 	def loadLevelFile(self, filename):
