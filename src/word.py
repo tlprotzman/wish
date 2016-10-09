@@ -12,3 +12,5 @@ class Word:
 	def update(self):
 		self.window.blit(self.text, (self.rect.x, self.rect.y))
 		
+	def drawAt(self, cameraX, cameraY):
+		self.window.blit(self.text, (self.rect.x-cameraX, self.rect.y-cameraY))
