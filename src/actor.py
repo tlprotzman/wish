@@ -38,7 +38,7 @@ class Actor:
 		self.direction = 1
 		self.fightTimer = 0
 		self.isAttacking = False
-
+		self.wasRunning = False
 
 	def movement(self):
 		f = self.friction
@@ -170,10 +170,14 @@ class Actor:
 			enemyFlip = False
 
 		if (self.velocity_x == 0):
+			if self.wasRunning == True:
+				self.rect.y -= 32
+				self.wasRunning = False
 			self.rect.height = 128
 			self.window.blit(pygame.transform.flip(self.game.enemyBreath[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
 		else:
 			self.rect.height = 96
+			self.wasRunning = True
 			self.window.blit(pygame.transform.flip(self.game.enemyRun[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
 
 
@@ -229,7 +233,7 @@ class Actor:
 		# print("Velocities: ", self.velocity_x, self.velocity_y)
 
 	def updateEnemy(self, cameraX, cameraY, playerX, playerY):
-		if self.changeDirection == 50:	
+		if self.changeDirection == 25:	
 			if random.randint(1, 2) == 1:
 				self.facing = 'right'
 			else:
