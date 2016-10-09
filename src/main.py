@@ -67,7 +67,7 @@ def main():
 			if game.camera_x > game.getCurrentLevel().getLevelWidth()-game.screenWidth:
 				game.camera_x = game.getCurrentLevel().getLevelWidth()-game.screenWidth
 			
-			print(player.rect.x+player.rect.width/2)
+			# print(player.rect.x+player.rect.width/2)
 
 			# game.levelTitle.update()
 			# game.drawLives()

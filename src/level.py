@@ -7,7 +7,7 @@ class Level:
 		self.window = window
 		self.game = game
 		self.player = player
-		if type(arrayOrFilename) == "string":
+		if type(arrayOrFilename) == type("hello world"):
 			self.loadLevelFile(arrayOrFilename)
 		else:
 			self.levelArray = arrayOrFilename
@@ -52,7 +52,7 @@ class Level:
 		self.makeBackgroundImage()
 
 	def loadLevelFile(self, filename):
-		f = open(filename, "rb")
+		f = open(filename, "r")
 		self.levelArray = [line[:-1] for line in f.readlines()]
 		f.close()
 
