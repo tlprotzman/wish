@@ -14,6 +14,7 @@ backgroundColor = (49, 27, 146)
 window = pygame.display.set_mode((screenWidth, screenHeight))
 game = Game(window, screenHeight, screenWidth)
 player = Actor(window, game, 95, 200, "Player")
+
 '''
 pygame.mixer.init()
 pygame.mixer.music.load("../audio/sondtrack.wav")
@@ -54,6 +55,7 @@ def main():
 			window.fill(backgroundColor)
 			# for enemy in game.enemyList[game.levelCounter]:
 			# 	enemy.update()
+			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
 			player.update(game.camera_x, game.camera_y)
 			game.getCurrentLevel().update(game.camera_x, game.camera_y)
 			
@@ -72,7 +74,7 @@ def main():
 			# 	game.camera_y = 0
 
 			if game.camera_y > game.getCurrentLevel().getLevelHeight()-game.screenHeight:
-					game.camera_Y = game.getCurrentLevel().getLevelHeight()-game.screenHeight
+				game.camera_Y = game.getCurrentLevel().getLevelHeight()-game.screenHeight
 			# print(player.rect.x+player.rect.width/2)
 
 			# game.levelTitle.update()
