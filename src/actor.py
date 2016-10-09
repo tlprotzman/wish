@@ -169,10 +169,12 @@ class Actor:
 		else:
 			enemyFlip = False
 
-		if (self.onGround and self.velocity_x == 0):
-			self.window.blit(pygame.transform.flip(self.game.enemyBreath[math.floor(self.game.animation/2)], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
+		if (self.velocity_x == 0):
+			self.rect.height = 128
+			self.window.blit(pygame.transform.flip(self.game.enemyBreath[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
 		else:
-			self.window.blit(pygame.transform.flip(self.game.enemyJump, enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
+			self.rect.height = 96
+			self.window.blit(pygame.transform.flip(self.game.enemyRun[self.game.animation], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
 
 
 	def AI(self, facing, playerX, playerY):
