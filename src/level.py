@@ -151,6 +151,8 @@ class Level:
 		return self.backgrounds
 
 	def makeFullLightMap(self):
+		self.tallDarkness = pygame.Surface((self.getLevelWidth(), self.getLevelHeight()/2))
+		self.tallDarkness.fill((50, 50, 50))
 		self.torchImage = pygame.transform.scale(self.torchImage, (4*self.torchR, 4*self.torchR))
 		print("CREATED LIGHTING MAP")
 		self.fullLightingMap = pygame.Surface((self.getLevelWidth(), self.getLevelHeight()))
@@ -161,6 +163,7 @@ class Level:
 
 	def drawFullLightMap(self, cameraX, cameraY):
 		self.window.blit(self.fullLightingMap, (0-cameraX, 0-cameraY) , special_flags=pygame.BLEND_RGBA_SUB)
+		self.window.blit(self.tallDarkness, (0-cameraX, -self.getLevelHeight()/2-cameraY-1) , special_flags=pygame.BLEND_RGBA_SUB)
 
 	def drawLights(self, cameraX, cameraY):
 		self.drawFullLightMap(cameraX, cameraY)
