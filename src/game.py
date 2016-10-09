@@ -2,6 +2,7 @@ import pygame
 from word import Word
 from particles import Particle
 pygame.font.init()
+import random
 
 class Game:
 	def __init__(self, window, screenHeight, screenWidth):
@@ -13,6 +14,7 @@ class Game:
 		self.enemyList = []
 		self.genieList = []
 		self.nameList = []
+		self.particles = []
 		self.wishTable = {} # this should be overwritten
 		self.life = 0
 		self.coins = 0
@@ -162,7 +164,8 @@ class Game:
 
 		self.particles = []
 		
-		
+	def addParticle(self, x, y, color, lifespan):
+		self.particles += [Particle(self, self.window, x, y, color, lifespan)]
 		
 	def setPlayerType(self, playerType):
 		if playerType == 'simon':
@@ -206,10 +209,11 @@ class Game:
 
 			self.playerJump = pygame.image.load("../images/ostrich-run-1.png")
 
-	def makeParticles(self, x, y, color, count):
+	def makeParticles(self, x, y, color, count, lifespan, velocity=20):
 		for i in range (0, count):
 			if len(self.particles) < 250:
-				self.particles.append(Particle(self, self.window, x, y, color))
+				vel = velocity + random.randint(-5, 5)
+				self.particles.append(Particle(self, self.window, x, y, color, lifespan, vel))
 			
 	def setCurrentLevel(self, newLevel):
 		self.currentLevel = newLevel

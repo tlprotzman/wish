@@ -1,0 +1,21 @@
+8
+2
+What do you
+desire?
+healthpack
+doublejump
+amsimon
+                                                                                                                                            p
+                                                                                                                                            p
+                              C              T                                                                                              p
+                            SSSSS           SSS        T                                                                                    p
+                            |   |                     SSSSSSSSSSSSSSSSSSS                                                                   p
+                            |   |    T             SSSS   |             PPPPPPPPPPP                                                         p
+                           SSSSSSSSSSSSSSSS               |               PPPPPPPPPPPPPP                                 SSSSSSSSS          p
+               SSSSSSSS     |        W  |                 |                     PPPPPPPPPPPPP                             |     |           p
+                |    |      |           |                 |                      PPPPPPPPPPPPPPPP                         |     |           p
+       _    T   |    |      |           |                 |     T            C PPPPPPPPPPPPPPPPPPP    T           g       |     |           p
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP     PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp

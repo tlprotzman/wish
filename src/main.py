@@ -29,7 +29,8 @@ wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a doubl
 			 "lowgravity":[False, "be an astronaut!", ["Hope you make", "it to the moon!"]],
 			 "backwards":[False, "it was last theme", ["more", "words"]],
 			 "amsimon":[False, "to include", ["He couldn't be here", "in person, but", "he's here in spirit"]],
-			 "regen":[True, "words about regen", ["I hope you like", "regenerating health"]]
+			 "regen":[False, "words about regen", ["I hope you like", "regenerating health"]],
+			 "confetti":[True, "spread love and joy", ["Spread happy -", "be happy"]],
 			}
 
 
@@ -78,6 +79,7 @@ def main():
 
 		if game.gameState == 'PLAYING':
 			window.fill(backgroundColor)
+			# parallax
 			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
 			player.update(game.camera_x, game.camera_y)
 			for enemy in game.enemyList[game.levelCounter]:
@@ -88,7 +90,14 @@ def main():
 			game.getCurrentLevel().update(game.camera_x, game.camera_y)
 			for genie in game.genieList[game.levelCounter]:
 			 	genie.update(game.camera_x, game.camera_y)
+			# lights
 			game.getCurrentLevel().drawLights(game.camera_x, game.camera_y)
+			# particles:
+			for i in range(len(game.particles)):
+				particle = game.particles[i]
+				particle.update(game.camera_x, game.camera_y)
+			game.particles = [p for p in game.particles if p.timeAlive > 0] # destroy dead ones
+
 
 			game.camera_x += ((player.rect.x+player.rect.width/2-game.screenWidth/2) - game.camera_x)/5
 

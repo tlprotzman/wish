@@ -138,8 +138,13 @@ class Actor:
 			self.rect.x = self.game.getCurrentLevel().getLevelWidth()+1
 		if pressed[pygame.K_i]:
 			self.cheat = False
+		if pressed[pygame.K_c]:
+			self.game.makeParticles(self.rect.x+self.rect.width/2, self.rect.y+self.rect.height/2, (1,1,1), 10, 100)
 
 		# handling actor movements and random stuff
+		if pressed[pygame.K_c]:
+			if self.game.wishTable["confetti"][0]:
+				self.game.makeParticles(self.rect.x+self.rect.width/2, self.rect.y+self.rect.height/2, (1,1,1), 10, 10)
 		if not self.backwards:
 			if pressed[pygame.K_a]:
 				self.velocity_x -= self.speed
@@ -369,16 +374,16 @@ class Actor:
 				if facing == 'right':
 					if ((not blockedRight) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 400) and (0 < (playerX - (self.rect.x + self.rect.width / 2)) < 800)):
 						#print('wrk?')
+
 						if self.velocity_x == 0:
 							self.game.ostrichEffect.play()
-						self.velocity_x = 13
+						self.velocity_x = 14
 					#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 				if facing == 'left':
 					if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 400) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
-						#print('wrk?')
 						if self.velocity_x == 0:
 							self.game.ostrichEffect.play()
-						self.velocity_x = -13
+						self.velocity_x = -14
 					#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 		elif self.name == "Bat":
 			if self.onGround or self.rect.y > playerY:
@@ -478,6 +483,7 @@ class Actor:
 				
 
 	def grantWish(self):
+		self.game.makeParticles(self.rect.x + self.rect.width/2, self.rect.y + self.rect.height/2, (1,1,1), 1000, 100, 20)
 		if self.game.wishTable["lowgravity"][0]:
 			self.gravity = 0.4
 		if self.game.wishTable["fasterrunning"][0]:
