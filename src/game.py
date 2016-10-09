@@ -114,6 +114,8 @@ class Game:
 							pygame.image.load("../images/genie-idle-3L.png"),
 							pygame.image.load("../images/genie-idle-4L.png"),]
 		self.genieLampL = pygame.image.load("../images/lampL.png")
+		
+		self.topHat = pygame.image.load("../images/topHat.png")
 
 	def setPlayerType(self, playerType):
 		if playerType == 'simon':

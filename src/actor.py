@@ -248,7 +248,13 @@ class Actor:
 						self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
 
 				
-			
+			if (self.game.wishTable["tophat"][0]):
+				if (self.direction==-1 and self.fightTimer<100):
+					self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+16-cameraX+self.direction*8, self.rect.y-48-cameraY+(1-math.floor(self.game.animation/2))*8))
+				else:
+					self.window.blit(pygame.transform.flip((self.game.topHat), self.shouldFlip, False), (self.rect.x+8-cameraX+self.direction*8, self.rect.y-48-cameraY+(1-math.floor(self.game.animation/2))*8))
+				
+				
 		
 
 		# come back to this
