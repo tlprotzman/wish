@@ -1,5 +1,5 @@
 
-import pygame, math
+import pygame, math, random
 
 def sign(num):
 	if (num==0):
@@ -33,9 +33,12 @@ class Actor:
 		self.name = name
 		self.deathTimer = 0
 		self.shouldFlip = False
+		self.facing = 'right'
+		self.changeDirection = 0
 		self.direction = 1
 		self.fightTimer = 0
 		self.isAttacking = False
+
 
 	def movement(self):
 		f = self.friction
@@ -160,34 +163,40 @@ class Actor:
 		# come back to this
 
 
-	def drawEnemy(self):
-		# come back to this too!
-		pass
+	def drawEnemy(self, cameraX, cameraY, facing):
+		if facing == 'right':
+			enemyFlip = True
+		else:
+			enemyFlip = False
+
+		if (self.onGround and self.velocity_x == 0):
+			self.window.blit(pygame.transform.flip(self.game.enemyBreath[math.floor(self.game.animation/2)], enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
+		else:
+			self.window.blit(pygame.transform.flip(self.game.enemyJump, enemyFlip, False), (self.rect.x - cameraX, self.rect.y - cameraY))
 
 
-	def AI(self):
+	def AI(self, facing, playerX, playerY):
 		# depends on what the type of creature is
 		if self.name == "Ostrich":
-			if random.randint(1, 40) == 1 and self.onGround:
-				self.jump()
-				blockedRight = False
-				blockedLeft = False
-				for wall in self.game.getCurrentLevel().getWalls():
-					if self.rect.top < wall.rect.bottom and self.rect.bottom > wall.rect.top:
-						if self.rect.right + 10 <= wall.rect.left and self.rect.right + 80 >= wall.rect.left:
-							blockedRight = True
-						if self.rect.left + -10 > wall.rect.right and self.rect.left - 80 < wall.rect.right:
-							blockedLeft = True
-				if random.randint(1,2)==1:
-					if not blockedLeft:
-						self.velocity_x = -5
-					elif not blockedRight:
-						self.velocity_x = 5
-				else:
-					if not blockedRight:
-						self.velocity_x = 5
-					elif not blockedLeft:
-						self.velocity_x = -5
+			blockedRight = False
+			blockedLeft = False
+			for wall in self.game.getCurrentLevel().getWalls():
+				if self.rect.top < wall.rect.bottom and self.rect.bottom > wall.rect.top:
+					if self.rect.right + 10 <= wall.rect.left and self.rect.right + 80 >= wall.rect.left:
+						blockedRight = True
+					if self.rect.left + -10 > wall.rect.right and self.rect.left - 80 < wall.rect.right:
+						blockedLeft = True
+			if facing == 'right':
+				if ((not blockedRight) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 300) and (0 < (playerX - (self.rect.x + self.rect.width / 2)) < 800)):
+					print('wrk?')
+					self.velocity_x = 13
+				print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
+			if facing == 'left':
+				if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 300) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
+					print('wrk?')
+					self.velocity_x = -13
+				print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
+
 
 	def die(self):
 		self.deathTimer = 0
@@ -200,30 +209,35 @@ class Actor:
 			self.game.life += 1
 		else:
 			pass
-			# for enemy in self.game.enemyList[self.game.levelCounter]:
-			# 	if self.rect.colliderect(enemy) and self.deathTimer == 0:
-			# 		self.deathTimer = 50
-			# 		print("We need to have the user move back to the respawn point!")
-					# self.rect.x = 32
-		            # self.rect.y = 0
-					# self.game.life += 1
+			for enemy in self.game.enemyList[self.game.levelCounter]:
+				if self.rect.colliderect(enemy) and self.deathTimer == 0:
+					self.deathTimer = 50
+					print("We need to have the user move back to the respawn point!")
+					self.rect.x = 32
+					self.rect.y = 0
+					self.game.life += 1
 
 
 	def update(self, cameraX, cameraY):
-		if self.name == "Player":
-			self.getInput()
-			self.die()
-		else:
-			self.AI()
-
+		self.getInput()
+		self.die()
 		self.movement()
-
-		if self.name == "Player":
-			self.drawPlayer(cameraX, cameraY)
-		else:
-			self.drawEnemy()
+		self.drawPlayer(cameraX, cameraY)
 		# print("Location: ", self.rect.x, self.rect.y)
 		# print("Velocities: ", self.velocity_x, self.velocity_y)
+
+	def updateEnemy(self, cameraX, cameraY, playerX, playerY):
+		if self.changeDirection == 50:	
+			if random.randint(1, 2) == 1:
+				self.facing = 'right'
+			else:
+				self.facing = 'left'
+			self.changeDirection = 0
+		else:
+			self.changeDirection += 1
+		self.movement()
+		self.AI(self.facing, playerX, playerY)
+		self.drawEnemy(cameraX, cameraY, self.facing)
 
 
 

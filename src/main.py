@@ -23,19 +23,8 @@ pygame.mixer.music.load("../audio/sondtrack.wav")
 
 def main():
 	game.setTileset("Grass")
-	# game.levelList.append(Level(game, player, window,
-	# 			d			["                                            ",
-	# 						"                                            ",
-	# 						"                                            ",
-	# 						"                            PPP             ",
-	# 						"           PPP               P              ",
-	# 						"                             P              ",
-	# 						"                             P              ",
-	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP", ]))
 
+	game.enemyList.append([Actor(window, game, 200, 400, 'Ostrich')])
 	game.levelList.append(Level(game, player, window,"../levels/testlevel.txt"))
 	wishes = ["Nope", "Just kidding", "Yada Yada"]
 	game.genieList.append([Genie(window, game, player, 320, 361, wishes, True)])
@@ -56,13 +45,14 @@ def main():
 
 		if game.gameState == 'PLAYING':
 			window.fill(backgroundColor)
-			# for enemy in game.enemyList[game.levelCounter]:
-			# 	enemy.update()
 			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
+
+			player.update(game.camera_x, game.camera_y)
+			for enemy in game.enemyList[game.levelCounter]:
+			 	enemy.updateEnemy(game.camera_x, game.camera_y, player.rect.x+player.rect.width/2, player.rect.y+player.rect.height/2)
 			game.getCurrentLevel().update(game.camera_x, game.camera_y)
 			for genie in game.genieList[game.levelCounter]:
 			 	genie.update(game.camera_x, game.camera_y)
-			player.update(game.camera_x, game.camera_y)
 			
 
 			game.camera_x += ((player.rect.x+player.rect.width/2-game.screenWidth/2) - game.camera_x)/5
