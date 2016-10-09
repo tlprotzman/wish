@@ -54,6 +54,8 @@ class Actor:
 		# this is for preventing skipping all levels on one press by accident
 		self.cheat = False
 		self.coins = 0
+		self.coinsThisRun = 0
+		self.resetLevel = False
 
 
 
@@ -87,6 +89,7 @@ class Actor:
 
 		# this is level progression:
 		if self.rect.x > self.game.getCurrentLevel().getLevelWidth():
+			self.coinsThisRun = 0
 			self.game.progressALevel()
 			self.rect.x = self.game.getCurrentLevel().spawnX
 			self.rect.y = self.game.getCurrentLevel().spawnY
@@ -103,8 +106,10 @@ class Actor:
 			if coin.name == "Coin" and self.rect.colliderect(coin.getRect()):
 				self.game.getCurrentLevel().getBackgrounds().remove(coin)
 				self.coins += 1
+				self.coinsThisRun += 1
 				self.game.coins = self.coins
 				self.game.coinEffect.play()
+
 
 	def getHealth(self):
 		for health in self.game.getCurrentLevel().getBackgrounds():
@@ -401,7 +406,7 @@ class Actor:
 				self.name = "Bat"
 			
 
-	def die(self):
+	def die(self, spawnX, spawnY):
 		if (self.deathTimer > 0):
 			self.deathTimer -= 1
 		if self.rect.y > self.game.getCurrentLevel().getLevelHeight():
@@ -418,9 +423,17 @@ class Actor:
 		if self.health <= 0:
 			self.deathTimer = 100
 			print("We need to have the user move back to the respawn point!")
-			self.rect.x = 32
-			self.rect.y = 0
+			self.game.setCurrentLevel(self.game.getCurrentLevel())
 			self.health = 100
+			self.coins -= self.coinsThisRun
+			self.coinsThisRun = 0
+			self.game.coins = self.coins
+			self.resetLevel = True
+			self.rect.x = spawnX
+			self.rect.y = spawnY
+
+	def resetLevelFalse(self):
+		self.resetLevel = False
 
 	def enemyDamage(self, isBeingAttacked, damage, player):
 		if (player.direction==1):
@@ -445,12 +458,12 @@ class Actor:
 			self.health -= damage
 			deathTimer = 100
 
-	def update(self, cameraX, cameraY):
+	def update(self, cameraX, cameraY, spawnX, spawnY):
 		if self.game.wishTable["regen"][0]:
 			if self.health < 100:
 				self.health += .1
 		self.getInput()
-		self.die()
+		self.die(spawnX, spawnY)
 		self.movement()
 		self.getHealth()
 		self.spiked()

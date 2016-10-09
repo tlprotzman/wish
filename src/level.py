@@ -25,6 +25,7 @@ class Level:
 		self.levelHeight = 0
 		self.lightSources = []
 
+
 		enemyList = []
 		genieList = []
 		for row in self.levelArray:
@@ -85,7 +86,7 @@ class Level:
 				elif item == "C":
 					tile = Tile(self.window, x, y, "Coin", self.game.coinImage)
 					self.backgrounds.append(tile)
-					self.game.maxCoins+=1
+					self.game.countMaxCoins+=1
 				elif item == "M":
 					tile = Tile(self.window, x, y, "Health", self.game.healthImage)
 					self.backgrounds.append(tile)					
@@ -183,6 +184,7 @@ class Level:
 		# for torch in self.lightSources:
 		# 	self.darknessMap.blit(self.torchImage, (torch[0]-cameraX-self.torchR+6, torch[1]-cameraY-self.torchR+48))
 		# self.window.blit(self.darknessMap, (0, 0))#, special_flags=pygame.BLEND_RGBA_SUB)
+
 
 	def setupParallax(self):
 		self.parallaxWidth = self.game.screenWidth-32

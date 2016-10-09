@@ -57,10 +57,18 @@ pygame.mixer.music.load("../audio/sondtrack.wav")
 def main():
 	game.setTileset("Grass")
 
+	levelsLocations = ["../levels/testlevel.txt",
+			 		   "../levels/testlevel2.txt",
+			 		   "../levels/tristanlevel1.txt"]
 	# game.enemyList.append([Actor(window, game, 200, 300, 'Ostrich')])
+	for level in levelsLocations:
+		game.levelList.append(Level(game, player, window, level))
+	game.setMaxCoins(game.getMaxCoinCount())
+
+
 	# game.levelList.append(Level(game, player, window,"../levels/testlevel.txt"))
 	# game.levelList.append(Level(game, player, window,"../levels/testlevel2.txt"))
-	game.levelList.append(Level(game, player, window, "../levels/tristanlevel1.txt"))
+	# game.levelList.append(Level(game, player, window, "../levels/tristanlevel1.txt"))
  
 	game.setCurrentLevel(game.levelList[0])
 
@@ -82,7 +90,14 @@ def main():
 			# parallax
 			game.getCurrentLevel().drawStars(game.camera_x, game.camera_y)
 			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
-			player.update(game.camera_x, game.camera_y)
+			player.update(game.camera_x, game.camera_y, game.getCurrentLevel().spawnX, game.getCurrentLevel().spawnY)
+			if player.resetLevel:
+				print(game.getLevelIndex())
+				print('^^^')
+				game.levelList[game.getLevelIndex()] = Level(game, player, window, levelsLocations[game.getLevelIndex()])
+				game.setCurrentLevel(game.levelList[game.getLevelIndex()])
+				player.resetLevelFalse()
+
 			for enemy in game.enemyList[game.levelCounter]:
 				damage = 1
 				if game.wishTable["goldknife"][0]:

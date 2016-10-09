@@ -5,7 +5,7 @@ pygame.font.init()
 import random
 
 class Game:
-	def __init__(self, window, screenHeight, screenWidth):
+	def __init__(self, window, screenHeight, screenWidth,):
 		self.clock = pygame.time.Clock()
 		self.currentLevel = 0
 		self.gameState = 'MAINMENU'
@@ -19,6 +19,7 @@ class Game:
 		self.life = 0
 		self.coins = 0
 		self.maxCoins = 0
+		self.countMaxCoins = 0
 		self.animation = 0
 		self.animationCounter = 0
 		self.window = window
@@ -269,7 +270,13 @@ class Game:
 	def drawLives(self):
 		for i in range(self.life):
 			self.window.blit(self.lifeImage, (20 + i * 60, 64))		#Make sure to set the life image!!!
-			
+	
+	def getMaxCoinCount(self):
+		return self.countMaxCoins
+
+	def setMaxCoins(self, coins):
+		self.maxCoins = coins
+
 	def update(self):
 		self.window.blit(self.UIImage, (0, 0))	
 		pygame.draw.rect(self.window, (176, 18, 10), (104, 40,  self.life * 3.92, 32))		#Make sure to set the life image!!!
