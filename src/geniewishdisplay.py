@@ -25,7 +25,7 @@ class GenieWishDisplay:
 		if (not self.leftFacing):
 			self.window.blit(self.genie.game.speechImage, (x-16, y-16))
 		else:
-			x -= 416
+			x -= 500
 			y = self.genie.rect.y - cameraY - 120 - 20*len(self.message) - 48
 			self.window.blit(self.genie.game.speechLImage, (x-16, y-16))
 		for i in range(len(self.wishes)+len(self.message)):
