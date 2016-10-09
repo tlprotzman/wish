@@ -307,7 +307,7 @@ class Actor:
 					self.facing = 'right'
 				else:
 					self.facing = 'left'
-					self.changeDirection = 0
+				self.changeDirection = 0
 			else:
 				self.changeDirection += 1
 			self.movement()
