@@ -16,6 +16,8 @@ wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a doubl
 			 "tophat":[True, "for a snazzy hat", ["You now have", "the snazziest hat"]],
 			 "turban":[False, "to wear a turban", ["That is one", "cool turban!"]],
 			 "knife":[True, "i could kill people", ["Congrats, press j", "to murder!"]],
+			 "goldknife":[True, "i had a super weapon", ["Congrats, press j", "to destroy!"]],
+			 "fryingpan":[True, "i were a chef", ["Now, press j", "to fry enemies!"]],
 			 "amostrich":[False, "for friends", ["Be free, handsome one"]],
 			 "healthpack":[False, "for more health", ["Stay safe out", "there!"]],
 			 "spikeimmune":[False, "to be spikeproof", ["A late night", "roundevous with", "a cactus?"]],

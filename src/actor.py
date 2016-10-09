@@ -131,7 +131,7 @@ class Actor:
 	# I excluded a section about screenwidth and the extra life
 	def fight(self):
 		if self.game.currentCharacter == 'player':	
-			if (self.fightTimer == 100 and self.game.wishTable["knife"][0]):
+			if (self.fightTimer == 100 and (self.game.wishTable["knife"][0] or self.game.wishTable["goldknife"][0] or self.game.wishTable["fryingpan"][0])):
 				self.fightTimer = 0
 	
 	def attack(self):
@@ -251,14 +251,14 @@ class Actor:
 			else:
 				self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		
-			if (self.fightTimer==100 and self.game.wishTable["knife"][0] and self.game.currentCharacter=="player"):
+			if (self.fightTimer==100 and (self.game.wishTable["knife"][0] or self.game.wishTable["goldknife"][0] or self.game.wishTable["fryingpan"][0]) and self.game.currentCharacter=="player"):
 				if self.direction==1:
-					self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-16-cameraX, self.rect.y-8-cameraY))
+					self.window.blit(pygame.transform.flip((self.game.weapon[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-16-cameraX, self.rect.y-8-cameraY))
 				else:
 					if self.velocity_x < 0:
-						self.window.blit(pygame.transform.flip((self.game.knife[1-math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
+						self.window.blit(pygame.transform.flip((self.game.weapon[1-math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
 					else:
-						self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
+						self.window.blit(pygame.transform.flip((self.game.weapon[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-8-cameraY))
 
 				
 			if (self.game.wishTable["tophat"][0] or self.game.wishTable["turban"][0]):
@@ -449,6 +449,16 @@ class Actor:
 		if self.game.wishTable["turban"][0]:
 			self.game.wishTable["tophat"][0] = False
 			self.game.hatImage = self.game.turban
+		if self.game.wishTable["goldknife"][0]:
+			self.game.wishTable["knife"][0] = False
+			self.game.wishTable["fryingpan"][0] = False
+			self.game.weapon = self.game.gold
+			self.game.weaponFight = self.game.goldFight
+		if self.game.wishTable["fryingpan"][0]:
+			self.game.wishTable["knife"][0] = False
+			self.game.wishTable["goldknife"][0] = False
+			self.game.weapon = self.game.frying
+			self.game.weaponFight = self.game.fryingFight
 
 
 

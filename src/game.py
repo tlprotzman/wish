@@ -59,7 +59,7 @@ class Game:
 		self.playerJump = pygame.image.load("../images/player-run-1.png")
 
 
-		self.weaponFight = [pygame.image.load("../images/weapon-attack-1.png"),
+		self.knifeFight  = [pygame.image.load("../images/weapon-attack-1.png"),
 						    pygame.image.load("../images/weapon-attack-2.png"),
 						    pygame.image.load("../images/weapon-attack-3.png"),
 						    pygame.image.load("../images/weapon-attack-4.png"),
@@ -72,6 +72,29 @@ class Game:
 
 		self.knife = [pygame.image.load("../images/weapon-1.png"),
 					  pygame.image.load("../images/weapon-2.png")]
+					  
+		self.gold =   [pygame.image.load("../images/gold-1.png"),
+					  pygame.image.load("../images/gold-2.png")]
+					  
+		self.goldFight = [pygame.image.load("../images/gold-attack-1.png"),
+						    pygame.image.load("../images/gold-attack-2.png"),
+						    pygame.image.load("../images/gold-attack-3.png"),
+						    pygame.image.load("../images/gold-attack-4.png"),
+						    pygame.image.load("../images/gold-attack-2.png")]
+							
+		self.frying =   [pygame.image.load("../images/frying-1.png"),
+					  pygame.image.load("../images/frying-2.png")]
+					  
+		self.fryingFight = [pygame.image.load("../images/frying-attack-1.png"),
+						    pygame.image.load("../images/frying-attack-2.png"),
+						    pygame.image.load("../images/frying-attack-3.png"),
+						    pygame.image.load("../images/frying-attack-4.png"),
+						    pygame.image.load("../images/frying-attack-2.png")]
+		
+		self.weapon = self.knife
+		self.weaponFight = self.knifeFight
+		
+		
 
 		self.enemyBreath = [pygame.image.load("../images/ostrich-idle-1.png"),
 							pygame.image.load("../images/ostrich-idle-2.png"),
