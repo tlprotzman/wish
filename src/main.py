@@ -25,10 +25,10 @@ def main():
 							["                                            ",
 							"                                            ",
 							"                                            ",
-							"                                            ",
-							"        PPP                                 ",
-							"                                            ",
-							"             P      PP                      ",
+							"                            PPP             ",
+							"           PPP               P              ",
+							"                             P              ",
+							"                             P              ",
 							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
 							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
 							"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
@@ -62,10 +62,12 @@ def main():
 
 			if game.camera_x < 0:
 				game.camera_x = 0
+
 			if game.camera_x > game.getCurrentLevel().getLevelWidth()-game.screenWidth:
 				game.camera_x = game.getCurrentLevel().getLevelWidth()-game.screenWidth
 			
 			print(player.rect.x+player.rect.width/2)
+
 			# game.levelTitle.update()
 			# game.drawLives()
 		elif game.gameState == 'STARTSCREEN':
