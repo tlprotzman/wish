@@ -29,7 +29,11 @@ class Game:
 		self.genieFont = pygame.font.Font("../fonts/joystixMonospace.ttf", 18)
 		self.currentCharacter = 'player'
 
-
+		#SOUND
+		self.coinEffect = pygame.mixer.Sound("../sound/coin.wav")
+		self.ostrichEffect = pygame.mixer.Sound('../sound/ostrich.wav')
+		self.hoorayEffect = pygame.mixer.Sound('../sound/hooray.wav')
+		self.wishEffect = pygame.mixer.Sound('../sound/wish.wav')
 
 		self.UIImage = pygame.image.load("../images/ui.png")
 		self.speechImage = pygame.image.load("../images/speech.png")

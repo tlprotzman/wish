@@ -104,6 +104,7 @@ class Actor:
 				self.game.getCurrentLevel().getBackgrounds().remove(coin)
 				self.coins += 1
 				self.game.coins = self.coins
+				self.game.coinEffect.play()
 
 	def getHealth(self):
 		for health in self.game.getCurrentLevel().getBackgrounds():
@@ -112,7 +113,8 @@ class Actor:
 				if self.health + 20 > 100:
 					self.health = 100
 				else:
-					self.health += 20
+					self.health += 20	
+				self.game.coinEffect.play()
 			
 			
 		
@@ -367,11 +369,15 @@ class Actor:
 				if facing == 'right':
 					if ((not blockedRight) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 400) and (0 < (playerX - (self.rect.x + self.rect.width / 2)) < 800)):
 						#print('wrk?')
+						if self.velocity_x == 0:
+							self.game.ostrichEffect.play()
 						self.velocity_x = 13
 					#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 				if facing == 'left':
 					if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 400) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
 						#print('wrk?')
+						if self.velocity_x == 0:
+							self.game.ostrichEffect.play()
 						self.velocity_x = -13
 					#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 		elif self.name == "Bat":

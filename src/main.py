@@ -7,6 +7,8 @@ from level import Level
 from genie import Genie
 from mainmenu import Mainmenu
 
+pygame.mixer.pre_init(44100, 16, 2, 4096) #frequency, size, channels, buffersize
+pygame.init() #turn all of pygame on.
 
 screenWidth = 22 * 64
 screenHeight = 11 * 64
@@ -37,6 +39,9 @@ game = Game(window, screenHeight, screenWidth)
 game.wishTable = wishTable
 mainmenu = Mainmenu(window, game)
 player = Actor(window, game, 95, 200, "Player")
+
+
+#MUSIC
 pygame.mixer.init()
 pygame.mixer.music.load("../music/titleTheme.wav")
 pygame.mixer.music.play(-1, 0.0)

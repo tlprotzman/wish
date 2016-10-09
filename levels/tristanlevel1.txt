@@ -12,12 +12,12 @@ doublejump
                                SSS   S                                                                                  
                                      S                                                                                  
                                                C                                                                        
-                                               SSSSSSSSSSSS                                      PP g                   
+                                               SSSSSSSSSSSS                                      PP                     
                      SSSSSSS                   |     W |                           T              PPPPPP                
                  SSSS                          |       |             T     PPPPPPPPPPPPPPP                              
       T                                        | T   T |        PPPPPPPPPPPPPPPPPPPPPPPPPPP                 T           
-PPPPPPP                           T         PPPSSSSSSSSSPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP           PPPPPPPPPPPPPPPPPPPPPPP
-PPPPPPPPPP                O       PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP            PPPPPPPPPPPPPPPPPPPPPPPP
+PPPPPPP         CC    CC           T         PPPSSSSSSSSSPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP           PPPPPPPPPPPPPPPPPPPPPP
+PPPPPPPPPP      g         O       PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP            PPPPPPPPPPPPPPPPPPPPPPPP
 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP             T     PPPPPPPPPPPPPPPPPPPPPPP
 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP W                        ^^^PPP         PPPPPPPPPPPPPPPPP
 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP                              PPPPPPPP                      PPP
