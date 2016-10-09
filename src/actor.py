@@ -41,6 +41,7 @@ class Actor:
 		self.wasRunning = False
 		self.health = health
 		self.deathTimer = 0
+		self.isAlive = True
 
 
 	def movement(self):
@@ -239,7 +240,7 @@ class Actor:
 					self.velocity_x = 13
 				#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 			if facing == 'left':
-				if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 100) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
+				if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 300) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
 					#print('wrk?')
 					self.velocity_x = -13
 				#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
@@ -266,6 +267,14 @@ class Actor:
 						self.health = 100
 					self.deathTimer = 100
 
+	def enemyHealth(self):
+		if (self.deathTimer > 0):
+			self.deathTimer -= 1
+		if self.rect.y > self.game.getCurrentLevel().getLevelHeight() and self.deathTimer==0:
+			self.isAlive = False
+		else:
+			self.isAlive = False
+
 
 
 
@@ -280,17 +289,19 @@ class Actor:
 		# print("Velocities: ", self.velocity_x, self.velocity_y)
 
 	def updateEnemy(self, cameraX, cameraY, playerX, playerY):
-		if self.changeDirection == 25:	
-			if random.randint(1, 2) == 1:
-				self.facing = 'right'
+		if self.isAlive:
+			if self.changeDirection == 25:	
+				if random.randint(1, 2) == 1:
+					self.facing = 'right'
+				else:
+					self.facing = 'left'
+				self.changeDirection = 0
 			else:
-				self.facing = 'left'
-			self.changeDirection = 0
-		else:
-			self.changeDirection += 1
-		self.movement()
-		self.AI(self.facing, playerX, playerY)
-		self.drawEnemy(cameraX, cameraY, self.facing)
+				self.changeDirection += 1
+			self.enemyHealth()
+			self.movement()
+			self.AI(self.facing, playerX, playerY)
+			self.drawEnemy(cameraX, cameraY, self.facing)
 
 
 
