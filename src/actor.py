@@ -411,10 +411,14 @@ class Actor:
 		if (self.deathTimer > 0):
 			self.deathTimer -= 1
 		if self.rect.y > self.game.getCurrentLevel().getLevelHeight():
-			self.deathTimer = 100
-			self.rect.x = 32
-			self.rect.y = 0
-			self.game.life += 1
+			self.game.setCurrentLevel(self.game.getCurrentLevel())
+			self.health = 100
+			self.coins -= self.coinsThisRun
+			self.coinsThisRun = 0
+			self.game.coins = self.coins
+			self.resetLevel = True
+			self.rect.x = spawnX
+			self.rect.y = spawnY
 		else:
 			for enemy in self.game.enemyList[self.game.levelCounter]:
 				if self.rect.colliderect(enemy) and self.deathTimer == 0:
