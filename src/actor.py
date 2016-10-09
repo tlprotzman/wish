@@ -367,12 +367,12 @@ class Actor:
 				if facing == 'right':
 					if ((not blockedRight) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 400) and (0 < (playerX - (self.rect.x + self.rect.width / 2)) < 800)):
 						#print('wrk?')
-						self.velocity_x = 13
+						self.velocity_x = 14
 					#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 				if facing == 'left':
 					if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 400) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
 						#print('wrk?')
-						self.velocity_x = -13
+						self.velocity_x = -14
 					#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 		elif self.name == "Bat":
 			if self.onGround or self.rect.y > playerY:

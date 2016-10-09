@@ -27,7 +27,7 @@ wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a doubl
 			 "lowgravity":[False, "be an astronaut!", ["Hope you make", "it to the moon!"]],
 			 "backwards":[False, "it was last theme", ["more", "words"]],
 			 "amsimon":[False, "to include", ["He couldn't be here", "in person, but", "he's here in spirit"]],
-			 "regen":[True, "words about regen", ["I hope you like", "regenerating health"]]
+			 "regen":[False, "words about regen", ["I hope you like", "regenerating health"]]
 			}
 
 
