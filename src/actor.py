@@ -435,7 +435,8 @@ class Actor:
 
 	def update(self, cameraX, cameraY):
 		if self.game.wishTable["regen"][0]:
-			self.health += .1
+			if self.health < 100:
+				self.health += .1
 		self.getInput()
 		self.die()
 		self.movement()

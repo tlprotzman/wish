@@ -7,7 +7,7 @@ class Game:
 	def __init__(self, window, screenHeight, screenWidth):
 		self.clock = pygame.time.Clock()
 		self.currentLevel = 0
-		self.gameState = 'MAINMENU'
+		self.gameState = 'PLAYING'
 		self.levelList = []
 		self.levelCounter = 0
 		self.enemyList = []
