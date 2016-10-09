@@ -35,7 +35,11 @@ wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a doubl
 window = pygame.display.set_mode((screenWidth, screenHeight))
 game = Game(window, screenHeight, screenWidth)
 game.wishTable = wishTable
+mainmenu = Mainmenu(window, game)
 player = Actor(window, game, 95, 200, "Player")
+pygame.mixer.init()
+pygame.mixer.music.load("../music/titleTheme.wav")
+pygame.mixer.music.play(-1, 0.0)
 
 '''
 pygame.mixer.init()
@@ -105,7 +109,7 @@ def main():
 			# game.drawLives()
 			game.update()
 		elif game.gameState == 'MAINMENU':
-			Mainmenu.update()
+			mainmenu.update()
 		elif game.gameState == 'CREDITSSCREEN':
 			creditsScreen.update()
 		elif game.gameState == 'ENDSCREEN':
