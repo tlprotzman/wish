@@ -1,6 +1,7 @@
 
 import pygame
 from tile import Tile
+from actor import Actor
 
 class Level:
 	def __init__(self, game, player, window, arrayOrFilename):
@@ -20,9 +21,13 @@ class Level:
 		self.levelWidth = 0
 		self.levelHeight = 0
 
+		enemyList = []
+
 		for row in self.levelArray:
 			self.levelHeight += 1
 			for item in row:
+				if item == "O":
+					enemyList += [Actor(self.window, self.game, x, y-64, "Ostrich")]
 				if item == "P":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]!="P":
 						if (round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="P"):
@@ -76,6 +81,7 @@ class Level:
 		self.staticTiles.fill((255,255,255,0))
 		self.staticTiles.set_colorkey((255,255,255,0))
 		self.makeBackgroundImage()
+		self.game.enemyList.append(enemyList)
 
 	def loadLevelFile(self, filename):
 		f = open(filename, "r")
