@@ -7,6 +7,7 @@ class Level:
 		self.window = window
 		self.game = game
 		self.player = player
+		self.parallaxHeight = 0
 		if type(arrayOrFilename) == type("hello world"):
 			self.loadLevelFile(arrayOrFilename)
 		else:
@@ -53,7 +54,11 @@ class Level:
 
 	def loadLevelFile(self, filename):
 		f = open(filename, "r")
-		self.levelArray = [line[:-1] for line in f.readlines()]
+		lines = f.readlines()
+		firstLine = lines[0].split()
+		self.parallaxHeight = int(firstLine[0])*64
+		print(self.parallaxHeight/64)
+		self.levelArray = [line[:-1] for line in lines[1:]]
 		f.close()
 
 	def getLevelWidth(self):
@@ -72,6 +77,9 @@ class Level:
 	def getBackgrounds(self):
 		return self.backgrounds
 
+	def drawParallax(self, cameraX, cameraY):
+		self.window.blit(self.game.farParallax, (-cameraX*self.game.close_parallax_scale, self.parallaxHeight-self.game.screenHeight/2)) # -cameraY*self.game.close_parallax_scale
+
 	def update(self, cameraX, cameraY):
 		if self.player.rect.right<0:
 			print("THIS SHOULDNT'T HAPPEN! THIS IS LEVEL UPDATING!")
@@ -87,6 +95,7 @@ class Level:
 
 		# for tile in self.walls:
 		# 	tile.update(cameraX, cameraY)
+		self.drawParallax(cameraX, cameraY)
 		self.window.blit(self.staticTiles, (-cameraX, -cameraY))
 		for tile in self.backgrounds:
 			if tile.name=="Wave":

@@ -17,6 +17,8 @@ class Game:
 		self.screenWidth = screenWidth
 		self.camera_x = screenWidth/2
 		self.camera_y = 0
+		self.close_parallax_scale = .5
+		self.far_parallax_scale = .25
 
 
 
@@ -44,6 +46,8 @@ class Game:
 		self.enemyBreath = [pygame.image.load("../images/enemy1.png"),
 							pygame.image.load("../images/enemy2.png")]
 		self.enemyJump = pygame.image.load("../images/enemy3.png")
+		self.closeParallax = pygame.image.load("../images/color_parallax.png")
+		self.farParallax = pygame.image.load("../images/color_parallax.png")
 
 
 
