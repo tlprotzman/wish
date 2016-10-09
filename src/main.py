@@ -33,7 +33,7 @@ def main():
 	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
 	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
 	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP", ]))
-	
+
 	game.levelList.append(Level(game, player, window,"testlevel.txt"))
 
 	game.setCurrentLevel(game.levelList[0])
@@ -59,14 +59,20 @@ def main():
 			
 
 			game.camera_x += ((player.rect.x+player.rect.width/2-game.screenWidth/2) - game.camera_x)/5
-			game.camera_y = 0
 
 			if game.camera_x < 0:
 				game.camera_x = 0
 
 			if game.camera_x > game.getCurrentLevel().getLevelWidth()-game.screenWidth:
 				game.camera_x = game.getCurrentLevel().getLevelWidth()-game.screenWidth
-			
+
+			game.camera_y += ((player.rect.y+player.rect.height/2-game.screenHeight/2) - game.camera_y)/50
+
+			# if game.camera_y < 0:
+			# 	game.camera_y = 0
+
+			if game.camera_y > game.getCurrentLevel().getLevelHeight()-game.screenHeight:
+					game.camera_Y = game.getCurrentLevel().getLevelHeight()-game.screenHeight
 			# print(player.rect.x+player.rect.width/2)
 
 			# game.levelTitle.update()
