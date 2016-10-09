@@ -29,6 +29,7 @@ class Actor:
 		self.onGround = True
 		self.name = name
 		self.deathTimer = 0
+		self.shouldFlip = False
 
 	def movement(self):
 		f = self.friction
@@ -108,18 +109,28 @@ class Actor:
 		if (self.deathTimer>0 and self.deathTimer%2 == 0):
 			self.deathTimer = self.deathTimer
 			# don't do anything, wait a frame before drawing
-		elif (self.onGround and self.velocity_x == 0):
-			# this is breath
-			self.window.blit(self.game.playerBreath[self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
-		elif (not self.onGround):
-			self.window.blit(self.game.playerJump, (self.rect.x-cameraX, self.rect.y-16-cameraY))
-		elif (self.velocity_x > 0):
-			self.window.blit(self.game.playerWalk[self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
-		elif (self.velocity_x < 0):
-			self.window.blit(self.game.playerWalk[3-self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
+
+
 		else:
-			# I think this is the other death animation
-			self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y+1-cameraY))
+			
+			if self.velocity_x < 0:
+				self.shouldFlip = True
+			elif self.velocity_x > 0:
+				self.shouldFlip = False
+
+			if (self.onGround and self.velocity_x == 0):
+				# this is breath
+				self.window.blit(pygame.transform.flip((self.game.playerBreath[self.game.animation]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
+			elif (not self.onGround):
+				self.window.blit(pygame.transform.flip((self.game.playerJump), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
+			elif (self.velocity_x > 0):
+				self.window.blit(pygame.transform.flip((self.game.playerWalk[self.game.animation]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
+			elif (self.velocity_x < 0):
+				self.window.blit(pygame.transform.flip((self.game.playerWalk[3-self.game.animation]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
+			else:
+				# I think this is the other death animation
+				self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y+1-cameraY))
+
 
 
 		# come back to this
