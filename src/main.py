@@ -23,10 +23,10 @@ pygame.mixer.music.load("../audio/sondtrack.wav")
 
 wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a double jump"]],
 			 "tophat":[False, "for a snazzy hat", ["You now have", "the snazziest hat"]],
-			 "ostrich":[False, "for friends", ["Be free, handsome one"]]
-			 "healthpack":[False, "for more health", ["Stay safe out", "there!"]]
-			 "spikeimmune":[False, "to be spikeproof", ["A late night", "roundevous with", "a cactus?"]]
-			 "fasterrunning":[False, "to join the olympics", [""]]
+			 "ostrich":[False, "for friends", ["Be free, handsome one"]],
+			 "healthpack":[False, "for more health", ["Stay safe out", "there!"]],
+			 "spikeimmune":[False, "to be spikeproof", ["A late night", "roundevous with", "a cactus?"]],
+			 "fasterrunning":[False, "to join the olympics", ["Hope you like", "running!"]],
 			}
 game.wishTable = wishTable
 
@@ -71,7 +71,7 @@ def main():
 			if game.camera_x > game.getCurrentLevel().getLevelWidth()-game.screenWidth:
 				game.camera_x = game.getCurrentLevel().getLevelWidth()-game.screenWidth
 
-			game.camera_y += ((player.rect.y+player.rect.height/2-game.screenHeight/2) - game.camera_y)/50
+			game.camera_y += ((player.rect.y+player.rect.height/2-game.screenHeight/2) - game.camera_y-64)/50
 
 			# if game.camera_y < 0:
 			# 	game.camera_y = 0
