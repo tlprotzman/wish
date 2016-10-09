@@ -42,6 +42,8 @@ class Actor:
 		self.health = health
 		self.deathTimer = 0
 		self.isAlive = True
+		self.doubleJump = False
+		self.jumpDelay = 0
 
 
 	def movement(self):
@@ -100,8 +102,8 @@ class Actor:
 	
 	# I excluded a section about screenwidth and the extra life
 	def fight(self):
-		print(self.fightTimer)
-		print(self.isAttacking)
+		#print(self.fightTimer)
+		#print(self.isAttacking)
 		if (self.fightTimer == 100):
 			self.fightTimer = 0
 	
@@ -119,10 +121,21 @@ class Actor:
 			
 	
 	def jump(self):
+		if self.game.wishTable['doublejump'][0] and self.onGround:
+			#print(self.game.wishTable['doublejump'][0], self.onGround)
+			self.doubleJump = True
 		if self.onGround:
 			self.jump_force_adjusted = self.jump_force + abs(self.velocity_x) * 2
 			#print(self.jump_force_adjusted)
 			self.velocity_y = -self.jump_force_adjusted
+			self.jumpDelay = 20
+		elif self.doubleJump and self.jumpDelay == 0:
+			#print('doublejumped!')
+			self.jump_force_adjusted = self.velocity_y + self.jump_force + abs(self.velocity_x) * 2
+			#print(self.jump_force_adjusted)
+			self.velocity_y = -self.jump_force_adjusted
+			self.doubleJump = False
+			self.jumpDelay = 20
 
 	def collideX(self):
 		for wall in self.game.getCurrentLevel().getWalls():
@@ -299,6 +312,9 @@ class Actor:
 		self.spiked()
 		self.attack()
 		self.drawPlayer(cameraX, cameraY)
+		if self.jumpDelay > 0:
+			self.jumpDelay -= 1
+		#print(self.doubleJump)
 		#print(self.health)
 		# print("Location: ", self.rect.x, self.rect.y)
 		# print("Velocities: ", self.velocity_x, self.velocity_y)
@@ -314,7 +330,7 @@ class Actor:
 			else:
 				self.changeDirection += 1
 			self.movement()
-			print(self.health)
+			#print(self.health)
 			self.enemyDamage(isBeingAttacked, damage, player)
 			self.AI(self.facing, playerX, playerY)
 			self.drawEnemy(cameraX, cameraY, self.facing)
