@@ -176,6 +176,13 @@ class Actor:
 		#Draw health
 		self.game.life = self.health
 
+		if self.game.currentCharacter == 'ostrich' and self.velocity_x != 0:
+			self.rect.height = 80
+			self.wasRunning = True
+		elif self.game.currentCharacter == 'ostrich' and self.wasRunning == True:
+			self.rect.y -= 32
+			self.rect.height = 112
+			self.wasRunning = False
 
 		if (self.deathTimer>0 and self.deathTimer%2 == 0):
 			self.deathTimer = self.deathTimer
@@ -292,9 +299,10 @@ class Actor:
 		else:
 			for enemy in self.game.enemyList[self.game.levelCounter]:
 				if self.rect.colliderect(enemy) and self.deathTimer == 0:
-					self.health -= 20
-					print(self.health)
-					self.deathTimer = 100
+					if enemy.name.lower() != self.game.currentCharacter:
+						self.health -= 20
+						print(self.health)
+						self.deathTimer = 100
 		if self.health <= 0:
 			self.deathTimer = 100
 			print("We need to have the user move back to the respawn point!")
@@ -331,6 +339,11 @@ class Actor:
 			self.game.setPlayerType('simon')
 			self.rect.width = 64
 			self.rect.height = 80
+		if self.game.wishTable['amostrich'][0] and self.game.currentCharacter != 'ostrich':
+			self.game.setPlayerType('ostrich')
+			self.rect.width = 120
+			self.rect.height = 112
+
 		#print(self.doubleJump)
 		#print(self.health)
 		# print("Location: ", self.rect.x, self.rect.y)

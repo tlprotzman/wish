@@ -25,7 +25,7 @@ tiles that you can jump through
 
 Check once done |X| ==>	double jump
 Check once done |X| ==>	spike immunity
-Check once done | | ==>	become an ostrich
+Check once done |X| ==>	become an ostrich
 Check once done | | ==>	get weapon
 Check once done |X| ==>		- Knife
 Check once done | | ==>	get hats
@@ -43,7 +43,7 @@ Check once done | | ==>		- full health
 Check once done | | ==>		- to enemies
 Check once done | | ==>		- expand healthbar?
 Check once done | | ==>	ostriches were harder
-Check once done | | ==> I was Simon
+Check once done |X| ==> I was Simon
 Check once done | | ==>
 
 

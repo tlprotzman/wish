@@ -130,6 +130,27 @@ class Game:
 			self.playerJump = pygame.image.load("../images/player-jump.png")
 
 
+		elif playerType == 'ostrich':
+			self.currentCharacter = 'ostrich'
+			self.playerBreath = [pygame.image.load("../images/ostrich-idle-1.png"),
+								 pygame.image.load("../images/ostrich-idle-2.png"),
+								 pygame.image.load("../images/ostrich-idle-3.png"),
+								 pygame.image.load("../images/ostrich-idle-4.png")]
+
+			self.playerWalk = [pygame.image.load("../images/ostrich-run-1.png"),
+							   pygame.image.load("../images/ostrich-run-2.png"),
+							   pygame.image.load("../images/ostrich-run-3.png"),
+							   pygame.image.load("../images/ostrich-run-4.png")]
+							   
+			self.playerFight = [pygame.image.load("../images/player-fight-1.png"),
+							    pygame.image.load("../images/player-fight-2.png"),
+							    pygame.image.load("../images/player-fight-3.png"),
+							    pygame.image.load("../images/player-fight-3.png"),
+							    pygame.image.load("../images/player-fight-4.png")]
+
+			self.playerJump = pygame.image.load("../images/ostrich-run-1.png")
+
+
 	def setCurrentLevel(self, newLevel):
 		self.currentLevel = newLevel
 
