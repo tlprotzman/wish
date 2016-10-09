@@ -57,9 +57,9 @@ pygame.mixer.music.load("../audio/sondtrack.wav")
 def main():
 	game.setTileset("Grass")
 
-	levelsLocations = ["../levels/level3.txt",
+	levelsLocations = ["../levels/level1.txt",
 			 		   "../levels/level2.txt",
-			 		   "../levels/tristanlevel1.txt"]
+			 		   "../levels/level3.txt"]
 	# game.enemyList.append([Actor(window, game, 200, 300, 'Ostrich')])
 	for level in levelsLocations:
 		game.levelList.append(Level(game, player, window, level))
@@ -91,8 +91,7 @@ def main():
 			# parallax
 			game.getCurrentLevel().drawStars(game.camera_x, game.camera_y)
 			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
-			
-			game.update()
+	
 			player.update(game.camera_x, game.camera_y, game.getCurrentLevel().spawnX, game.getCurrentLevel().spawnY)
 			if player.resetLevel:
 				print(game.getLevelIndex())
@@ -132,6 +131,7 @@ def main():
 				game.camera_y += ((player.rect.y+player.rect.height/2-game.screenHeight/2) - game.camera_y-64)/50
 				
 
+			game.update()
 			# if game.camera_y < 0:
 			# 	game.camera_y = 0
 
