@@ -398,15 +398,12 @@ class Actor:
 
 	def updateEnemy(self, cameraX, cameraY, playerX, playerY, isBeingAttacked, damage, player):
 		if self.isAlive:
-			self.movement()
-			#print(self.health)
-			self.enemyDamage(isBeingAttacked, damage, player)
 			self.AI(self.facing, playerX, playerY)
 			self.drawEnemy(cameraX, cameraY, self.facing)
 			if self.name!="BatSleep":
 				self.movement()
 				self.enemyDamage(isBeingAttacked, damage, player)
-				self.AI(self.facing, playerX, playerY)
+				
 
 	def grantWish(self):
 		if self.game.wishTable["lowgravity"][0]:
