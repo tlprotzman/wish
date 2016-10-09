@@ -44,6 +44,17 @@ class Game:
 						   pygame.image.load("../images/player-run-3.png"),
 						   pygame.image.load("../images/player-run-4.png")]
 						   
+		self.playerFight = [pygame.image.load("../images/player-fight-1.png"),
+						    pygame.image.load("../images/player-fight-2.png"),
+						    pygame.image.load("../images/player-fight-3.png"),
+						    pygame.image.load("../images/player-fight-3.png"),
+						    pygame.image.load("../images/player-fight-4.png")]
+		self.weaponFight = [pygame.image.load("../images/weapon-attack-1.png"),
+						    pygame.image.load("../images/weapon-attack-2.png"),
+						    pygame.image.load("../images/weapon-attack-3.png"),
+						    pygame.image.load("../images/weapon-attack-4.png"),
+						    pygame.image.load("../images/weapon-attack-5.png")]
+						   
 		self.torchImage = [pygame.image.load("../images/torch-1.png"),
 						   pygame.image.load("../images/torch-2.png"),
 						   pygame.image.load("../images/torch-3.png"),
