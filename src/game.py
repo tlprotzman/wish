@@ -21,7 +21,7 @@ class Game:
 		self.camera_y = 0
 		self.close_parallax_scale = .25
 		self.far_parallax_scale = .1
-		self.genieFont = pygame.font.Font("../fonts/joystixMonospace.ttf", 16)
+		self.genieFont = pygame.font.Font("../fonts/joystixMonospace.ttf", 20)
 
 
 
