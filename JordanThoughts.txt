@@ -35,15 +35,16 @@ Check once done | | ==>		- cowboy?
 Check once done | | ==>		- turban?
 Check once done | | ==>	raining ______ (no collision box?)
 Check once done | | ==>		- several?
-Check once done | | ==>	walked backwards? (the theme was backwards)
+Check once done |X| ==>	walked backwards? (the theme was backwards)
 Check once done |X| ==>	low gravity?
-Check once done | | ==>	faster running
+Check once done |X| ==>	faster running
 Check once done | | ==>	more health
 Check once done | | ==>		- full health
 Check once done | | ==>		- to enemies
 Check once done | | ==>		- expand healthbar?
 Check once done | | ==>	ostriches were harder
-
+Check once done | | ==> I was Simon
+Check once done | | ==>
 
 
 

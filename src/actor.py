@@ -327,6 +327,10 @@ class Actor:
 		self.drawPlayer(cameraX, cameraY)
 		if self.jumpDelay > 0:
 			self.jumpDelay -= 1
+		if self.game.wishTable['amsimon'][0] and self.game.currentCharacter != 'simon':
+			self.game.setPlayerType('simon')
+			self.rect.width = 64
+			self.rect.height = 80
 		#print(self.doubleJump)
 		#print(self.health)
 		# print("Location: ", self.rect.x, self.rect.y)

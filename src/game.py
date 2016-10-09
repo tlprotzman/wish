@@ -23,6 +23,7 @@ class Game:
 		self.close_parallax_scale = .25
 		self.far_parallax_scale = .1
 		self.genieFont = pygame.font.Font("../fonts/joystixMonospace.ttf", 18)
+		self.currentCharacter = 'player'
 
 
 
@@ -54,6 +55,10 @@ class Game:
 						    pygame.image.load("../images/player-fight-3.png"),
 						    pygame.image.load("../images/player-fight-3.png"),
 						    pygame.image.load("../images/player-fight-4.png")]
+	
+		self.playerJump = pygame.image.load("../images/player-run-1.png")
+
+
 		self.weaponFight = [pygame.image.load("../images/weapon-attack-1.png"),
 						    pygame.image.load("../images/weapon-attack-2.png"),
 						    pygame.image.load("../images/weapon-attack-3.png"),
@@ -65,7 +70,6 @@ class Game:
 						   pygame.image.load("../images/torch-3.png"),
 						   pygame.image.load("../images/torch-4.png")]
 
-		self.playerJump = pygame.image.load("../images/player-run-1.png")
 		self.knife = [pygame.image.load("../images/weapon-1.png"),
 					  pygame.image.load("../images/weapon-2.png")]
 
@@ -104,6 +108,26 @@ class Game:
 							pygame.image.load("../images/genie-idle-4L.png"),]
 		self.genieLampL = pygame.image.load("../images/lampL.png")
 
+	def setPlayerType(self, playerType):
+		if playerType == 'simon':
+			self.currentCharacter = 'simon'
+			self.playerBreath = [pygame.image.load("../images/player-breath1.png"),
+								 pygame.image.load("../images/player-breath2.png"),
+								 pygame.image.load("../images/player-breath1.png"),
+								 pygame.image.load("../images/player-breath2.png")]
+
+			self.playerWalk = [pygame.image.load("../images/player-walk1.png"),
+							   pygame.image.load("../images/player-walk2.png"),
+							   pygame.image.load("../images/player-walk3.png"),
+							   pygame.image.load("../images/player-walk4.png")]
+							   
+			self.playerFight = [pygame.image.load("../images/player-fight-1.png"),
+							    pygame.image.load("../images/player-fight-2.png"),
+							    pygame.image.load("../images/player-fight-3.png"),
+							    pygame.image.load("../images/player-fight-3.png"),
+							    pygame.image.load("../images/player-fight-4.png")]
+
+			self.playerJump = pygame.image.load("../images/player-jump.png")
 
 
 	def setCurrentLevel(self, newLevel):
