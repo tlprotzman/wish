@@ -78,7 +78,16 @@ class Level:
 				elif item == "T":
 					tile = Tile(self.window, x, y-64, "Torch", self.game.torchImage[self.game.animation])
 					self.backgrounds.append(tile)
+<<<<<<< HEAD
 					self.lightSources += [(x+32, y-64)]
+=======
+				elif item == "C":
+					tile = Tile(self.window, x, y, "Coin", self.game.coinImage)
+					self.backgrounds.append(tile)
+				elif item == "M":
+					tile = Tile(self.window, x, y, "Health", self.game.healthImage)
+					self.backgrounds.append(tile)					
+>>>>>>> coin
 				elif item == ".":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]==" ":
 						tile = Tile(self.window, x, y, "Wave", self.game.waveImage[self.game.animation])

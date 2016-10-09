@@ -35,6 +35,9 @@ class Game:
 
 		self.waterImage = pygame.image.load("../images/water.png")
 
+		self.coinImage = pygame.image.load("../images/snow.png")
+		self.healthImage = pygame.image.load("../images/life.png")
+
 		self.waveImage = [pygame.image.load("../images/wave1.png"),
 						  pygame.image.load("../images/wave2.png"),
 						  pygame.image.load("../images/wave3.png"),

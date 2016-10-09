@@ -54,9 +54,10 @@ class Actor:
 		self.doubleJump = False
 		self.jumpDelay = 0
 		self.backwards = False
-		
 		# this is for preventing skipping all levels on one press by accident
 		self.cheat = False
+		self.coins = 0
+
 
 
 	def movement(self):
@@ -99,6 +100,21 @@ class Actor:
 				if spike.name=="Spike" and self.rect.colliderect(spike.getRect()) and self.deathTimer==0:
 					self.health -= 20
 					self.deathTimer=50
+
+	def getCoin(self):
+		for coin in self.game.getCurrentLevel().getBackgrounds():
+			if coin.name == "Coin" and self.rect.colliderect(coin.getRect()):
+				self.game.getCurrentLevel().getBackgrounds().remove(coin)
+				self.coins += 1
+
+	def getHealth(self):
+		for health in self.game.getCurrentLevel().getBackgrounds():
+			if health.name == "Health" and self.rect.colliderect(health.getRect()):
+				self.game.getCurrentLevel().getBackgrounds().remove(health)
+				if self.health + 20 > 100:
+					self.health = 100
+				else:
+					self.health += 20
 			
 			
 		
@@ -423,7 +439,10 @@ class Actor:
 		self.getInput()
 		self.die()
 		self.movement()
+		self.getHealth()
 		self.spiked()
+		self.getCoin()
+		print(self.coins)
 		self.attack()
 		self.drawPlayer(cameraX, cameraY)
 		self.grantWish()
