@@ -2,6 +2,7 @@
 
 import pygame
 import word
+from geniewishdisplay import GenieWishDisplay 
 
 
 class Genie:
@@ -17,12 +18,9 @@ class Genie:
 		self.interactionDistanceSquared = 16384
 		self.growingAnimationFrame = -1
 		self.idleAnimation = 0
-		self.wishText = self.makeWishChoices()
-
-	def makeWishChoices(self):
-		for i in range(len(self.wishChoices)):
-			pass
-		#self.text = [Word(self.window, wish, )]
+		self.wishDisplay = GenieWishDisplay(self.window, self, wishChoices)
+		
+		self.wishesAlpha = 0
 
 	def distanceSquared(self, x, y):
 		return (x - self.rect.x)**2 + (y-self.rect.y)**2
@@ -48,6 +46,7 @@ class Genie:
 				self.window.blit(self.game.genieIdleL[self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 			else:
 				self.window.blit(self.game.genieIdleR[self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
+			self.wishDisplay.displayWishes(cameraX, cameraY, -1)
 		elif self.growingAnimationFrame > -1:
 			# then do the expansion frame
 			if self.leftFacing:
