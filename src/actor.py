@@ -199,14 +199,15 @@ class Actor:
 
 
 		else:
-			if not self.backwards:
+
+			if not self.backwards and self.game.currentCharacter != 'ostrich':
 				if self.velocity_x < 0:
 					self.shouldFlip = True
 					self.direction = -1
 				elif self.velocity_x > 0:
 					self.shouldFlip = False
 					self.direction = 1
-			else:
+			elif self.backwards or self.game.currentCharacter == 'ostrich':
 				if self.velocity_x < 0:
 					self.shouldFlip = False
 					self.direction = -1
