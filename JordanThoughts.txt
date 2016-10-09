@@ -97,6 +97,29 @@ G = genie right
 
 
 
+Wishes:
+doublejump
+tophat
+fireman
+turban
+knife
+goldknife
+fryingpan
+amostrich
+healthpack -- repeat
+spikeimmune
+fasterrunning
+lowgravity
+backwards
+amsimon
+regen
+
+
+
+
+
+
+
 
 
 

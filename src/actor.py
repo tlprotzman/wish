@@ -438,6 +438,8 @@ class Actor:
 			deathTimer = 100
 
 	def update(self, cameraX, cameraY):
+		if self.game.wishTable["regen"][0]:
+			self.health += .1
 		self.getInput()
 		self.die()
 		self.movement()
@@ -447,7 +449,6 @@ class Actor:
 		print(self.coins)
 		self.attack()
 		self.drawPlayer(cameraX, cameraY)
-		self.grantWish()
 		if self.jumpDelay > 0:
 			self.jumpDelay -= 1
 		if self.game.wishTable['amsimon'][0] and self.game.currentCharacter != 'simon':

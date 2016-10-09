@@ -16,16 +16,17 @@ wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a doubl
 			 "tophat":[False, "for a snazzy hat", ["You now have", "the snazziest hat"]],
 			 "fireman":[False, "I could stop fires", ["You can't stop fires", "but here's a nice hat!"]],
 			 "turban":[False, "to wear a turban", ["That is one", "cool turban!"]],
-			 "knife":[False, "i could kill people", ["Congrats, press j", "to murder!"]],
-			 "goldknife":[False, "i had a super weapon", ["Congrats, press j", "to destroy!"]],
-			 "fryingpan":[False, "i were a chef", ["Now, press j", "to fry enemies!"]],
+			 "knife":[False, "to kill.", ["Congrats, press j", "to murder!"]],
+			 "goldknife":[False, "I had a super weapon", ["Congrats, press j", "to destroy!"]],
+			 "fryingpan":[False, "I were a chef", ["Now, press j", "to fry enemies!"]],
 			 "amostrich":[False, "for friends", ["Be free, handsome one"]],
-			 "healthpack":[False, "for more health", ["Stay safe out", "there!"]],
+			 "healthpack":[False, "to be healthy", ["Stay safe out", "there!"]],
 			 "spikeimmune":[False, "to be spikeproof", ["A late night", "roundevous with", "a cactus?"]],
 			 "fasterrunning":[False, "to join the olympics", ["Hope you like", "running!"]],
 			 "lowgravity":[False, "be an astronaut!", ["Hope you make", "it to the moon!"]],
-			 "backwards":[False, "words", ["more", "words"]],
-			 "amsimon":[False, "words", ["more", "words"]],
+			 "backwards":[False, "it was last theme", ["more", "words"]],
+			 "amsimon":[False, "to include", ["He couldn't be here", "in person, but", "he's here in spirit"]],
+			 "regen":[True, "words about regen", ["I hope you like", "regenerating health"]]
 			}
 
 
@@ -69,7 +70,10 @@ def main():
 			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
 			player.update(game.camera_x, game.camera_y)
 			for enemy in game.enemyList[game.levelCounter]:
-			 	enemy.updateEnemy(game.camera_x, game.camera_y, player.rect.x+player.rect.width/2, player.rect.y+player.rect.height/2, player.isAttacking, 1, player)
+				damage = 1
+				if game.wishTable["goldknife"][0]:
+					damage = 3
+				enemy.updateEnemy(game.camera_x, game.camera_y, player.rect.x+player.rect.width/2, player.rect.y+player.rect.height/2, player.isAttacking, damage, player)
 			game.getCurrentLevel().update(game.camera_x, game.camera_y)
 			for genie in game.genieList[game.levelCounter]:
 			 	genie.update(game.camera_x, game.camera_y)
