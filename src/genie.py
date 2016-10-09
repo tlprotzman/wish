@@ -22,6 +22,12 @@ class Genie:
 		self.wishDisplay = GenieWishDisplay(self.window, self, message, wishChoices)
 
 		self.wishesAlpha = 0
+		self.chosenWish = -1
+
+	def chooseWish(self, wish):
+		self.chosenWish = wish
+		self.wishDisplay.chooseWish(wish)
+		self.wishDisplay.setWishFlagTrue()
 
 	def isInMenu(self):
 		return self.growingAnimationFrame == 4
@@ -50,7 +56,10 @@ class Genie:
 				self.window.blit(self.game.genieIdleL[self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 			else:
 				self.window.blit(self.game.genieIdleR[self.game.animation], (self.rect.x-cameraX, self.rect.y-16-cameraY))
-			self.wishDisplay.displayWishes(cameraX, cameraY, -1)
+			if self.chosenWish == -1:
+				self.wishDisplay.displayWishes(cameraX, cameraY)
+			else:
+				self.wishDisplay.displayPosttext(cameraX, cameraY)
 		elif self.growingAnimationFrame > -1:
 			# then do the expansion frame
 			if self.leftFacing:

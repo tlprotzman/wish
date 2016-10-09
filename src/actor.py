@@ -94,6 +94,17 @@ class Actor:
 		#print(abs(self.velocity_x))
 	def getInput(self):
 		pressed = pygame.key.get_pressed()
+		# handling wish choices!
+		genie = self.game.genieList[self.game.getLevelIndex()][0]
+		if genie.isInMenu():
+			if pressed[pygame.K_1]:
+				genie.chooseWish(0)
+			elif pressed[pygame.K_2]:
+				genie.chooseWish(1)
+			elif pressed[pygame.K_3]:
+				genie.chooseWish(2)
+
+		# handling actor movements and random stuff
 		if not self.backwards:
 			if pressed[pygame.K_a]:
 				self.velocity_x -= self.speed
@@ -357,7 +368,7 @@ class Actor:
 			self.rect.x = 0
 			self.rect.y = 0
 		playerHitBox = pygame.Rect(player.rect.x+d1*(player.rect.width-16)-d2*80, player.rect.y, 80, player.rect.height)
-		pygame.draw.rect(self.window, (255, 0, 0), playerHitBox)
+		# pygame.draw.rect(self.window, (255, 0, 0), playerHitBox)
 		if(self.deathTimer == 0 and self.health > 0 and isBeingAttacked and self.rect.colliderect(playerHitBox)):
 			self.health -= damage
 			deathTimer = 100

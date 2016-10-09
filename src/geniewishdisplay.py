@@ -11,6 +11,7 @@ class GenieWishDisplay:
 		self.color1 = (0,0,0)
 		self.color2 = (255, 255, 255)
 		self.getWishes()
+		self.chosenWish = -1
 
 
 
@@ -22,6 +23,9 @@ class GenieWishDisplay:
 		self.renderPretext()
 		self.renderPostText()
 		self.renderMessage()
+
+	def chooseWish(self, wishNum):
+		self.chosenWish = wishNum
 
 	def renderPretext(self):
 		pretext = []
@@ -40,7 +44,7 @@ class GenieWishDisplay:
 		self.message = [self.genie.game.genieFont.render(line, 1, self.color1) for line in self.message]
 
 
-	def displayWishes(self, cameraX, cameraY, highlightedWish = -1):
+	def displayWishes(self, cameraX, cameraY):
 		if (not self.leftFacing):
 			y = self.genie.rect.y - cameraY - 120 - 20*len(self.message) - 48
 			x = self.genie.rect.x - cameraX + 136
@@ -54,10 +58,10 @@ class GenieWishDisplay:
 			self.window.blit(self.message[i], (x, y))
 			y += 24
 		for i in range(len(self.pretext)):
-			self.window.blit(self.pretext[i][i == highlightedWish], (x, y))
+			self.window.blit(self.pretext[i][i == self.chosenWish], (x, y))
 			y += 24
 
-	def displayPosttext(self, cameraX, cameraY, selectedWish):
+	def displayPosttext(self, cameraX, cameraY):
 		if (not self.leftFacing):
 			y = self.genie.rect.y - cameraY - 120 - 20*len(self.message) - 48
 			x = self.genie.rect.x - cameraX + 136
@@ -67,9 +71,13 @@ class GenieWishDisplay:
 			y = self.genie.rect.y - cameraY - 120 - 20*len(self.message) - 48
 			self.window.blit(self.genie.game.speechLImage, (x-16, y-16))
 
-		for i in range(len(self.posttext[selectedWish])):
-			self.window.blit(self.posttext[selectedWish][i], (x, y))
+		y += 24*4
+		for i in range(len(self.posttext[self.chosenWish])):
+			self.window.blit(self.posttext[self.chosenWish][i], (x, y))
 			y += 24
+
+	def setWishFlagTrue(self):
+		self.genie.game.wishTable[self.wishes[self.chosenWish]][0] = True
 
 	# def renderText(self):
 	# 	color1 = (0, 0, 0)

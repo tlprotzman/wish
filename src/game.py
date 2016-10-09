@@ -164,6 +164,9 @@ class Game:
 	def getCurrentLevel(self):
 		return self.currentLevel
 
+	def getLevelIndex(self):
+		return self.levelCounter
+
 	def animate(self):
 		self.animationCounter += 1
 		if self.animationCounter == 7:
