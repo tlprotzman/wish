@@ -16,7 +16,7 @@ class Game:
 		self.window = window
 		self.screenHeight = screenHeight
 		self.screenWidth = screenWidth
-		self.camera_x = screenWidth/2
+		self.camera_x = 0
 		self.camera_y = 0
 		self.close_parallax_scale = .25
 		self.far_parallax_scale = .1

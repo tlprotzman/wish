@@ -38,7 +38,7 @@ def main():
 
 	game.levelList.append(Level(game, player, window,"../levels/testlevel.txt"))
 	wishes = ["Nope", "Just kidding", "Yada Yada"]
-	game.genieList.append([Genie(window, game, player, 320, 361, wishes)])
+	game.genieList.append([Genie(window, game, player, 320, 361, wishes, True)])
 
 	game.setCurrentLevel(game.levelList[0])
 
@@ -59,10 +59,10 @@ def main():
 			# for enemy in game.enemyList[game.levelCounter]:
 			# 	enemy.update()
 			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
-			player.update(game.camera_x, game.camera_y)
 			game.getCurrentLevel().update(game.camera_x, game.camera_y)
 			for genie in game.genieList[game.levelCounter]:
 			 	genie.update(game.camera_x, game.camera_y)
+			player.update(game.camera_x, game.camera_y)
 			
 
 			game.camera_x += ((player.rect.x+player.rect.width/2-game.screenWidth/2) - game.camera_x)/5
