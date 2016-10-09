@@ -16,11 +16,11 @@ class Actor:
 		elif name == "Ostrich":
 			self.height = 128
 			self.jump_force = 15
-			self.health = 50
+			self.health = 25
 		elif name == "Bat":
 			self.height = 64
 			self.jump_force = 15
-			self.health = 25
+			self.health = 10
 		
 
 		self.window = window
@@ -357,7 +357,7 @@ class Actor:
 			self.rect.x = 0
 			self.rect.y = 0
 		playerHitBox = pygame.Rect(player.rect.x+d1*(player.rect.width-16)-d2*80, player.rect.y, 80, player.rect.height)
-		pygame.draw.rect(self.window, (255, 0, 0), playerHitBox)
+		#pygame.draw.rect(self.window, (255, 0, 0), playerHitBox)
 		if(self.deathTimer == 0 and self.health > 0 and isBeingAttacked and self.rect.colliderect(playerHitBox)):
 			self.health -= damage
 			deathTimer = 100

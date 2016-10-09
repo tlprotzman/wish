@@ -13,7 +13,7 @@ backgroundColor = (49, 27, 146)
 
 wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a double jump"]],
 			 "tophat":[False, "for a snazzy hat", ["You now have", "the snazziest hat"]],
-			 "knife":[False, "i could kill people", ["Congrats, press j", "to murder!"]],
+			 "knife":[True, "i could kill people", ["Congrats, press j", "to murder!"]],
 			 "ostrich":[False, "for friends", ["Be free, handsome one"]],
 			 "healthpack":[False, "for more health", ["Stay safe out", "there!"]],
 			 "spikeimmune":[False, "to be spikeproof", ["A late night", "roundevous with", "a cactus?"]],
@@ -59,7 +59,7 @@ def main():
 
 		if game.gameState == 'PLAYING':
 			window.fill(backgroundColor)
-			#game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
+			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
 			player.update(game.camera_x, game.camera_y)
 			for enemy in game.enemyList[game.levelCounter]:
 			 	enemy.updateEnemy(game.camera_x, game.camera_y, player.rect.x+player.rect.width/2, player.rect.y+player.rect.height/2, player.isAttacking, 1, player)
