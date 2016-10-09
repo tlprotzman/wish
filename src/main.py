@@ -22,19 +22,8 @@ pygame.mixer.music.load("../audio/sondtrack.wav")
 
 def main():
 	game.setTileset("Grass")
-	# game.levelList.append(Level(game, player, window,
-	# 			d			["                                            ",
-	# 						"                                            ",
-	# 						"                                            ",
-	# 						"                            PPP             ",
-	# 						"           PPP               P              ",
-	# 						"                             P              ",
-	# 						"                             P              ",
-	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-	# 						"PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP", ]))
 
+	game.enemyList.append([Actor(window, game, 200, 400, 'Ostrich')])
 	game.levelList.append(Level(game, player, window,"../levels/testlevel.txt"))
 
 	game.setCurrentLevel(game.levelList[0])
@@ -53,10 +42,10 @@ def main():
 
 		if game.gameState == 'PLAYING':
 			window.fill(backgroundColor)
-			# for enemy in game.enemyList[game.levelCounter]:
-			# 	enemy.update()
 			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
 			player.update(game.camera_x, game.camera_y)
+			for enemy in game.enemyList[game.levelCounter]:
+			 	enemy.updateEnemy(game.camera_x, game.camera_y, player.rect.x+player.rect.width/2, player.rect.y+player.rect.height/2)
 			game.getCurrentLevel().update(game.camera_x, game.camera_y)
 			
 
