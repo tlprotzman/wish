@@ -40,7 +40,6 @@ class Genie:
 		else:
 			if self.growingAnimationFrame > -1:
 				self.growingAnimationFrame -= 1
-		print(self.player.rect.x, self.player.rect.y)
 		#self.window.blit(self.game.genieLamp, (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		if self.growingAnimationFrame == 4:
 			# then do the idle expanded animation
