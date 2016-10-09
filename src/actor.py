@@ -108,7 +108,7 @@ class Actor:
 				self.coins += 1
 				self.coinsThisRun += 1
 				self.game.coins = self.coins
-				self.game.coinEffect.play()
+				# self.game.coinEffect.play()
 
 
 	def getHealth(self):
@@ -411,10 +411,14 @@ class Actor:
 		if (self.deathTimer > 0):
 			self.deathTimer -= 1
 		if self.rect.y > self.game.getCurrentLevel().getLevelHeight():
-			self.deathTimer = 100
-			self.rect.x = 32
-			self.rect.y = 0
-			self.game.life += 1
+			self.game.setCurrentLevel(self.game.getCurrentLevel())
+			self.health = 100
+			self.coins -= self.coinsThisRun
+			self.coinsThisRun = 0
+			self.game.coins = self.coins
+			self.resetLevel = True
+			self.rect.x = spawnX
+			self.rect.y = spawnY
 		else:
 			for enemy in self.game.enemyList[self.game.levelCounter]:
 				if self.rect.colliderect(enemy) and self.deathTimer == 0:
@@ -499,6 +503,12 @@ class Actor:
 
 	def grantWish(self):
 		self.game.makeParticles(self.rect.x + self.rect.width/2, self.rect.y + self.rect.height/2, (1,1,1), 1000, 100, 20)
+		if self.game.wishTable["quit"][0]:
+			pygame.quit()
+		if self.game.wishTable["yay"][0]:
+			pygame.quit()
+		if self.game.wishTable["retry"][0]:
+			pygame.quit()
 		if self.game.wishTable["lowgravity"][0]:
 			self.gravity = 0.4
 		if self.game.wishTable["fasterrunning"][0]:
