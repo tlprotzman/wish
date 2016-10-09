@@ -80,6 +80,13 @@ class Game:
 							pygame.image.load("../images/ostrich-run-2.png"),
 							pygame.image.load("../images/ostrich-run-3.png"),
 							pygame.image.load("../images/ostrich-run-4.png")]
+							
+		self.batFly =      [pygame.image.load("../images/bat-fly-1.png"),
+							pygame.image.load("../images/bat-fly-2.png"),
+							pygame.image.load("../images/bat-fly-3.png"),
+							pygame.image.load("../images/bat-fly-4.png")]
+							
+		self.batHang = pygame.image.load("../images/bat-hang-1.png")
 		
 		self.farParallax = pygame.image.load("../images/blue_parallax.png")
 		self.closeParallax = pygame.image.load("../images/color_parallax.png")

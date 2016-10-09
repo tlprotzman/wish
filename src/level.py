@@ -29,6 +29,8 @@ class Level:
 			for item in row:
 				if item == "O":
 					enemyList += [Actor(self.window, self.game, x, y-64, "Ostrich")]
+				elif item == "W":
+					enemyList += [Actor(self.window, self.game, x, y-64, "Bat")]
 				elif item == "G":
 					genieList += [Genie(self.window, self.game, self.player, x-64, y-87, self.genieMessage, self.genieWishes, False)] # THERE'S ONLY ONE GENIE PER LEVEL, IF THERE ISN'T YOU'RE FUCKED!
 				elif item == "g":
