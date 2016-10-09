@@ -97,8 +97,7 @@ def main():
 			# parallax
 			game.getCurrentLevel().drawStars(game.camera_x, game.camera_y)
 			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
-			
-			game.update()
+	
 			player.update(game.camera_x, game.camera_y, game.getCurrentLevel().spawnX, game.getCurrentLevel().spawnY)
 			if player.resetLevel:
 				print(game.getLevelIndex())
@@ -138,6 +137,7 @@ def main():
 				game.camera_y += ((player.rect.y+player.rect.height/2-game.screenHeight/2) - game.camera_y-64)/50
 				
 
+			game.update()
 			# if game.camera_y < 0:
 			# 	game.camera_y = 0
 

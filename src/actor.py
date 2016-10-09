@@ -503,6 +503,7 @@ class Actor:
 
 	def grantWish(self):
 		self.game.makeParticles(self.rect.x + self.rect.width/2, self.rect.y + self.rect.height/2, (1,1,1), 1000, 100, 20)
+
 		# if self.game.wishTable["quit"][0]:
 		# 	# sys.exit(0)
 		# 	# pygame.quit()
