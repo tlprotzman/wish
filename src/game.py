@@ -11,7 +11,7 @@ class Game:
 		self.enemyList = []
 		self.genieList = []
 		self.nameList = []
-		self.life = 3
+		self.life = 0
 		self.animation = 0
 		self.animationCounter = 0
 		self.window = window
@@ -24,6 +24,8 @@ class Game:
 		self.genieFont = pygame.font.Font("../fonts/joystixMonospace.ttf", 20)
 
 
+
+		self.UIImage = pygame.image.load("../images/ui.png")
 
 		self.lifeImage = pygame.image.load("../images/life.png")
 
@@ -148,4 +150,10 @@ class Game:
 	def drawLives(self):
 		for i in range(self.life):
 			self.window.blit(self.lifeImage, (20 + i * 60, 64))		#Make sure to set the life image!!!
+			
+	def update(self):
+		self.window.blit(self.UIImage, (0, 0))	
+		pygame.draw.rect(self.window, (176, 18, 10), (104, 40,  self.life * 3.92, 32))		#Make sure to set the life image!!!
+			
+		
 

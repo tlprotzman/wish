@@ -143,7 +143,7 @@ class Actor:
 
 
 		#Draw health
-		pygame.draw.rect(self.window, (176, 18, 10), (10, 10,  self.health * 1.5, 15))
+		self.game.life = self.health
 
 
 		if (self.deathTimer>0 and self.deathTimer%2 == 0):
