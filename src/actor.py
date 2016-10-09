@@ -36,7 +36,7 @@ class Actor:
 		self.facing = 'right'
 		self.changeDirection = 0
 		self.direction = 1
-		self.fightTimer = 0
+		self.fightTimer = 100
 		self.isAttacking = False
 		self.wasRunning = False
 		self.health = health
@@ -91,17 +91,23 @@ class Actor:
 	
 	# I excluded a section about screenwidth and the extra life
 	def fight(self):
-		if (not self.isAttacking):
+		print(self.fightTimer)
+		print(self.isAttacking)
+		if (self.fightTimer == 100):
 			self.fightTimer = 0
-			self.isAttacking = True
 	
 	def attack(self):
-		if (self.isAttacking):
+		if (self.fightTimer < 100):
 			self.fightTimer +=1
+			if self.fightTimer>14:
+				self.isAttacking = True
 			if self.fightTimer>=40:
-				self.fighTimer = 0
+				self.fightTimer = 100
 				self.isAttacking = False
+<<<<<<< HEAD
 		#print(self.fightTimer)
+=======
+>>>>>>> 3d5ca4f7dd263b2ae92fbc2967845d3a5d2821f7
 			
 	
 	def jump(self):
@@ -155,7 +161,7 @@ class Actor:
 				self.shouldFlip = False
 				self.direction = 1
 			
-			if (self.isAttacking):
+			if (self.fightTimer < 100):
 				if self.fightTimer < 7:
 					self.window.blit(pygame.transform.flip((self.game.playerFight[0]), self.shouldFlip, False), (self.rect.x-cameraX, self.rect.y-16-cameraY))
 					self.window.blit(pygame.transform.flip((self.game.weaponFight[0]), self.shouldFlip, False), (self.rect.x-cameraX+(self.direction-1)*(16), self.rect.y-16-cameraY))
@@ -180,7 +186,7 @@ class Actor:
 			else:
 				self.window.blit(self.game.playerBreath[1], (self.rect.x-cameraX, self.rect.y-16-cameraY))
 		
-			if (not self.isAttacking):
+			if (self.fightTimer==100):
 				if self.direction==1:
 					self.window.blit(pygame.transform.flip((self.game.knife[math.floor(self.game.animation/2)]), self.shouldFlip, False), (self.rect.x-16-cameraX, self.rect.y-8-cameraY))
 				else:
