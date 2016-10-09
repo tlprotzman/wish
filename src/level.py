@@ -9,7 +9,7 @@ class Level:
 		self.player = player
 		self.parallaxHeight = 0
 		self.parallaxImageHeight = 480 # this should be the height of the image martin made
-		if type(arrayOrFilename) == type("hello world"):
+		if type(arrayOrFilename) == type("Jordan"):
 			self.loadLevelFile(arrayOrFilename)
 		else:
 			self.levelArray = arrayOrFilename
@@ -68,6 +68,8 @@ class Level:
 		self.levelWidth = len(self.levelArray[0])*64
 		self.levelHeight = len(self.levelArray)*64
 		self.staticTiles = pygame.Surface((self.levelWidth, self.levelHeight)) #(64*self.levelWidth, 64*self.levelHeight)
+		self.belowGroundBackground = pygame.Surface((self.levelWidth, self.levelHeight))
+		self.belowGroundBackground.fill((109, 99, 52))
 		self.staticTiles.fill((255,255,255,0))
 		self.staticTiles.set_colorkey((255,255,255,0))
 		self.makeBackgroundImage()
@@ -108,8 +110,9 @@ class Level:
 		self.window.blit(self.game.closeParallax, (x, (self.parallaxHeight-self.game.screenHeight/2)-cameraY)) # -cameraY*self.game.close_parallax_scale
 		self.window.blit(self.game.closeParallax, (x+parallaxWidth, (self.parallaxHeight-self.game.screenHeight/2)-cameraY))
 		self.window.blit(self.game.closeParallax, (x+2*parallaxWidth, (self.parallaxHeight-self.game.screenHeight/2)-cameraY))
-		backgroundColor = (109, 99, 52)
-		pygame.draw.rect(self.window, backgroundColor, (0, (self.parallaxHeight-self.game.screenHeight/2)-cameraY+self.parallaxImageHeight, self.getLevelWidth(), self.getLevelHeight()))
+		self.window.blit(self.belowGroundBackground, (0, (self.parallaxHeight-self.game.screenHeight/2)-cameraY+self.parallaxImageHeight, self.getLevelWidth(), self.getLevelHeight()))
+		# backgroundColor = (109, 99, 52)
+		# pygame.draw.rect(self.window, backgroundColor, (0, (self.parallaxHeight-self.game.screenHeight/2)-cameraY+self.parallaxImageHeight, self.getLevelWidth(), self.getLevelHeight()))
 
 	def update(self, cameraX, cameraY):
 		if self.player.rect.right<0:
