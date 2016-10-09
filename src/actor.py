@@ -143,6 +143,9 @@ class Actor:
 				if self.rect.left >= wall.rect.right and self.rect.left + self.velocity_x - 1 <= wall.rect.right:
 					self.velocity_x = 0
 					self.rect.left = wall.rect.right+2
+		if (self.rect.x < 0):
+			self.rect.x = 0
+			self.velocity_x = 0
 	
 	def drawPlayer(self, cameraX, cameraY):
 		# if (self.deathTimer > 0 and self.deathTimer %2 == 0):
