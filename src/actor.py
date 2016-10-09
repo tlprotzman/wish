@@ -94,9 +94,9 @@ class Actor:
 	def collideY(self):
 		for wall in self.game.getCurrentLevel().getWalls():
 			if self.rect.top < wall.rect.bottom and self.rect.bottom  > wall.rect.top:
-				if self.rect.right <= wall.rect.left and self.rect.right + self.velocity_x + 1 > wall.rect.left:
+				if self.rect.right <= wall.rect.left and self.rect.right + self.velocity_x + 2 > wall.rect.left:
 					self.velocity_x = 0
-					self.rect.right = wall.rect.left - 1
+					self.rect.right = wall.rect.left - 2
 				if self.rect.left >= wall.rect.right and self.rect.left + self.velocity_x - 1 <= wall.rect.right:
 					self.velocity_x = 0
 					self.rect.left = wall.rect.right+2
