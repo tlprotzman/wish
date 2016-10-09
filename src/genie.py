@@ -23,6 +23,9 @@ class Genie:
 
 		self.wishesAlpha = 0
 
+	def isInMenu(self):
+		return self.growingAnimationFrame == 4
+
 	def distanceSquared(self, x, y):
 		return (x - self.rect.x)**2 + (y-self.rect.y)**2
 
