@@ -454,7 +454,7 @@ class Actor:
 			self.isAlive = False
 			self.rect.x = 0
 			self.rect.y = 0
-			self.game.makeParticles(500, 500, (1, 0, 0), 10)
+			self.game.makeParticles(500, 500, (1, 0, 0), 100, 100)
 		playerHitBox = pygame.Rect(player.rect.x+d1*(player.rect.width-16)-d2*80, player.rect.y, 80, player.rect.height)
 
 		# pygame.draw.rect(self.window, (255, 0, 0), playerHitBox)

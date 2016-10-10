@@ -12,7 +12,7 @@ fasterrunning
                                SSS   S                                                                                  
                                      S                                                                                  
                                                C                                                                        
-                                               SSSSSSSSSSSS                                      PP                     
+                                              SSSSSSSSSSS                                        PP                     
                      SSSSSSS                   |     W |                           T              PPPPPP                
                  SSSS                          |       |             T     PPPPPPPPPPPPPPP                              
  _    T                                        | T   T |        PPPPPPPPPPPPPPPPPPPPPPPPPPP                 T           

@@ -98,6 +98,9 @@ def main():
 			game.getCurrentLevel().drawStars(game.camera_x, game.camera_y)
 			game.getCurrentLevel().drawParallax(game.camera_x, game.camera_y)
 	
+			game.getCurrentLevel().update(game.camera_x, game.camera_y)
+			game.update()	 #IF THIS BREAKS MOVE TO BOTTOM
+
 			player.update(game.camera_x, game.camera_y, game.getCurrentLevel().spawnX, game.getCurrentLevel().spawnY)
 			if player.resetLevel:
 				print(game.getLevelIndex())
@@ -111,7 +114,6 @@ def main():
 				if game.wishTable["goldknife"][0]:
 					damage = 3
 				enemy.updateEnemy(game.camera_x, game.camera_y, player.rect.x+player.rect.width/2, player.rect.y+player.rect.height/2, player.isAttacking, damage, player)
-			game.getCurrentLevel().update(game.camera_x, game.camera_y)
 			for genie in game.genieList[game.levelCounter]:
 			 	genie.update(game.camera_x, game.camera_y)
 			# lights
@@ -137,7 +139,6 @@ def main():
 				game.camera_y += ((player.rect.y+player.rect.height/2-game.screenHeight/2) - game.camera_y-64)/50
 				
 
-			game.update()
 			# if game.camera_y < 0:
 			# 	game.camera_y = 0
 

@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 from word import Word
 from particles import Particle
 pygame.font.init()
@@ -228,6 +228,7 @@ class Game:
 	def progressALevel(self):
 		self.levelCounter += 1
 		if self.levelCounter == 6:
+			sys.exit()
 			pygame.quit()
 			return
 		self.currentLevel = self.levelList[self.levelCounter]
