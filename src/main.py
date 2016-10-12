@@ -7,7 +7,11 @@ from level import Level
 from genie import Genie
 from mainmenu import Mainmenu
 
-pygame.mixer.pre_init(44100, 16, 2, 4096) #frequency, size, channels, buffersize
+playSoundEffects = True
+
+
+if playSoundEffects:
+	pygame.mixer.pre_init(44100, 16, 2, 4096) #frequency, size, channels, buffersize
 pygame.init() #turn all of pygame on.
 
 screenWidth = 22 * 64
@@ -39,7 +43,7 @@ wishTable = {"doublejump":[False, "for a double jump", ["You now have", "a doubl
 
 #Remember to pass window into all the functions that need it!
 window = pygame.display.set_mode((screenWidth, screenHeight))
-game = Game(window, screenHeight, screenWidth)
+game = Game(window, screenHeight, screenWidth, playSoundEffects)
 game.wishTable = wishTable
 mainmenu = Mainmenu(window, game)
 player = Actor(window, game, 95, 200, "Player")

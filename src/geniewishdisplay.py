@@ -79,7 +79,8 @@ class GenieWishDisplay:
 	def setWishFlagTrue(self):
 		self.genie.game.wishTable[self.wishes[self.chosenWish]][0] = True
 		self.genie.player.grantWish()
-		self.genie.game.wishEffect.play()
+		if self.genie.game.soundEffects:
+			self.genie.game.wishEffect.play()
 
 	# def renderText(self):
 	# 	color1 = (0, 0, 0)
