@@ -142,14 +142,14 @@ class Level:
 	def isEdgeTile(self, col, row):
 		if col > 0:
 			# if self.levelArray[row][col-1] not in " .HT^|gGwW":
-			if len(self.levelArray[row]) < col-1:
+			if len(self.levelArray[row]) <= col-1:
 				return True # it doesn't exist because of bad level building...
 			if self.levelArray[row][col-1] not in "PS":
 				return True
 		else:
 			return True
 		if col < len(self.levelArray[0])-1: # if it's not the farthest to the right
-			if len(self.levelArray[row]) < col+1:
+			if len(self.levelArray[row]) <= col+1:
 				return True # it doesn't exist because of bad level building...
 			if self.levelArray[row][col+1] not in "PS":
 				return True
@@ -158,14 +158,14 @@ class Level:
 
 
 		if row > 0:
-			if len(self.levelArray[row-1]) < col:
+			if len(self.levelArray[row-1]) <= col:
 				return True # deals with bad level building...
 			if self.levelArray[row-1][col] not in "PS":
 				return True
 		else:
 			return True
-		if row < len(self.levelArray)-1: # if it's not the bottom row
-			if len(self.levelArray[row+1]) < col:
+		if row < len(self.levelArray)-1: # if it's not the bottom row (of the highest index)
+			if len(self.levelArray[row+1]) <= col:
 				return True # deals with bad level building...
 			if self.levelArray[row+1][col] not in "PS":
 				return True
@@ -195,7 +195,7 @@ class Level:
 		return self.levelHeight
 
 	def makeBackgroundImage(self):
-		for tile in self.walls:
+		for tile in self.allWalls:
 			tile.drawTo(0, 0, self.staticTiles)
 
 	def getWalls(self):
@@ -260,22 +260,6 @@ class Level:
 		self.window.blit(self.completeFarParallax, (farX, self.parallaxDrawHeight-cameraY))
 		self.window.blit(self.completeCloseParallax, (closeX, self.parallaxDrawHeight-cameraY))
 		self.window.blit(self.belowGroundBackground, (0, (self.parallaxHeight-self.game.screenHeight/2)-cameraY+self.parallaxImageHeight))
-
-	def drawParallaxOLD(self, cameraX, cameraY):
-		parallaxWidth = self.game.screenWidth-32
-		x = -((cameraX*self.game.far_parallax_scale)%(parallaxWidth))
-		# do the background one
-		self.window.blit(self.game.farParallax, (x, (self.parallaxHeight-self.game.screenHeight/2)-cameraY)) # -cameraY*self.game.close_parallax_scale
-		self.window.blit(self.game.farParallax, (x+parallaxWidth, (self.parallaxHeight-self.game.screenHeight/2)-cameraY))
-		self.window.blit(self.game.farParallax, (x+2*parallaxWidth, (self.parallaxHeight-self.game.screenHeight/2)-cameraY))
-		x = -((cameraX*self.game.close_parallax_scale)%(parallaxWidth))
-		# then do the foreground one
-		self.window.blit(self.game.closeParallax, (x, (self.parallaxHeight-self.game.screenHeight/2)-cameraY)) # -cameraY*self.game.close_parallax_scale
-		self.window.blit(self.game.closeParallax, (x+parallaxWidth, (self.parallaxHeight-self.game.screenHeight/2)-cameraY))
-		self.window.blit(self.game.closeParallax, (x+2*parallaxWidth, (self.parallaxHeight-self.game.screenHeight/2)-cameraY))
-		self.window.blit(self.belowGroundBackground, (0, (self.parallaxHeight-self.game.screenHeight/2)-cameraY+self.parallaxImageHeight))
-		# backgroundColor = (109, 99, 52)
-		# pygame.draw.rect(self.window, backgroundColor, (0, (self.parallaxHeight-self.game.screenHeight/2)-cameraY+self.parallaxImageHeight, self.getLevelWidth(), self.getLevelHeight()))
 
 	def update(self, cameraX, cameraY):
 		if self.player.rect.right<0:
