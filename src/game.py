@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, timeit
 from word import Word
 from particles import Particle
 pygame.font.init()
@@ -32,7 +32,11 @@ class Game:
 		self.far_parallax_scale = .1
 		self.genieFont = pygame.font.Font("../fonts/joystixMonospace.ttf", 18)
 		self.currentCharacter = 'player'
+<<<<<<< HEAD
 		self.updateCounter = 0 # this is for speed runs, it should restart counting after you press enter
+=======
+		self.speedRunTimer = 0
+>>>>>>> speedrun
 
 		#SOUND
 		if self.soundEffects:
@@ -233,6 +237,8 @@ class Game:
 		if self.levelCounter == 6:
 			print("Updates in the game:", self.updateCounter)
 			print("(an impartial count of speedrunning time)")
+			print("YOUR TIME IS:", timeit.default_timer() - self.speedRunTimer)
+			print("YOU DIED:", self.levelList[0].player.deaths, "TIMES")
 			sys.exit()
 			pygame.quit()
 			return

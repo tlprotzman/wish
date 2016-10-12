@@ -1,6 +1,6 @@
 # this is to display a level select? and a play/credits thing
 # if we want it
-import pygame
+import pygame, timeit
 import math
 from word import Word
 
@@ -25,6 +25,7 @@ class Mainmenu:
 		self.surf.set_alpha(255-self.timer*10)                # alpha level
 		self.window.blit(self.surf, (0,0))    # (0,0) are the top-left coordinates
 		if pressed[pygame.K_RETURN]:
+			self.speedRunTimer = timeit.default_timer()
 			self.game.gameState = "PLAYING"
 			pygame.mixer.music.load("../music/gameTheme.wav")
 			pygame.mixer.music.play(-1, 0.0)

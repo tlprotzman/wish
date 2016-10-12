@@ -56,6 +56,7 @@ class Actor:
 		self.coins = 0
 		self.coinsThisRun = 0
 		self.resetLevel = False
+		self.deaths = 0
 
 
 
@@ -424,6 +425,7 @@ class Actor:
 			self.resetLevel = True
 			self.rect.x = spawnX
 			self.rect.y = spawnY
+			self.deaths += 1
 		else:
 			for enemy in self.game.enemyList[self.game.levelCounter]:
 				if self.rect.colliderect(enemy) and self.deathTimer == 0:
@@ -441,6 +443,7 @@ class Actor:
 			self.resetLevel = True
 			self.rect.x = spawnX
 			self.rect.y = spawnY
+			self.deaths += 1
 
 	def resetLevelFalse(self):
 		self.resetLevel = False
