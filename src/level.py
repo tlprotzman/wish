@@ -142,11 +142,15 @@ class Level:
 	def isEdgeTile(self, col, row):
 		if col > 0:
 			# if self.levelArray[row][col-1] not in " .HT^|gGwW":
+			if len(self.levelArray[row]) < col-1:
+				return True # it doesn't exist because of bad level building...
 			if self.levelArray[row][col-1] not in "PS":
 				return True
 		else:
 			return True
 		if col < len(self.levelArray[0])-1: # if it's not the farthest to the right
+			if len(self.levelArray[row]) < col+1:
+				return True # it doesn't exist because of bad level building...
 			if self.levelArray[row][col+1] not in "PS":
 				return True
 		else:
@@ -154,11 +158,15 @@ class Level:
 
 
 		if row > 0:
-			if self.levelArray[row-1][col-1] not in "PS":
+			if len(self.levelArray[row-1]) < col:
+				return True # deals with bad level building...
+			if self.levelArray[row-1][col] not in "PS":
 				return True
 		else:
 			return True
 		if row < len(self.levelArray)-1: # if it's not the bottom row
+			if len(self.levelArray[row+1]) < col:
+				return True # deals with bad level building...
 			if self.levelArray[row+1][col] not in "PS":
 				return True
 		else:
