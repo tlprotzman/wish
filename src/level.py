@@ -61,7 +61,7 @@ class Level:
 					else:
 						tile = Tile(self.window, x, y, "Ground", self.game.dirtImage)
 					self.walls.append(tile)
-					if self.isEdgeTile(x/64, y/64):
+					if self.isEdgeTile(int(x/64), int(y/64)):
 						self.exteriorWalls.append(tile)
 				elif item == "S":
 					if (round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="S" and round(x/64) > 0 and self.levelArray[round(y/64)][round(x/64)-1]!="S"):
@@ -73,7 +73,7 @@ class Level:
 					else:
 						tile = Tile(self.window, x, y, "Ground", self.game.stoneImage)
 					self.walls.append(tile)
-					if self.isEdgeTile(x/64, y/64):
+					if self.isEdgeTile(int(x/64), int(y/64)):
 						self.exteriorWalls.append(tile)
 				elif item == "|":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]!="|":
