@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, timeit
 from word import Word
 from particles import Particle
 pygame.font.init()
@@ -31,6 +31,7 @@ class Game:
 		self.far_parallax_scale = .1
 		self.genieFont = pygame.font.Font("../fonts/joystixMonospace.ttf", 18)
 		self.currentCharacter = 'player'
+		self.speedRunTimer = 0
 
 		#SOUND
 		self.coinEffect = pygame.mixer.Sound("../sound/coin.wav")
@@ -228,6 +229,8 @@ class Game:
 	def progressALevel(self):
 		self.levelCounter += 1
 		if self.levelCounter == 6:
+			print("YOUR TIME IS:", timeit.default_timer() - self.speedRunTimer)
+			print("YOU DIED:", self.levelList[0].player.deaths, "TIMES")
 			sys.exit()
 			pygame.quit()
 			return
