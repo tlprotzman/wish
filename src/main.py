@@ -7,7 +7,7 @@ from level import Level
 from genie import Genie
 from mainmenu import Mainmenu
 
-playSoundEffects = True
+playSoundEffects = False
 
 
 if playSoundEffects:

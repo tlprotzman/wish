@@ -32,6 +32,7 @@ class Game:
 		self.far_parallax_scale = .1
 		self.genieFont = pygame.font.Font("../fonts/joystixMonospace.ttf", 18)
 		self.currentCharacter = 'player'
+		self.updateCounter = 0 # this is for speed runs, it should restart counting after you press enter
 
 		#SOUND
 		if self.soundEffects:
@@ -230,6 +231,8 @@ class Game:
 	def progressALevel(self):
 		self.levelCounter += 1
 		if self.levelCounter == 6:
+			print("Updates in the game:", self.updateCounter)
+			print("(an impartial count of speedrunning time)")
 			sys.exit()
 			pygame.quit()
 			return
@@ -288,6 +291,7 @@ class Game:
 		pygame.draw.rect(self.window, (176, 18, 10), (104, 40,  self.life * 3.92, 32))		#Make sure to set the life image!!!
 		coinStat = Word(self.window, str(self.coins) + " / " + str(self.maxCoins), 670, 30, 40, (255, 160, 0))
 		coinStat.update()
+		self.updateCounter += 1
 			
 		
 

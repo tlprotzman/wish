@@ -28,3 +28,4 @@ class Mainmenu:
 			self.game.gameState = "PLAYING"
 			pygame.mixer.music.load("../music/gameTheme.wav")
 			pygame.mixer.music.play(-1, 0.0)
+			self.game.updateCounter = 0
