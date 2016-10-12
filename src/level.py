@@ -25,6 +25,9 @@ class Level:
 		self.levelHeight = 0
 		self.lightSources = []
 
+		self.exteriorWalls = []
+		self.allWalls = [] # gets set by self.walls after loading everything.
+		#then self.walls should probably be set to be exteriorWalls
 
 		enemyList = []
 		genieList = []
@@ -58,6 +61,8 @@ class Level:
 					else:
 						tile = Tile(self.window, x, y, "Ground", self.game.dirtImage)
 					self.walls.append(tile)
+					if self.isEdgeTile(x/64, y/64):
+						self.exteriorWalls.append(tile)
 				elif item == "S":
 					if (round(x/64) < (len(row)) - 1 and self.levelArray[round(y/64)][round(x/64)+1]!="S" and round(x/64) > 0 and self.levelArray[round(y/64)][round(x/64)-1]!="S"):
 						tile = Tile(self.window, x, y, "Ground", self.game.stoneCImage)
@@ -68,6 +73,8 @@ class Level:
 					else:
 						tile = Tile(self.window, x, y, "Ground", self.game.stoneImage)
 					self.walls.append(tile)
+					if self.isEdgeTile(x/64, y/64):
+						self.exteriorWalls.append(tile)
 				elif item == "|":
 					if y==0 or self.levelArray[round((y/64)-1)][round(x/64)]!="|":
 						tile = Tile(self.window, x, y, "Pilar", self.game.pillarTImage)
@@ -102,6 +109,10 @@ class Level:
 				x += 64
 			y += 64
 			x = 0
+
+		self.allWalls = self.walls
+		self.walls = self.exteriorWalls
+
 		self.levelWidth = len(self.levelArray[0])*64
 		self.levelHeight = len(self.levelArray)*64
 		self.staticTiles = pygame.Surface((self.levelWidth, self.levelHeight)) #(64*self.levelWidth, 64*self.levelHeight)
@@ -127,6 +138,35 @@ class Level:
 		self.setupParallax()
 		self.setupStars()
 		#self.torchImage.set_colorkey(255, 255, 255)
+
+	def isEdgeTile(self, col, row):
+		if col > 0:
+			# if self.levelArray[row][col-1] not in " .HT^|gGwW":
+			if self.levelArray[row][col-1] not in "PS":
+				return True
+		else:
+			return True
+		if col < len(self.levelArray[0])-1: # if it's not the farthest to the right
+			if self.levelArray[row][col+1] not in "PS":
+				return True
+		else:
+			return True
+
+
+		if row > 0:
+			if self.levelArray[row-1][col-1] not in "PS":
+				return True
+		else:
+			return True
+		if row < len(self.levelArray)-1: # if it's not the bottom row
+			if self.levelArray[row+1][col] not in "PS":
+				return True
+		else:
+			return True
+		#otherwise it's in the middle of other tiles
+		return False
+
+
 
 	def loadLevelFile(self, filename):
 		f = open(filename, "r")
