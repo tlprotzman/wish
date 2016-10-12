@@ -108,7 +108,8 @@ class Actor:
 				self.coins += 1
 				self.coinsThisRun += 1
 				self.game.coins = self.coins
-				# self.game.coinEffect.play()
+				if self.game.soundEffects:
+					self.game.coinEffect.play()
 
 
 	def getHealth(self):
@@ -118,8 +119,9 @@ class Actor:
 				if self.health + 20 > 100:
 					self.health = 100
 				else:
-					self.health += 20	
-				self.game.coinEffect.play()
+					self.health += 20
+				if self.game.soundEffects:
+					self.game.coinEffect.play()
 			
 			
 		
@@ -128,7 +130,7 @@ class Actor:
 	def getInput(self):
 		pressed = pygame.key.get_pressed()
 		# handling wish choices!
-		print("inded", self.game.getLevelIndex())
+		# print("inded", self.game.getLevelIndex())
 		genie = self.game.genieList[self.game.getLevelIndex()][0]
 		if genie.isInMenu():
 			if pressed[pygame.K_1]:
@@ -151,7 +153,8 @@ class Actor:
 		if pressed[pygame.K_c]:
 			if self.game.wishTable["confetti"][0]:
 				self.game.makeParticles(self.rect.x+self.rect.width/2, self.rect.y+self.rect.height/2, (1,1,1), 10, 10)
-				self.game.hoorayEffect.play()
+				if self.game.soundEffects:
+					self.game.hoorayEffect.play()
 		if not self.backwards:
 			if pressed[pygame.K_a]:
 				self.velocity_x -= self.speed
@@ -383,13 +386,15 @@ class Actor:
 						#print('wrk?')
 
 						if self.velocity_x == 0:
-							self.game.ostrichEffect.play()
+							if self.game.soundEffects:
+								self.game.ostrichEffect.play()
 						self.velocity_x = 14
 					#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 				if facing == 'left':
 					if ((not blockedLeft) and (abs(playerY - (self.rect.y + self.rect.height) / 2) < 400) and (0 > (playerX - (self.rect.x + self.rect.width / 2)) > -800)):
 						if self.velocity_x == 0:
-							self.game.ostrichEffect.play()
+							if self.game.soundEffects:
+								self.game.ostrichEffect.play()
 						self.velocity_x = -14
 					#print((0 < (playerX - (self.rect.x + self.rect.width / 2)) < 200))
 		elif self.name == "Bat":
@@ -473,7 +478,7 @@ class Actor:
 		self.getHealth()
 		self.spiked()
 		self.getCoin()
-		print(self.coins)
+		# print(self.coins)
 		self.attack()
 		self.drawPlayer(cameraX, cameraY)
 		if self.jumpDelay > 0:

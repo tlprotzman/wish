@@ -5,7 +5,8 @@ pygame.font.init()
 import random
 
 class Game:
-	def __init__(self, window, screenHeight, screenWidth,):
+	def __init__(self, window, screenHeight, screenWidth, playSoundEffects = False):
+		self.soundEffects = playSoundEffects
 		self.clock = pygame.time.Clock()
 		self.currentLevel = 0
 		self.gameState = 'MAINMENU'
@@ -33,10 +34,11 @@ class Game:
 		self.currentCharacter = 'player'
 
 		#SOUND
-		self.coinEffect = pygame.mixer.Sound("../sound/coin.wav")
-		self.ostrichEffect = pygame.mixer.Sound('../sound/ostrich.wav')
-		self.hoorayEffect = pygame.mixer.Sound('../sound/hooray.wav')
-		self.wishEffect = pygame.mixer.Sound('../sound/wish.wav')
+		if self.soundEffects:
+			self.coinEffect = pygame.mixer.Sound("../sound/coin.wav")
+			self.ostrichEffect = pygame.mixer.Sound('../sound/ostrich.wav')
+			self.hoorayEffect = pygame.mixer.Sound('../sound/hooray.wav')
+			self.wishEffect = pygame.mixer.Sound('../sound/wish.wav')
 
 		self.UIImage = pygame.image.load("../images/ui.png")
 		self.speechImage = pygame.image.load("../images/speech.png")
