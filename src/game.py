@@ -32,11 +32,8 @@ class Game:
 		self.far_parallax_scale = .1
 		self.genieFont = pygame.font.Font("../fonts/joystixMonospace.ttf", 18)
 		self.currentCharacter = 'player'
-<<<<<<< HEAD
 		self.updateCounter = 0 # this is for speed runs, it should restart counting after you press enter
-=======
 		self.speedRunTimer = 0
->>>>>>> speedrun
 
 		#SOUND
 		if self.soundEffects:
