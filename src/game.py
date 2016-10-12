@@ -233,7 +233,7 @@ class Game:
 		self.levelCounter += 1
 		if self.levelCounter == 6:
 			print("Updates in the game:", self.updateCounter)
-			print("(an impartial count of speedrunning time)")
+			print("(an HEAVILY BIASED count of speedrunning time)")
 			print("YOUR TIME IS:", timeit.default_timer() - self.speedRunTimer)
 			print("YOU DIED:", self.levelList[0].player.deaths, "TIMES")
 			sys.exit()
