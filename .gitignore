@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# This is for jordan's terrible mac lies
+.DS_Store
+
+
 # C extensions
 *.so
 
